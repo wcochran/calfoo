@@ -17,4 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *carbsCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *proteinCell;
 
+-(void)updateSummary;
+
 @end
