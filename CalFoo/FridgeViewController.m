@@ -1,21 +1,20 @@
 //
-//  CalsTodayViewController.m
+//  FridgeViewController.m
 //  CalFoo
 //
 //  Created by Wayne Cochran on 5/21/13.
 //  Copyright (c) 2013 Wayne Cochran. All rights reserved.
 //
 
-#import "CalsTodayViewController.h"
+#import "FridgeViewController.h"
 #import "CalFooAppDelegate.h"
 #import "FoodItem.h"
-#import "ExerciseItem.h"
 
-@interface CalsTodayViewController ()
+@interface FridgeViewController ()
 
 @end
 
-@implementation CalsTodayViewController
+@implementation FridgeViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -46,33 +45,24 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    return section == 0 ? [appDelegate.todaysFood count] : [appDelegate.todaysExercises count];
+    return [appDelegate.food count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    UITableViewCell *cell;
+    static NSString *CellIdentifier = @"FridgeFoodCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if (indexPath.section == 0) {
-        static NSString *CellIdentifier = @"CalsTodayFoodCell";
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        FoodItem *item = [appDelegate.todaysFood objectAtIndex:indexPath.row];
-        cell.textLabel.text = item.description;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f", item.calories * item.numServings];
-    } else {
-        static NSString *CellIdentifier = @"CalsTodayExerciseCell";
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        ExerciseItem *item = [appDelegate.todaysExercises objectAtIndex:indexPath.row];
-        cell.textLabel.text = item.description;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f", item.calories];
-    }
+    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    FoodItem *item = [appDelegate.food objectAtIndex:indexPath.row];
+    cell.textLabel.text = item.description;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"srv=%0.2g %@, %0.0f/%0.0f/%0.0f %0.0f Cals", item.servingSize, item.servingUnits, item.fatGrams, item.carbsGrams, item.proteinGrams, item.calories];
     
     return cell;
 }
@@ -85,13 +75,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        if (indexPath.section == 0) {
-            [appDelegate.todaysFood removeObjectAtIndex:indexPath.row];
-            // XXX Notify everyone of change
-        } else {
-            [appDelegate.todaysExercises removeObjectAtIndex:indexPath.row];
-            // XXX Notify everyone of change
-        }
+        [appDelegate.food removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
 //    else if (editingStyle == UITableViewCellEditingStyleInsert) {
@@ -101,29 +85,15 @@
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    if (fromIndexPath.section == 0) {
-        FoodItem *item = [appDelegate.todaysFood objectAtIndex:fromIndexPath.row];
-        [appDelegate.todaysFood removeObjectAtIndex:fromIndexPath.row];
-        [appDelegate.todaysFood insertObject:item atIndex:toIndexPath.row];
-    } else {
-        ExerciseItem *item = [appDelegate.todaysExercises objectAtIndex:fromIndexPath.row];
-        [appDelegate.todaysExercises removeObjectAtIndex:fromIndexPath.row];
-        [appDelegate.todaysExercises insertObject:item atIndex:toIndexPath.row];
-    }
+    FoodItem *item  = [appDelegate.food objectAtIndex:fromIndexPath.row];
+    [appDelegate.food removeObjectAtIndex:fromIndexPath.row];
+    [appDelegate.food insertObject:item atIndex:toIndexPath.row];
     // XXX Notify everyone of change?
 }
 
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return YES;
-}
-
-//
-// Only allow intra-section moves! We'll snap the cell back to whence it came otherwise.
-//
-- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
-    if (sourceIndexPath.section != proposedDestinationIndexPath.section)
-        return sourceIndexPath;
-    return proposedDestinationIndexPath;
 }
 
 #pragma mark - Table view delegate

@@ -44,7 +44,8 @@
         NSDictionary *oatmeal = @{kDescriptionKey : @"Oatmeal (Old Fashioned)",
                                   kServingSizeKey : @(0.5), kServingUnitsKey : @"cups", kNumServingsKey : @(1.0),
                                   kFatGramsKey : @(3.0), kCarbsGramsKey : @(27.0), kProteinGramsKey : @(5), kCaloriesKey: @(150)};
-        self.food = [[NSMutableArray alloc] initWithArray:@[oatmeal]];
+        FoodItem *oatmealItem = [[FoodItem alloc] initWithDictionary:oatmeal];
+        self.food = [[NSMutableArray alloc] initWithArray:@[oatmealItem]];
     }
     
     //

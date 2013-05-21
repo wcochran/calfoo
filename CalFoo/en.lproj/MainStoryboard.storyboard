@@ -17,6 +17,7 @@
                     <connections>
                         <segue destination="HBS-iy-YIO" kind="relationship" relationship="viewControllers" id="Ast-kd-rXN"/>
                         <segue destination="Aa2-B8-74X" kind="relationship" relationship="viewControllers" id="ova-JI-h2K"/>
+                        <segue destination="CHd-8H-jcG" kind="relationship" relationship="viewControllers" id="xUW-mG-NYF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
@@ -188,7 +189,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZ2-EL-Ao9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1005" y="-151"/>
+            <point key="canvasLocation" x="1087" y="-151"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="xwA-2G-uI4">
@@ -204,7 +205,61 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="42p-Ap-4JF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="587" y="-151"/>
+            <point key="canvasLocation" x="669" y="-151"/>
+        </scene>
+        <!--Fridge View Controller - Fridge-->
+        <scene sceneID="aIB-UW-KMf">
+            <objects>
+                <tableViewController id="Kpb-dj-jZ9" customClass="FridgeViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5Ep-kB-VcW">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FridgeFoodCell" textLabel="lts-Ib-cPG" detailTextLabel="ri7-g3-obP" style="IBUITableViewCellStyleSubtitle" id="Axl-mO-p5r">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Food Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lts-Ib-cPG">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="srv = xx units, 99/99/99 999 Cals" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ri7-g3-obP">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Fridge" id="vHq-Mx-c7f"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Fg-Zg-mAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092" y="1013"/>
+        </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="yDZ-So-LRG">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="CHd-8H-jcG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="gWk-eR-85C"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KfD-ri-WCi">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Kpb-dj-jZ9" kind="relationship" relationship="rootViewController" id="AMT-sb-kNi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lq2-Rw-4UZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="674" y="1013"/>
         </scene>
         <!--Cals Today View Controller - Today-->
         <scene sceneID="2Z2-W9-qeC">
@@ -267,7 +322,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bEm-va-RZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1005" y="427"/>
+            <point key="canvasLocation" x="1087" y="427"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="B3T-wQ-EmG">
@@ -283,7 +338,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ta-r4-AyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="587" y="427"/>
+            <point key="canvasLocation" x="669" y="427"/>
         </scene>
     </scenes>
     <classes>
@@ -300,6 +355,9 @@
         </class>
         <class className="CalsTodayViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CalsTodayViewController.h"/>
+        </class>
+        <class className="FridgeViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FridgeViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
