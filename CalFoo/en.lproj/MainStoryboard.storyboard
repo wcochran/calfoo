@@ -16,6 +16,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="HBS-iy-YIO" kind="relationship" relationship="viewControllers" id="Ast-kd-rXN"/>
+                        <segue destination="Aa2-B8-74X" kind="relationship" relationship="viewControllers" id="ova-JI-h2K"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
@@ -205,6 +206,85 @@
             </objects>
             <point key="canvasLocation" x="587" y="-151"/>
         </scene>
+        <!--Cals Today View Controller - Today-->
+        <scene sceneID="2Z2-W9-qeC">
+            <objects>
+                <tableViewController id="deR-yZ-a6q" customClass="CalsTodayViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iBH-ea-0J4">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalsTodayFoodCell" textLabel="zCc-pZ-Msu" detailTextLabel="iLv-ms-aW1" style="IBUITableViewCellStyleValue1" id="Xde-m3-E9L">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Food Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCc-pZ-Msu">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="9999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLv-ms-aW1">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalsTodayExerciseCell" textLabel="1CR-P6-Rxc" detailTextLabel="xi4-v3-YFC" style="IBUITableViewCellStyleValue1" id="QzY-eW-LuK">
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Workout Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1CR-P6-Rxc">
+                                            <rect key="frame" x="10" y="11" width="168" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="9999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xi4-v3-YFC">
+                                            <rect key="frame" x="239" y="11" width="38" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="0.054203441730000003" blue="0.04582190002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Today" id="Ogi-CX-diY"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bEm-va-RZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1005" y="427"/>
+        </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="B3T-wQ-EmG">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="Aa2-B8-74X" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="9PE-Om-cif"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DNC-rD-wdr">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="deR-yZ-a6q" kind="relationship" relationship="rootViewController" id="OmC-Pr-VdB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ta-r4-AyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="587" y="427"/>
+        </scene>
     </scenes>
     <classes>
         <class className="CalSummaryViewController" superclassName="UITableViewController">
@@ -212,12 +292,14 @@
             <relationships>
                 <relationship kind="outlet" name="caloriesBurnedCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="carbsCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="fatCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="netCaloriesCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="proteinCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="totalCaloriesCell" candidateClass="UITableViewCell"/>
             </relationships>
+        </class>
+        <class className="CalsTodayViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalsTodayViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

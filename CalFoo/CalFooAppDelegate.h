@@ -21,7 +21,7 @@
 @property (nonatomic, retain) NSMutableArray *exercises;
 
 //
-// Today's food consumed and exercise performed (nil => not tracking)
+// Today's food consumed and exercise performed.
 //
 @property (nonatomic, retain) NSDate *today;
 @property (nonatomic, retain) NSMutableArray *todaysFood;
