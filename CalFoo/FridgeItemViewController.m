@@ -12,6 +12,8 @@
 
 @interface FridgeItemViewController ()
 
+-(void)setTextFieldsEnabled:(BOOL)flag;
+
 @end
 
 @implementation FridgeItemViewController
@@ -32,15 +34,47 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self setTextFieldsEnabled:NO];
     
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     if (0 <= self.fridgeIndex && self.fridgeIndex < [appDelegate.food count]) {
         FoodItem *item = [appDelegate.food objectAtIndex:self.fridgeIndex];
         self.descriptionTextField.text = item.description;
-        self.servingSizeTextField.text = [NSString stringWithFormat:@"%0.3f", item.servingSize];
-        // XXXX
+        self.servingSizeTextField.text = [NSString stringWithFormat:@"%g", item.servingSize];
+        self.servingUnitsTextField.text = item.servingUnits;
+        self.fatTextField.text = [NSString stringWithFormat:@"%0g",item.fatGrams];
+        self.carbsTextField.text = [NSString stringWithFormat:@"%g",item.carbsGrams];
+        self.proteinTextField.text = [NSString stringWithFormat:@"%g",item.proteinGrams];
+        self.caloriesTextField.text = [NSString stringWithFormat:@"%g",item.calories];
+    }
+}
+
+-(void)setTextFieldsEnabled:(BOOL)flag {
+    self.descriptionTextField.enabled = flag;
+    self.servingSizeTextField.enabled = flag;
+    self.servingUnitsTextField.enabled = flag;
+    self.fatTextField.enabled = flag;
+    self.carbsTextField.enabled = flag;
+    self.proteinTextField.enabled = flag;
+    self.caloriesTextField.enabled = flag;
+    
+    UITextBorderStyle borderStyile = flag ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
+    self.descriptionTextField.borderStyle = borderStyile;
+    self.servingSizeTextField.borderStyle = borderStyile;
+    self.servingUnitsTextField.borderStyle = borderStyile;
+    self.fatTextField.borderStyle = borderStyile;
+    self.carbsTextField.borderStyle = borderStyile;
+    self.proteinTextField.borderStyle = borderStyile;
+    self.caloriesTextField.borderStyle = borderStyile;
+}
+
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    if (editing) {
+        [self setTextFieldsEnabled:YES];
+    } else {
+        [self setTextFieldsEnabled:NO];
     }
 }
 
@@ -54,6 +88,9 @@
 
 // STATIC TABLE VIEW
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
 
 #pragma mark - Table view delegate
 

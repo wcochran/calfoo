@@ -9,12 +9,16 @@
 #import "FridgeViewController.h"
 #import "CalFooAppDelegate.h"
 #import "FoodItem.h"
+#import "FridgeItemViewController.h"
 
 @interface FridgeViewController ()
 
 @end
 
 @implementation FridgeViewController
+//{
+//    NSIndexPath *accessoryButtonIndexPath; // index path of cell whose accessory button was clicked
+//}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -107,6 +111,20 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+//-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+//{
+//    accessoryButtonIndexPath = indexPath;
+//    [self performSegueWithIdentifier:@"FridgeItemDetailSegue" sender:self];
+//}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"FridgeItemDetailSegue"]) {
+        FridgeItemViewController *viewController = (FridgeItemViewController*)segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        viewController.fridgeIndex = indexPath.row;
+    }
 }
 
 @end
