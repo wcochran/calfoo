@@ -10,7 +10,7 @@
 
 @interface FridgeItemViewController : UITableViewController
 
-@property (assign, nonatomic) NSInteger fridgeIndex; // -1 => new item
+@property (assign, nonatomic) NSInteger fridgeIndex; // -1 => adding new item
 
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *servingSizeTextField;
