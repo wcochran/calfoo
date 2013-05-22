@@ -216,11 +216,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FridgeFoodCell" textLabel="lts-Ib-cPG" detailTextLabel="ri7-g3-obP" style="IBUITableViewCellStyleSubtitle" id="Axl-mO-p5r">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FridgeFoodCell" textLabel="lts-Ib-cPG" detailTextLabel="ri7-g3-obP" style="IBUITableViewCellStyleSubtitle" id="Axl-mO-p5r">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Food Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lts-Ib-cPG">
@@ -237,7 +237,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="aZV-Cv-glo" kind="push" identifier="FridgeItemDetailSegue" trigger="accessoryAction" id="csr-7d-Pz9"/>
+                                    <segue destination="aZV-Cv-glo" kind="push" identifier="FridgeItemDetailSegue" id="hcW-ES-7wJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -252,7 +252,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Fg-Zg-mAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1092" y="1013"/>
+            <point key="canvasLocation" x="1087" y="1013"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EMJ-Wy-Ey1">
@@ -267,7 +267,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIi-A1-BwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1562" y="595"/>
+            <point key="canvasLocation" x="1584" y="723"/>
         </scene>
         <!--Fridge Item View Controller - Fridge Item-->
         <scene sceneID="eTF-ec-6OQ">
@@ -495,7 +495,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pD-lE-6bL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1996" y="1013"/>
+            <point key="canvasLocation" x="2028" y="1195"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="yDZ-So-LRG">
@@ -570,7 +570,13 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Today" id="Ogi-CX-diY"/>
+                    <navigationItem key="navigationItem" title="Today" id="Ogi-CX-diY">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="y7c-UA-nWn">
+                            <connections>
+                                <action selector="addCalItem:" destination="deR-yZ-a6q" id="nRD-jD-UGN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bEm-va-RZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -607,6 +613,9 @@
         </class>
         <class className="CalsTodayViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CalsTodayViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addCalItem:"/>
+            </relationships>
         </class>
         <class className="FridgeItemViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FridgeItemViewController.h"/>
@@ -633,6 +642,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="csr-7d-Pz9"/>
+        <segue reference="hcW-ES-7wJ"/>
     </inferredMetricsTieBreakers>
 </document>

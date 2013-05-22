@@ -16,9 +16,6 @@
 @end
 
 @implementation FridgeViewController
-//{
-//    NSIndexPath *accessoryButtonIndexPath; // index path of cell whose accessory button was clicked
-//}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

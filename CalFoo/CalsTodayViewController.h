@@ -10,4 +10,6 @@
 
 @interface CalsTodayViewController : UITableViewController
 
+- (IBAction)addCalItem:(id)sender;
+
 @end

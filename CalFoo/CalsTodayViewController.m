@@ -11,7 +11,7 @@
 #import "FoodItem.h"
 #import "ExerciseItem.h"
 
-@interface CalsTodayViewController ()
+@interface CalsTodayViewController () <UIActionSheetDelegate>
 
 @end
 
@@ -137,6 +137,29 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+#define ADD_FOOD_BUTTON_INDEX 0
+#define ADD_WORKOUT_BUTTON_INDEX 1
+#define CANCEL_BUTTON_INDEX 2
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    // XXX NSLog(@"actionSheet:didDismissWithButtonIndex:%d", buttonIndex);
+    switch(buttonIndex) {
+        case ADD_FOOD_BUTTON_INDEX:
+            NSLog(@"add food...");
+            break;
+        case ADD_WORKOUT_BUTTON_INDEX:
+            NSLog(@"add workout...");
+            break;
+        case CANCEL_BUTTON_INDEX:
+            NSLog(@"cancel...");
+    }
+}
+
+- (IBAction)addCalItem:(id)sender {
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Add Calorie Item" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add Food", @"Add Workout", nil];
+    [sheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
 }
 
 @end
