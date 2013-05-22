@@ -14,6 +14,8 @@
 
 -(void)setTextFieldsEnabled:(BOOL)flag;
 -(void)additem:(id)sender;
+-(void)cancelAddItem:(id)sender;
+
 @end
 
 @implementation FridgeItemViewController
@@ -43,7 +45,9 @@
         self.caloriesTextField.text = [NSString stringWithFormat:@"%g",item.calories];
     } else {
         [self setTextFieldsEnabled:YES];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(additem:)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:
+                                                  @selector(additem:)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAddItem:)];
     }
 }
 
@@ -68,7 +72,11 @@
 
 -(void)additem:(id)sender {
     // XXX add new item
-    // dismiss view controller
+    [self dismissViewControllerAnimated:YES completion:^{}];
+}
+
+-(void)cancelAddItem:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{}];    
 }
 
 -(BOOL)validateAndSetFoodItem:(FoodItem*)item {

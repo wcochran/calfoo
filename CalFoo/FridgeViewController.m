@@ -124,6 +124,10 @@
         FridgeItemViewController *viewController = (FridgeItemViewController*)segue.destinationViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         viewController.fridgeIndex = indexPath.row;
+    } else if ([segue.identifier isEqualToString:@"FridgeAddItemSegue"]) {
+        UINavigationController *navController = (UINavigationController*)segue.destinationViewController;
+        FridgeItemViewController *viewController = (FridgeItemViewController*)navController.topViewController;
+        viewController.fridgeIndex = -1;
     }
 }
 
