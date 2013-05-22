@@ -8,13 +8,29 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DailyFoodItemViewController : UITableViewController
+@class FoodItem;
 
-@property (assign, nonatomic) NSInteger foodIndex; // -1 => new daily food item
+@protocol DailyFoodItemViewControllerDelegate <NSObject>
+
+-(void)didEditFoodItem;
+-(void)didAddFoodItem;
+-(void)didCancelAddFoodItem;
+
+@end
+
+@interface DailyFoodItemViewController : UITableViewController <UITextFieldDelegate>
+
+@property (assign, nonatomic) BOOL addingItem;
+@property (strong, nonatomic) FoodItem *item;
+@property (weak, nonatomic) id<DailyFoodItemViewControllerDelegate> itemDelegate;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *descriptionCell;
 @property (weak, nonatomic) IBOutlet UITextField *totalCaloriesTextField;
 @property (weak, nonatomic) IBOutlet UITextField *numServingsTextField;
 @property (weak, nonatomic) IBOutlet UISlider *numServingsSlider;
+
+- (IBAction)numServingsSliderSlid:(UISlider *)sender;
+- (IBAction)numServingsEdited:(UITextField *)sender;
+- (IBAction)totalCaloriesEdited:(UITextField *)sender;
 
 @end

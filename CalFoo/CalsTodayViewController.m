@@ -144,13 +144,12 @@
 #define CANCEL_BUTTON_INDEX 2
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    // XXX NSLog(@"actionSheet:didDismissWithButtonIndex:%d", buttonIndex);
     switch(buttonIndex) {
         case ADD_FOOD_BUTTON_INDEX:
-            NSLog(@"add food...");
+            [self performSegueWithIdentifier:@"TodayAddFoodSegue" sender:self];
             break;
         case ADD_WORKOUT_BUTTON_INDEX:
-            NSLog(@"add workout...");
+            NSLog(@"add workout..."); // XXXX
             break;
         case CANCEL_BUTTON_INDEX:
             NSLog(@"cancel...");

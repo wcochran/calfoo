@@ -7,8 +7,13 @@
 //
 
 #import "DailyFoodItemViewController.h"
+#import "FoodItem.h"
 
 @interface DailyFoodItemViewController ()
+
+-(void)addFoodItem:(id)sender;
+-(void)cancelAddFoodItem:(id)sender;
+-(void)doneEditingFoodItem:(id)sender;
 
 @end
 
@@ -27,11 +32,37 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if (self.addingItem) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(addFoodItem:)];
+        //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButton target:self action:@selector(addFoodItem:)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAddFoodItem:)];
+    } else {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStyleDone target:self action:@selector(doneEditingFoodItem:)];
+    }
+    
+    self.descriptionCell.textLabel.text = self.item.description;
+    self.descriptionCell.detailTextLabel.text = [NSString stringWithFormat:@"srv=%0.2g %@, %0.0f/%0.0f/%0.0f %0.0f Cals",
+                                                 self.item.servingSize, self.item.servingUnits,
+                                                 self.item.fatGrams, self.item.carbsGrams, self.item.proteinGrams, self.item.calories];
+    self.totalCaloriesTextField.text = [NSString stringWithFormat:@"%0.3g", self.item.numServings * self.item.calories];
+    if (self.item.calories <= 0) {
+        self.totalCaloriesTextField.enabled = NO;
+    }
+    self.numServingsTextField.text = [NSString stringWithFormat:@"%0.3g", self.item.numServings];
+    self.numServingsSlider.value = self.item.numServings;
+    
+}
+
+-(void)addFoodItem:(id)sender {
+    [self.itemDelegate didAddFoodItem];   // let self.presentingViewController dismiss
+}
+
+-(void)cancelAddFoodItem:(id)sender {
+    [self.itemDelegate didCancelAddFoodItem]; // let self.presentingViewController dismiss
+}
+
+-(void)doneEditingFoodItem:(id)sender {
+    [self.itemDelegate didEditFoodItem]; // let self.presentingViewController dismiss
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,6 +90,28 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (IBAction)numServingsSliderSlid:(UISlider *)sender {
+    const float servings = sender.value;
+    self.numServingsTextField.text = [NSString stringWithFormat:@"%0.3g", servings];
+    self.totalCaloriesTextField.text = [NSString stringWithFormat:@"%0.3g", servings * self.item.calories];
+}
+
+
+- (IBAction)numServingsEdited:(UITextField *)sender {
+    const float servings = [sender.text floatValue];
+    NSLog(@"numServings = %f", servings);
+    self.numServingsSlider.value = servings;
+    self.totalCaloriesTextField.text = [NSString stringWithFormat:@"%0.3g", servings * self.item.calories];
+}
+
+- (IBAction)totalCaloriesEdited:(UITextField *)sender {
+    const float calories = [sender.text floatValue];
+    NSLog(@"calories = %f", calories);
+    const float servings = calories / self.item.calories; // text field disabled if calories == 0
+    self.numServingsSlider.value = servings;
+    self.numServingsTextField.text = [NSString stringWithFormat:@"%0.3g", servings];
 }
 
 @end
