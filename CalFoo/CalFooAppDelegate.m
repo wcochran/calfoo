@@ -38,14 +38,14 @@
         NSData *data = [[NSData alloc] initWithContentsOfFile:foodFileName];
         NSKeyedUnarchiver *aDecoder = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
         NSArray *a = [aDecoder decodeObjectForKey:kFoodArrayKey];
-        self.food = [a mutableCopy];
+        self.fridge = [a mutableCopy];
         [aDecoder finishDecoding];
     } else {
         NSDictionary *oatmeal = @{kDescriptionKey : @"Oatmeal (Old Fashioned)",
                                   kServingSizeKey : @(0.5), kServingUnitsKey : @"cups", kNumServingsKey : @(1.0),
                                   kFatGramsKey : @(3.0), kCarbsGramsKey : @(27.0), kProteinGramsKey : @(5), kCaloriesKey: @(150)};
         FoodItem *oatmealItem = [[FoodItem alloc] initWithDictionary:oatmeal];
-        self.food = [[NSMutableArray alloc] initWithArray:@[oatmealItem]];
+        self.fridge = [[NSMutableArray alloc] initWithArray:@[oatmealItem]];
     }
     
     //
@@ -99,7 +99,7 @@
     //
     NSMutableData *data = [[NSMutableData alloc] init];
     NSKeyedArchiver *aCoder = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-    [aCoder encodeObject:self.food forKey:kFoodArrayKey];
+    [aCoder encodeObject:self.fridge forKey:kFoodArrayKey];
     [aCoder finishEncoding];
     NSString *foodFileName = [self pathForFileName:kFoodFileName];
     [data writeToFile:foodFileName atomically:YES];
@@ -148,5 +148,10 @@
     NSString *pathName = [docDir stringByAppendingPathComponent:fname];
     return pathName;
 }
+
+-(void)postFridgeChangedNotification {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFridgeChangedNotification object:self];
+}
+
 
 @end

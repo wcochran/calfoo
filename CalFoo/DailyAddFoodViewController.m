@@ -34,6 +34,10 @@
 {
     [super viewDidLoad];
 
+    //
+    // Note : there is no need to register as observer since this controller is loaded modally.
+    //
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -41,6 +45,10 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAdd:)];
+}
+
+-(void)fridgeChanged:(NSNotification*)notification {
+    [self.tableView reloadData];
 }
 
 -(void)cancelAdd:(id)sender {
@@ -63,7 +71,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    return [appDelegate.food count];
+    return [appDelegate.fridge count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,7 +80,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    FoodItem *item = [appDelegate.food objectAtIndex:indexPath.row];
+    FoodItem *item = [appDelegate.fridge objectAtIndex:indexPath.row];
     cell.textLabel.text = item.description;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"srv=%0.2g %@, %0.0f/%0.0f/%0.0f %0.0f Cals", item.servingSize, item.servingUnits, item.fatGrams, item.carbsGrams, item.proteinGrams, item.calories];
     
@@ -104,7 +112,7 @@
         DailyFoodItemViewController *foodItemViewController = (DailyFoodItemViewController*) navController.topViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        FoodItem *item = [appDelegate.food objectAtIndex:indexPath.row];
+        FoodItem *item = [appDelegate.fridge objectAtIndex:indexPath.row];
         foodItemViewController.addingItem = YES;
         foodItemViewController.item = self.foodItem = [item copy];
         foodItemViewController.itemDelegate = self;

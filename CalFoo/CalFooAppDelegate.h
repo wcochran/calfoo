@@ -10,6 +10,8 @@
 #import "FoodItem.h"
 #import "ExerciseItem.h"
 
+#define kFridgeChangedNotification @"kFridgeChangedNotification"
+
 @interface CalFooAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
@@ -17,7 +19,7 @@
 //
 // Local database of foods and excersize routines.
 //
-@property (nonatomic, retain) NSMutableArray *food;
+@property (nonatomic, retain) NSMutableArray *fridge;
 @property (nonatomic, retain) NSMutableArray *exercises;
 
 //

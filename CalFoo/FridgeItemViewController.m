@@ -10,7 +10,7 @@
 #import "CalFooAppDelegate.h"
 #import "FoodItem.h"
 
-@interface FridgeItemViewController ()
+@interface FridgeItemViewController () <UIAlertViewDelegate>
 
 -(void)setTextFieldsEnabled:(BOOL)flag;
 -(void)additem:(id)sender;
@@ -18,7 +18,9 @@
 
 @end
 
-@implementation FridgeItemViewController
+@implementation FridgeItemViewController {
+    FoodItem *_foodItem;
+}
 
 - (void)viewDidLoad
 {
@@ -35,19 +37,20 @@
         self.navigationItem.rightBarButtonItem = self.editButtonItem;
         [self setTextFieldsEnabled:NO];
         CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        FoodItem *item = [appDelegate.food objectAtIndex:self.fridgeIndex];
-        self.descriptionTextField.text = item.description;
-        self.servingSizeTextField.text = [NSString stringWithFormat:@"%g", item.servingSize];
-        self.servingUnitsTextField.text = item.servingUnits;
-        self.fatTextField.text = [NSString stringWithFormat:@"%0g",item.fatGrams];
-        self.carbsTextField.text = [NSString stringWithFormat:@"%g",item.carbsGrams];
-        self.proteinTextField.text = [NSString stringWithFormat:@"%g",item.proteinGrams];
-        self.caloriesTextField.text = [NSString stringWithFormat:@"%g",item.calories];
+        _foodItem = [appDelegate.fridge objectAtIndex:self.fridgeIndex];
+        self.descriptionTextField.text = _foodItem.description;
+        self.servingSizeTextField.text = [NSString stringWithFormat:@"%g", _foodItem.servingSize];
+        self.servingUnitsTextField.text = _foodItem.servingUnits;
+        self.fatTextField.text = [NSString stringWithFormat:@"%0g",_foodItem.fatGrams];
+        self.carbsTextField.text = [NSString stringWithFormat:@"%g",_foodItem.carbsGrams];
+        self.proteinTextField.text = [NSString stringWithFormat:@"%g",_foodItem.proteinGrams];
+        self.caloriesTextField.text = [NSString stringWithFormat:@"%g",_foodItem.calories];
     } else {
         [self setTextFieldsEnabled:YES];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:
                                                   @selector(additem:)];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAddItem:)];
+        _foodItem = nil;
     }
 }
 
@@ -70,67 +73,96 @@
     self.caloriesTextField.borderStyle = borderStyle;
 }
 
--(void)additem:(id)sender {
-    // XXX add new item
+//
+// _foodItem has been validated and needs to be added.
+//
+-(void)addValidatedItem {
+    //
+    // Add item to global fridge stored in app delegate.
+    //
+    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate.fridge addObject:_foodItem];
+    
+    //
+    // Post a notification that the fridge has been changed.
+    //
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFridgeChangedNotification object:self];
+    
+    //
+    // Dismiss view controller -- our work is done here.
+    //
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
--(void)cancelAddItem:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{}];    
+
+//
+// Invoke from alert spwaned by suspicious calories / macro count values (see addItem: below).
+//
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    NSLog(@"button index = %d", buttonIndex); // XXX
+    if (buttonIndex > 0) { // OK
+        [self addValidatedItem];
+    }
 }
 
--(BOOL)validateAndSetFoodItem:(FoodItem*)item {
+-(void)additem:(id)sender {
+    //
+    // Harvest info from form data.
+    //
     NSCharacterSet *whiteSpace = [NSCharacterSet whitespaceCharacterSet];
-    NSString *errorString = nil;
-    
     NSString *description = [self.descriptionTextField.text stringByTrimmingCharactersInSet:whiteSpace];
-    if ([description length] <= 0) {
-        NSLog(@"description=<%@>", description);
-        errorString = @"Empty Description!";
-    }
     NSString *servingSize = [self.servingSizeTextField.text stringByTrimmingCharactersInSet:whiteSpace];
-    if ([servingSize length] <= 0) {
-        errorString = @"Empty serving size!";
-    }
     NSString *servingUnits = [self.servingUnitsTextField.text stringByTrimmingCharactersInSet:whiteSpace];
-    if ([servingUnits length] <= 0) {
-        errorString = @"Empty serving units!";
-    }
     NSString *fat = [self.fatTextField.text stringByTrimmingCharactersInSet:whiteSpace];
-    if ([fat length] <= 0) {
-        errorString = @"No fat grams!";
-    }
     NSString *carbs = [self.carbsTextField.text stringByTrimmingCharactersInSet:whiteSpace];
-    if ([carbs length] <= 0) {
-        errorString = @"No carb grams!";
-    }
     NSString *protein = [self.proteinTextField.text stringByTrimmingCharactersInSet:whiteSpace];
-    if ([protein length] <= 0) {
-        errorString = @"No protein grams!";
-    }
     NSString *calories = [self.caloriesTextField.text stringByTrimmingCharactersInSet:whiteSpace];
-    if ([calories length] <= 0) {
-        NSLog(@"calories=<%@> : [%@]", calories, self.caloriesTextField.text);
-        errorString = @"No calories!";
-    }
-    if (errorString != nil) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incomplete form!" message:errorString delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    
+    //
+    // A little form validation.
+    //
+    if ([description length] <= 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Empty Description" message:@"Enter a description please." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [alert show];
-        return NO;
+        return;
     }
     
-    item.description = description;
-    item.servingSize = [servingSize floatValue];
-    item.servingUnits = servingUnits;
-    item.numServings = 1.0;
-    item.fatGrams = [fat floatValue];
-    item.carbsGrams = [carbs floatValue];
-    item.proteinGrams = [protein floatValue];
-    item.calories = [calories floatValue];
+    //
+    // Create new food item for fridge.
+    //
+    _foodItem = [[FoodItem alloc] init];
+    _foodItem.description = ([description length] > 0) ? description : @"<New Item>";
+    _foodItem.servingSize = [servingSize floatValue];
+    _foodItem.servingUnits = ([servingSize length] > 0) ? servingUnits : @"units";
+    _foodItem.numServings = 1.0;
+    _foodItem.fatGrams = [fat floatValue];
+    _foodItem.carbsGrams = [carbs floatValue];
+    _foodItem.proteinGrams = [protein floatValue];
+    _foodItem.calories = [calories floatValue];
     
-    // XXX warn if macro grams and calories disagree?
     
-    return YES;
+    //
+    // Check for suspicious calories / macro count values
+    // -- we allow the user to override.
+    //
+    const float fatCalsPerGram = 9;
+    const float carbsCalsPerGram = 4;
+    const float proteinCalsPerGram = 4;
+    const float macroCalories = fatCalsPerGram*_foodItem.fatGrams + carbsCalsPerGram*_foodItem.carbsGrams + proteinCalsPerGram*_foodItem.proteinGrams;
+    const float maxMacroCaloriesError = 0.15;
+    if (macroCalories < _foodItem.calories*(1 - maxMacroCaloriesError) || macroCalories > _foodItem.calories*(1 + maxMacroCaloriesError)) {
+        NSString *msg = [NSString stringWithFormat:@"Calories from macros disagree with calorie count by more than %0.0f%%!", maxMacroCaloriesError*100];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Suspicious Calories" message:msg delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        [alert show];
+        return;
+    }
+    
+    [self addValidatedItem];
+}
+
+
+-(void)cancelAddItem:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{}];    
 }
 
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated {

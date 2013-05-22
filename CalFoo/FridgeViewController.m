@@ -29,11 +29,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //
+    // Register for notification involving changes of the fridge.
+    //
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fridgeChanged:) name:kFridgeChangedNotification object:nil];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+//
+// If any object besides this controller has modified the global fridge,
+// then we need to reload the table data.
+//
+-(void)fridgeChanged:(NSNotification*)notification {
+    if (notification.object != self) {
+        [self.tableView reloadData];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,7 +71,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    return [appDelegate.food count];
+    return [appDelegate.fridge count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,7 +80,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    FoodItem *item = [appDelegate.food objectAtIndex:indexPath.row];
+    FoodItem *item = [appDelegate.fridge objectAtIndex:indexPath.row];
     cell.textLabel.text = item.description;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"srv=%0.2g %@, %0.0f/%0.0f/%0.0f %0.0f Cals", item.servingSize, item.servingUnits, item.fatGrams, item.carbsGrams, item.proteinGrams, item.calories];
     
@@ -76,8 +95,9 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        [appDelegate.food removeObjectAtIndex:indexPath.row];
+        [appDelegate.fridge removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kFridgeChangedNotification object:self];
     }   
 //    else if (editingStyle == UITableViewCellEditingStyleInsert) {
 //        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -86,10 +106,10 @@
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    FoodItem *item  = [appDelegate.food objectAtIndex:fromIndexPath.row];
-    [appDelegate.food removeObjectAtIndex:fromIndexPath.row];
-    [appDelegate.food insertObject:item atIndex:toIndexPath.row];
-    // XXX Notify everyone of change?
+    FoodItem *item  = [appDelegate.fridge objectAtIndex:fromIndexPath.row];
+    [appDelegate.fridge removeObjectAtIndex:fromIndexPath.row];
+    [appDelegate.fridge insertObject:item atIndex:toIndexPath.row];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFridgeChangedNotification object:self];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath

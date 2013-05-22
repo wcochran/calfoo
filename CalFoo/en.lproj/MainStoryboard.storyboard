@@ -191,11 +191,11 @@
             </objects>
             <point key="canvasLocation" x="1087" y="-151"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Summary-->
         <scene sceneID="xwA-2G-uI4">
             <objects>
                 <navigationController definesPresentationContext="YES" id="HBS-iy-YIO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Iig-SV-VmO"/>
+                    <tabBarItem key="tabBarItem" title="Summary" id="Iig-SV-VmO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tGT-2X-Wyi">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -497,11 +497,11 @@
             </objects>
             <point key="canvasLocation" x="2028" y="1195"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Fridge-->
         <scene sceneID="yDZ-So-LRG">
             <objects>
                 <navigationController definesPresentationContext="YES" id="CHd-8H-jcG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="gWk-eR-85C"/>
+                    <tabBarItem key="tabBarItem" title="Fridge" id="gWk-eR-85C"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KfD-ri-WCi">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -808,11 +808,11 @@
             </objects>
             <point key="canvasLocation" x="2019" y="405"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Cals Today-->
         <scene sceneID="B3T-wQ-EmG">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Aa2-B8-74X" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="9PE-Om-cif"/>
+                    <tabBarItem key="tabBarItem" title="Cals Today" id="9PE-Om-cif"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DNC-rD-wdr">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
