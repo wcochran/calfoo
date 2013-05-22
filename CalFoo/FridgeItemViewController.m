@@ -13,19 +13,10 @@
 @interface FridgeItemViewController ()
 
 -(void)setTextFieldsEnabled:(BOOL)flag;
-
+-(void)additem:(id)sender;
 @end
 
 @implementation FridgeItemViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -34,19 +25,14 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    
-    // XXXX
-    
-    if (self.fridgeIndex == -1) {
-        [self setEditing:YES];
-    } else {
-        [self setEditing:NO];
-    }
-    
-    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    if (0 <= self.fridgeIndex && self.fridgeIndex < [appDelegate.food count]) {
+    //
+    // self.fridgeIndex >= 0 => viewing/editing existing item
+    // self.fridgeIndex < 0  -> adding new item
+    //
+    if (self.fridgeIndex >= 0) {
+        self.navigationItem.rightBarButtonItem = self.editButtonItem;
+        [self setTextFieldsEnabled:NO];
+        CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         FoodItem *item = [appDelegate.food objectAtIndex:self.fridgeIndex];
         self.descriptionTextField.text = item.description;
         self.servingSizeTextField.text = [NSString stringWithFormat:@"%g", item.servingSize];
@@ -55,6 +41,9 @@
         self.carbsTextField.text = [NSString stringWithFormat:@"%g",item.carbsGrams];
         self.proteinTextField.text = [NSString stringWithFormat:@"%g",item.proteinGrams];
         self.caloriesTextField.text = [NSString stringWithFormat:@"%g",item.calories];
+    } else {
+        [self setTextFieldsEnabled:YES];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(additem:)];
     }
 }
 
@@ -75,6 +64,11 @@
     self.carbsTextField.borderStyle = borderStyle;
     self.proteinTextField.borderStyle = borderStyle;
     self.caloriesTextField.borderStyle = borderStyle;
+}
+
+-(void)additem:(id)sender {
+    // XXX add new item
+    // dismiss view controller
 }
 
 -(BOOL)validateAndSetFoodItem:(FoodItem*)item {
@@ -132,24 +126,11 @@
 }
 
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    
-    // XXXXX
-    
-    if (editing) {
-        [self setTextFieldsEnabled:YES];
-        [super setEditing:editing animated:YES];
-    } else {
-        CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        FoodItem *item = self.fridgeIndex == -1 ? [[FoodItem alloc] init] : [appDelegate.food objectAtIndex:self.fridgeIndex];
-        BOOL success = [self validateAndSetFoodItem:item];
-        if (success) {
-            [super setEditing:editing animated:NO];
-            [self setTextFieldsEnabled:NO];
-            if (self.fridgeIndex == -1) {
-                [appDelegate.food addObject:item];
-            }
-            // XXX notify world of change
-        }
+    const BOOL wasEditing = self.isEditing;
+    [super setEditing:editing animated:YES];
+    [self setTextFieldsEnabled:editing];
+    if (!editing && wasEditing) {
+        // XXX Save edited item (if actually altered).
     }
 }
 
