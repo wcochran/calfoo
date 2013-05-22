@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55539937174D1D3A000D1E44 /* DailyFoodItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55539936174D1D3A000D1E44 /* DailyFoodItemViewController.m */; };
 		5555F028174BDF7300DDEC7D /* FridgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F027174BDF7300DDEC7D /* FridgeViewController.m */; };
 		5555F02B174BF7D300DDEC7D /* FridgeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F02A174BF7D300DDEC7D /* FridgeItemViewController.m */; };
 		559467C1174AAE1700C029D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C0174AAE1700C029D9 /* UIKit.framework */; };
@@ -28,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55539935174D1D3A000D1E44 /* DailyFoodItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyFoodItemViewController.h; sourceTree = "<group>"; };
+		55539936174D1D3A000D1E44 /* DailyFoodItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyFoodItemViewController.m; sourceTree = "<group>"; };
 		5555F026174BDF7300DDEC7D /* FridgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FridgeViewController.h; sourceTree = "<group>"; };
 		5555F027174BDF7300DDEC7D /* FridgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FridgeViewController.m; sourceTree = "<group>"; };
 		5555F029174BF7D300DDEC7D /* FridgeItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FridgeItemViewController.h; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				5555F027174BDF7300DDEC7D /* FridgeViewController.m */,
 				5555F029174BF7D300DDEC7D /* FridgeItemViewController.h */,
 				5555F02A174BF7D300DDEC7D /* FridgeItemViewController.m */,
+				55539935174D1D3A000D1E44 /* DailyFoodItemViewController.h */,
+				55539936174D1D3A000D1E44 /* DailyFoodItemViewController.m */,
 				559467E5174AAE1700C029D9 /* second.png */,
 				559467E7174AAE1700C029D9 /* second@2x.png */,
 				559467C7174AAE1700C029D9 /* Supporting Files */,
@@ -223,6 +228,7 @@
 				55D1CA7D174BC53C001F3D92 /* CalsTodayViewController.m in Sources */,
 				5555F028174BDF7300DDEC7D /* FridgeViewController.m in Sources */,
 				5555F02B174BF7D300DDEC7D /* FridgeItemViewController.m in Sources */,
+				55539937174D1D3A000D1E44 /* DailyFoodItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

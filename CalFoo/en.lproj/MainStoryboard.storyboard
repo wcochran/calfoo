@@ -522,11 +522,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalsTodayFoodCell" textLabel="zCc-pZ-Msu" detailTextLabel="iLv-ms-aW1" style="IBUITableViewCellStyleValue1" id="Xde-m3-E9L">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalsTodayFoodCell" textLabel="zCc-pZ-Msu" detailTextLabel="iLv-ms-aW1" style="IBUITableViewCellStyleValue1" id="Xde-m3-E9L">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Food Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCc-pZ-Msu">
@@ -542,12 +542,15 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="yem-ik-H9l" kind="push" id="AbT-QE-Mpo"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalsTodayExerciseCell" textLabel="1CR-P6-Rxc" detailTextLabel="xi4-v3-YFC" style="IBUITableViewCellStyleValue1" id="QzY-eW-LuK">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalsTodayExerciseCell" textLabel="1CR-P6-Rxc" detailTextLabel="xi4-v3-YFC" style="IBUITableViewCellStyleValue1" id="QzY-eW-LuK">
                                 <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Workout Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1CR-P6-Rxc">
@@ -558,7 +561,7 @@
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="9999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xi4-v3-YFC">
-                                            <rect key="frame" x="239" y="11" width="38" height="21"/>
+                                            <rect key="frame" x="272" y="11" width="38" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="0.054203441730000003" blue="0.04582190002" alpha="1" colorSpace="calibratedRGB"/>
@@ -582,6 +585,144 @@
             </objects>
             <point key="canvasLocation" x="1087" y="427"/>
         </scene>
+        <!--Daily Food Item View Controller - Food-->
+        <scene sceneID="t2J-7b-5UI">
+            <objects>
+                <tableViewController id="yem-ik-H9l" customClass="DailyFoodItemViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sJe-vM-s0h">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="deb-Mo-sY9">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="gGc-YI-ZIF" detailTextLabel="CZ2-pM-J5e" style="IBUITableViewCellStyleSubtitle" id="EMg-ZP-SLo">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Food Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGc-YI-ZIF">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="srv = xx units, 99/99/99 999 Cals" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZ2-pM-J5e">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="h9l-Yx-0j6">
+                                        <rect key="frame" x="0.0" y="44" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="9999.9" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rnf-95-yYL">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="98" id="78E-A4-daD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                </textField>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Total Calories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1j8-Zd-wVE">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="cz9-5i-SpS"/>
+                                                        <constraint firstAttribute="width" constant="135" id="smg-kC-IJj"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="1j8-Zd-wVE" firstAttribute="centerY" secondItem="h9l-Yx-0j6" secondAttribute="centerY" type="default" id="8Hd-72-Xln"/>
+                                            <constraint firstAttribute="trailing" secondItem="Rnf-95-yYL" secondAttribute="trailing" constant="20" type="default" id="NQU-zs-fPJ"/>
+                                            <constraint firstItem="1j8-Zd-wVE" firstAttribute="leading" secondItem="h9l-Yx-0j6" secondAttribute="leading" constant="10" id="hur-it-eAq"/>
+                                            <constraint firstItem="1j8-Zd-wVE" firstAttribute="baseline" secondItem="Rnf-95-yYL" secondAttribute="baseline" type="default" id="jiE-v5-CYc"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="96" id="KaK-Xk-rup">
+                                        <rect key="frame" x="0.0" y="88" width="320" height="96"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Num Servings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXl-2R-xn1">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="135" id="tVu-L2-Uqp"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="9999.9" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dW4-xa-a3t">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="98" id="7k2-rt-lQF"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                </textField>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="akd-XI-ve4">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="288" id="rfn-ed-im7"/>
+                                                    </constraints>
+                                                </slider>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRe-NP-2MN">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntq-VF-JwB">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="akd-XI-ve4" secondAttribute="bottom" constant="21" id="8Ck-nh-PzU"/>
+                                            <constraint firstItem="dW4-xa-a3t" firstAttribute="baseline" secondItem="wXl-2R-xn1" secondAttribute="baseline" type="default" id="K0a-x9-hyf"/>
+                                            <constraint firstAttribute="bottom" secondItem="ntq-VF-JwB" secondAttribute="bottom" constant="6" id="K4i-ag-2I9"/>
+                                            <constraint firstItem="wXl-2R-xn1" firstAttribute="leading" secondItem="akd-XI-ve4" secondAttribute="leading" type="default" id="YLQ-tg-tv8"/>
+                                            <constraint firstAttribute="trailing" secondItem="akd-XI-ve4" secondAttribute="trailing" constant="20" type="default" id="ZKv-aq-r07"/>
+                                            <constraint firstAttribute="trailing" secondItem="dW4-xa-a3t" secondAttribute="trailing" constant="20" type="default" id="eeT-hL-m7E"/>
+                                            <constraint firstItem="wXl-2R-xn1" firstAttribute="top" secondItem="KaK-Xk-rup" secondAttribute="top" constant="20" type="default" id="jMh-l8-bld"/>
+                                            <constraint firstItem="ntq-VF-JwB" firstAttribute="baseline" secondItem="eRe-NP-2MN" secondAttribute="baseline" type="default" id="ml4-vu-LxL"/>
+                                            <constraint firstItem="eRe-NP-2MN" firstAttribute="leading" secondItem="akd-XI-ve4" secondAttribute="leading" type="default" id="y1s-eB-HFg"/>
+                                            <constraint firstAttribute="trailing" secondItem="ntq-VF-JwB" secondAttribute="trailing" constant="20" type="default" id="z6C-Q3-5mp"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="yem-ik-H9l" id="PHD-bl-VZc"/>
+                            <outlet property="delegate" destination="yem-ik-H9l" id="K8g-M1-84k"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Food" id="nyF-Vf-YJx"/>
+                    <connections>
+                        <outlet property="descriptionCell" destination="EMg-ZP-SLo" id="WYX-xu-EaV"/>
+                        <outlet property="numServingsSlider" destination="akd-XI-ve4" id="A3t-Gk-cN7"/>
+                        <outlet property="numServingsTextField" destination="dW4-xa-a3t" id="qhf-6w-DxC"/>
+                        <outlet property="totalCaloriesTextField" destination="Rnf-95-yYL" id="SDb-jg-paa"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bfr-21-3mR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1602" y="41"/>
+        </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="B3T-wQ-EmG">
             <objects>
@@ -599,43 +740,6 @@
             <point key="canvasLocation" x="669" y="427"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CalSummaryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalSummaryViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="caloriesBurnedCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="carbsCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="fatCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="netCaloriesCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="proteinCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="totalCaloriesCell" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="CalsTodayViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalsTodayViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addCalItem:"/>
-            </relationships>
-        </class>
-        <class className="FridgeItemViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FridgeItemViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="caloriesTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="carbsTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="fatTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="proteinTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="servingSizeTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="servingUnitsTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="FridgeViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FridgeViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
