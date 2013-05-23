@@ -27,6 +27,7 @@
 		55BB32E2174ABB0A00139580 /* FoodItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BB32E1174ABB0A00139580 /* FoodItem.m */; };
 		55BB32E5174AC25F00139580 /* ExerciseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BB32E4174AC25F00139580 /* ExerciseItem.m */; };
 		55D1CA7D174BC53C001F3D92 /* CalsTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D1CA7C174BC53C001F3D92 /* CalsTodayViewController.m */; };
+		55D2158A174DF94000E48BBB /* ToDo.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55D21589174DF94000E48BBB /* ToDo.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		55BB32E4174AC25F00139580 /* ExerciseItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseItem.m; sourceTree = "<group>"; };
 		55D1CA7B174BC53C001F3D92 /* CalsTodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalsTodayViewController.h; sourceTree = "<group>"; };
 		55D1CA7C174BC53C001F3D92 /* CalsTodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalsTodayViewController.m; sourceTree = "<group>"; };
+		55D21589174DF94000E48BBB /* ToDo.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = ToDo.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				559467E5174AAE1700C029D9 /* second.png */,
 				559467E7174AAE1700C029D9 /* second@2x.png */,
 				559467C7174AAE1700C029D9 /* Supporting Files */,
+				55D21589174DF94000E48BBB /* ToDo.rtf */,
 			);
 			path = CalFoo;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				559467DA174AAE1700C029D9 /* MainStoryboard.storyboard in Resources */,
 				559467E6174AAE1700C029D9 /* second.png in Resources */,
 				559467E8174AAE1700C029D9 /* second@2x.png in Resources */,
+				55D2158A174DF94000E48BBB /* ToDo.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

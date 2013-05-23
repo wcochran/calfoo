@@ -99,7 +99,6 @@
 // Invoke from alert spwaned by suspicious calories / macro count values (see addItem: below).
 //
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    NSLog(@"button index = %d", buttonIndex); // XXX
     if (buttonIndex > 0) { // OK
         [self addValidatedItem];
     }
@@ -107,7 +106,7 @@
 
 -(void)additem:(id)sender {
     //
-    // Harvest info from form data.
+    // Harvest text from form data.
     //
     NSCharacterSet *whiteSpace = [NSCharacterSet whitespaceCharacterSet];
     NSString *description = [self.descriptionTextField.text stringByTrimmingCharactersInSet:whiteSpace];
@@ -119,19 +118,11 @@
     NSString *calories = [self.caloriesTextField.text stringByTrimmingCharactersInSet:whiteSpace];
     
     //
-    // A little form validation.
+    // Create/update food item for fridge from form data.
     //
-    if ([description length] <= 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Empty Description" message:@"Enter a description please." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alert show];
-        return;
-    }
-    
-    //
-    // Create new food item for fridge.
-    //
-    _foodItem = [[FoodItem alloc] init];
-    _foodItem.description = ([description length] > 0) ? description : @"<New Item>";
+    if (_foodItem == nil)
+        _foodItem = [[FoodItem alloc] init];
+    _foodItem.description = description;
     _foodItem.servingSize = [servingSize floatValue];
     _foodItem.servingUnits = ([servingSize length] > 0) ? servingUnits : @"units";
     _foodItem.numServings = 1.0;
@@ -140,6 +131,14 @@
     _foodItem.proteinGrams = [protein floatValue];
     _foodItem.calories = [calories floatValue];
     
+    //
+    // A little form validation.
+    //
+    if ([_foodItem.description length] <= 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Empty Description" message:@"Enter a description please." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alert show];
+        return;
+    }
     
     //
     // Check for suspicious calories / macro count values
@@ -170,7 +169,9 @@
     [super setEditing:editing animated:YES];
     [self setTextFieldsEnabled:editing];
     if (!editing && wasEditing) {
-        // XXX Save edited item (if actually altered).
+        // XXX [self addOrUpdateItemFromForm];
+        // XXX modify _foodItem item as each textfield is changed
+        // XXX if any changes made, notify all observers
     }
 }
 
