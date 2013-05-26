@@ -20,4 +20,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *proteinTextField;
 @property (weak, nonatomic) IBOutlet UITextField *caloriesTextField;
 
+- (IBAction)textFieldEditingChanged:(UITextField *)sender;
+
 @end

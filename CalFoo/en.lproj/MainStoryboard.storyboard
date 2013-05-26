@@ -287,9 +287,12 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dVl-DR-MVH">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dVl-DR-MVH">
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="aZV-Cv-glo" eventType="editingChanged" id="cXo-2G-nit"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -307,12 +310,15 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="srv size" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wXs-cd-YMd">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="srv size" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wXs-cd-YMd">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="123" id="cZn-Pl-ejw"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                    <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="aZV-Cv-glo" eventType="editingChanged" id="39X-f0-bjx"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Serving Size" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPS-dP-gpS">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -336,12 +342,15 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="units" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="080-L4-o9H">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="units" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="080-L4-o9H">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="123" id="3yS-it-UcS"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                                                    <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="aZV-Cv-glo" eventType="editingChanged" id="Tor-Kh-zg8"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Serving Units" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOI-fV-5eq">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -365,12 +374,15 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="fat (g)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d7z-Q0-eKI">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="fat (g)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d7z-Q0-eKI">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="123" id="N1J-XC-bOy"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                    <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="aZV-Cv-glo" eventType="editingChanged" id="bFn-0P-UaO"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Total Fat (g)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qp9-z7-c14">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -394,12 +406,15 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="carbs (g)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gzn-Ea-4Lu">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="carbs (g)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gzn-Ea-4Lu">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="123" id="XNd-MP-21i"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                    <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="aZV-Cv-glo" eventType="editingChanged" id="Jq0-wT-3hB"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Carbs (g)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMe-HQ-J4Z">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -423,12 +438,15 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="protein (g)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eya-WG-Jcu">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="protein (g)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eya-WG-Jcu">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="123" id="aRv-y4-C0D"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                    <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="aZV-Cv-glo" eventType="editingChanged" id="Xl0-FG-sSQ"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Protein (g)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="694-s4-yJ2">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -452,12 +470,15 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="calories" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bh3-7W-eEU">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="calories" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bh3-7W-eEU">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="123" id="1z6-Y7-wg4"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                    <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="aZV-Cv-glo" eventType="editingChanged" id="gLB-gv-jrj"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Calories" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBZ-hf-QGZ">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -861,6 +882,7 @@
         <class className="FridgeItemViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FridgeItemViewController.h"/>
             <relationships>
+                <relationship kind="action" name="textFieldEditingChanged:" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="caloriesTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="carbsTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
@@ -872,9 +894,6 @@
         </class>
         <class className="FridgeViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FridgeViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

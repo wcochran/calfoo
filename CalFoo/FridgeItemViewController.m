@@ -10,6 +10,14 @@
 #import "CalFooAppDelegate.h"
 #import "FoodItem.h"
 
+#define DESCRIPTION_TAG 1    // set in IB
+#define SERVING_SIZE_TAG 2
+#define SERVING_UNITS_TAG 3
+#define FAT_TAG 4
+#define CARBS_TAG 5
+#define PROTEIN_TAG 6
+#define CALORIES_TAG 7
+
 @interface FridgeItemViewController () <UIAlertViewDelegate>
 
 -(void)setTextFieldsEnabled:(BOOL)flag;
@@ -19,7 +27,8 @@
 @end
 
 @implementation FridgeItemViewController {
-    FoodItem *_foodItem;
+    FoodItem *_foodItem;      // viewed/modified (if editing) or added (if adding) foodItem
+    int _foodItemDirtyBits;   // records which fields have been edited/modified (uses tags of textFields)
 }
 
 - (void)viewDidLoad
@@ -52,6 +61,8 @@
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAddItem:)];
         _foodItem = nil;
     }
+    
+    _foodItemDirtyBits = 0;
 }
 
 -(void)setTextFieldsEnabled:(BOOL)flag {
@@ -63,7 +74,7 @@
     self.proteinTextField.enabled = flag;
     self.caloriesTextField.enabled = flag;
     
-    UITextBorderStyle borderStyle = flag ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
+    const UITextBorderStyle borderStyle = flag ? UITextBorderStyleRoundedRect : UITextBorderStyleNone;
     self.descriptionTextField.borderStyle = borderStyle;
     self.servingSizeTextField.borderStyle = borderStyle;
     self.servingUnitsTextField.borderStyle = borderStyle;
@@ -104,6 +115,16 @@
     }
 }
 
+#define MAX_MACRO_CALORIES_ERROR 0.15
+
+-(float)macroCalories:(FoodItem*)item {
+    const float fatCalsPerGram = 9;
+    const float carbsCalsPerGram = 4;
+    const float proteinCalsPerGram = 4;
+    const float macroCalories = fatCalsPerGram*_foodItem.fatGrams + carbsCalsPerGram*_foodItem.carbsGrams + proteinCalsPerGram*_foodItem.proteinGrams;
+    return macroCalories;
+}
+
 -(void)additem:(id)sender {
     //
     // Harvest text from form data.
@@ -116,6 +137,15 @@
     NSString *carbs = [self.carbsTextField.text stringByTrimmingCharactersInSet:whiteSpace];
     NSString *protein = [self.proteinTextField.text stringByTrimmingCharactersInSet:whiteSpace];
     NSString *calories = [self.caloriesTextField.text stringByTrimmingCharactersInSet:whiteSpace];
+    
+    //
+    // A little form validation.
+    //
+    if ([description length] <= 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Empty Description" message:@"Enter a description please." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alert show];
+        return;
+    }
     
     //
     // Create/update food item for fridge from form data.
@@ -132,28 +162,15 @@
     _foodItem.calories = [calories floatValue];
     
     //
-    // A little form validation.
+    // Check for suspicious calories / macro count values (allow the user to override).
     //
-    if ([_foodItem.description length] <= 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Empty Description" message:@"Enter a description please." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    const float macroCalories = [self macroCalories:_foodItem];
+    if (macroCalories < _foodItem.calories*(1 - MAX_MACRO_CALORIES_ERROR) ||
+        macroCalories > _foodItem.calories*(1 + MAX_MACRO_CALORIES_ERROR)) {
+        NSString *msg = [NSString stringWithFormat:@"Calories from macros (%0.0f) disagree with calorie count by more than %0.0f%%!", macroCalories, MAX_MACRO_CALORIES_ERROR*100];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Suspicious Calories" message:msg delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add Item", nil];
         [alert show];
-        return;
-    }
-    
-    //
-    // Check for suspicious calories / macro count values
-    // -- we allow the user to override.
-    //
-    const float fatCalsPerGram = 9;
-    const float carbsCalsPerGram = 4;
-    const float proteinCalsPerGram = 4;
-    const float macroCalories = fatCalsPerGram*_foodItem.fatGrams + carbsCalsPerGram*_foodItem.carbsGrams + proteinCalsPerGram*_foodItem.proteinGrams;
-    const float maxMacroCaloriesError = 0.15;
-    if (macroCalories < _foodItem.calories*(1 - maxMacroCaloriesError) || macroCalories > _foodItem.calories*(1 + maxMacroCaloriesError)) {
-        NSString *msg = [NSString stringWithFormat:@"Calories from macros disagree with calorie count by more than %0.0f%%!", maxMacroCaloriesError*100];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Suspicious Calories" message:msg delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-        [alert show];
-        return;
+        return; // wait for user's OK before adding item
     }
     
     [self addValidatedItem];
@@ -165,14 +182,50 @@
 }
 
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    const BOOL wasEditing = self.isEditing;
+    
+    if (self.isEditing && !editing && _foodItemDirtyBits != 0) { // user touched "done" (finished editing)
+        //
+        // Reset edited food item fields
+        //
+        if ((_foodItemDirtyBits & (1 << DESCRIPTION_TAG)) != 0)
+            _foodItem.description = self.descriptionTextField.text;
+        if ((_foodItemDirtyBits & (1 << SERVING_SIZE_TAG)) != 0)
+            _foodItem.servingSize = [self.servingSizeTextField.text floatValue];
+        if ((_foodItemDirtyBits & (1 << SERVING_UNITS_TAG)) != 0)
+            _foodItem.servingUnits = self.servingUnitsTextField.text;
+        if ((_foodItemDirtyBits & (1 << FAT_TAG)) != 0)
+            _foodItem.fatGrams = [self.fatTextField.text floatValue];
+        if ((_foodItemDirtyBits & (1 << CARBS_TAG)) != 0)
+            _foodItem.carbsGrams = [self.carbsTextField.text floatValue];
+        if ((_foodItemDirtyBits & (1 << PROTEIN_TAG)) != 0)
+            _foodItem.proteinGrams = [self.proteinTextField.text floatValue];
+        if ((_foodItemDirtyBits & (1 << CALORIES_TAG)) != 0)
+            _foodItem.calories = [self.caloriesTextField.text floatValue];
+        
+        //
+        // Warn user if macro calories and calories disagree too much!
+        //
+        const float macroCalories = [self macroCalories:_foodItem];
+        if (macroCalories < _foodItem.calories*(1 - MAX_MACRO_CALORIES_ERROR) ||
+            macroCalories > _foodItem.calories*(1 + MAX_MACRO_CALORIES_ERROR)) {
+            NSString *msg = [NSString stringWithFormat:@"Calories from macros (%0.0f) disagree with calorie count by more than %0.0f%%!", macroCalories, MAX_MACRO_CALORIES_ERROR*100];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Suspicious Calories" message:msg delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];  // warn only -- user can re-edit to correct
+            [alert show];
+        }
+        
+        //
+        // Clear firty bits.
+        //
+        _foodItemDirtyBits = 0;
+        
+        //
+        // Notify observers that fridge item changed
+        //
+        [[NSNotificationCenter defaultCenter] postNotificationName:kFridgeChangedNotification object:self];
+    }
+    
     [super setEditing:editing animated:YES];
     [self setTextFieldsEnabled:editing];
-    if (!editing && wasEditing) {
-        // XXX [self addOrUpdateItemFromForm];
-        // XXX modify _foodItem item as each textfield is changed
-        // XXX if any changes made, notify all observers
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -200,6 +253,13 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+//
+// Record which text fields have been changed
+//
+- (IBAction)textFieldEditingChanged:(UITextField *)sender {
+    _foodItemDirtyBits |= (1 << sender.tag);
 }
 
 @end
