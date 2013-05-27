@@ -64,10 +64,10 @@
     float proteinGrams = 0;
     float totalCalories = 0;
     for (FoodItem *item in appDelegate.todaysFood) {
-        fatGrams += item.fatGrams;
-        carbsGrams += item.carbsGrams;
-        proteinGrams += item.proteinGrams;
-        totalCalories += item.calories;
+        fatGrams += item.fatGrams*item.numServings;
+        carbsGrams += item.carbsGrams*item.numServings;
+        proteinGrams += item.proteinGrams*item.numServings;
+        totalCalories += item.calories*item.numServings;
     }
     
     float burnedCalories = 0;
