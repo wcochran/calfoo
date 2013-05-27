@@ -764,7 +764,7 @@
                                                         <outlet property="delegate" destination="yem-ik-H9l" id="ejB-gV-T4z"/>
                                                     </connections>
                                                 </textField>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="SN0-i4-EEc">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="SN0-i4-EEc">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="288" id="jHr-Ib-mfK"/>
                                                     </constraints>
