@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *carbsCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *proteinCell;
 
+- (IBAction)resetForNewDay:(id)sender;
+
 -(void)updateSummary;
 
 @end

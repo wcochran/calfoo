@@ -11,7 +11,7 @@
 #import "FoodItem.h"
 #import "ExerciseItem.h"
 
-@interface CalSummaryViewController ()
+@interface CalSummaryViewController () <UIActionSheetDelegate>
 
 -(void)foodChanged:(NSNotification*)notification;
 
@@ -34,6 +34,26 @@
 
 -(void)foodChanged:(NSNotification*)notification {
     [self updateSummary];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        
+        // XXX Save current day here
+        
+        [appDelegate.todaysFood removeAllObjects];
+        [appDelegate.todaysExercises removeAllObjects];
+        appDelegate.today = [NSDate date];
+        
+        [self.tableView reloadData];  // get date changed in section header
+        [[NSNotificationCenter defaultCenter] postNotificationName:kFoodChangedNotification object:self];
+    }
+}
+
+- (IBAction)resetForNewDay:(id)sender {
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Start a new Day" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Clear and reset" otherButtonTitles:nil];
+    [sheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
 }
 
 -(void)updateSummary {
