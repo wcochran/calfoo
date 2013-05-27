@@ -107,14 +107,14 @@
 
 - (IBAction)numServingsEdited:(UITextField *)sender {
     const float servings = [sender.text floatValue];
-    NSLog(@"numServings = %f", servings);
+    // XXX NSLog(@"numServings = %f", servings);
     self.numServingsSlider.value = servings;
     self.totalCaloriesTextField.text = [NSString stringWithFormat:@"%0.3g", servings * self.item.calories];
 }
 
 - (IBAction)totalCaloriesEdited:(UITextField *)sender {
     const float calories = [sender.text floatValue];
-    NSLog(@"calories = %f", calories);
+    // XXX NSLog(@"calories = %f", calories);
     const float servings = calories / self.item.calories; // text field disabled if calories == 0
     self.numServingsSlider.value = servings;
     self.numServingsTextField.text = [NSString stringWithFormat:@"%0.3g", servings];

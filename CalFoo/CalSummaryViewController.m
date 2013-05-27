@@ -13,6 +13,8 @@
 
 @interface CalSummaryViewController ()
 
+-(void)foodChanged:(NSNotification*)notification;
+
 @end
 
 @implementation CalSummaryViewController
@@ -21,6 +23,16 @@
 {
     [super viewDidLoad];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foodChanged:) name:kFoodChangedNotification object:nil];
+    
+    [self updateSummary];
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)foodChanged:(NSNotification*)notification {
     [self updateSummary];
 }
 

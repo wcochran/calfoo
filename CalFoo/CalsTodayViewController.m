@@ -14,7 +14,7 @@
 
 @interface CalsTodayViewController () <UIActionSheetDelegate, DailyFoodItemViewControllerDelegate>
 
--(void)foodChanged:(id)sender;
+-(void)foodChanged:(NSNotification*)notification;
 
 @end
 
@@ -35,7 +35,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foodChanged:) name:kFoodChangedNotification object:nil];
 
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -46,8 +45,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void)foodChanged:(id)sender {
-    [self.tableView reloadData];
+-(void)foodChanged:(NSNotification*)notification {
+    if (notification.object != self) {
+        [self.tableView reloadData];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,10 +102,10 @@
         CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         if (indexPath.section == 0) {
             [appDelegate.todaysFood removeObjectAtIndex:indexPath.row];
-            // XXX Notify everyone of change
+            [[NSNotificationCenter defaultCenter] postNotificationName:kFoodChangedNotification object:self];
         } else {
             [appDelegate.todaysExercises removeObjectAtIndex:indexPath.row];
-            // XXX Notify everyone of change
+            [[NSNotificationCenter defaultCenter] postNotificationName:kFoodChangedNotification object:self];
         }
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
@@ -124,7 +125,7 @@
         [appDelegate.todaysExercises removeObjectAtIndex:fromIndexPath.row];
         [appDelegate.todaysExercises insertObject:item atIndex:toIndexPath.row];
     }
-    // XXX Notify everyone of change?
+    // XXX Notify everyone of change? Probably not necessary for simple reordering.
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
