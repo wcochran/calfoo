@@ -769,7 +769,6 @@
                                                         <constraint firstAttribute="width" constant="288" id="jHr-Ib-mfK"/>
                                                     </constraints>
                                                     <connections>
-                                                        <action selector="numServingsSliderSlid:" destination="yem-ik-H9l" eventType="valueChanged" id="0nE-7v-3Ka"/>
                                                         <action selector="numUnitsSliderSlid:" destination="yem-ik-H9l" eventType="valueChanged" id="Glk-Iy-sjr"/>
                                                     </connections>
                                                 </slider>
