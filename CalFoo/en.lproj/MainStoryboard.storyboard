@@ -691,10 +691,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Num Servings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXl-2R-xn1">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="135" id="tVu-L2-Uqp"/>
-                                                    </constraints>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Servings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXl-2R-xn1">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -744,6 +741,64 @@
                                             <constraint firstAttribute="trailing" secondItem="ntq-VF-JwB" secondAttribute="trailing" constant="20" type="default" id="z6C-Q3-5mp"/>
                                         </constraints>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="96" id="bmx-P1-YPm">
+                                        <rect key="frame" x="0.0" y="184" width="320" height="96"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Units" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chq-Fg-JIF">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="9999.9" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PgU-ln-n4C">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="98" id="Ufz-Sf-NKy"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                    <connections>
+                                                        <action selector="numUnitsEdited:" destination="yem-ik-H9l" eventType="editingChanged" id="voO-HL-2kt"/>
+                                                        <outlet property="delegate" destination="yem-ik-H9l" id="ejB-gV-T4z"/>
+                                                    </connections>
+                                                </textField>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="SN0-i4-EEc">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="288" id="jHr-Ib-mfK"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="numServingsSliderSlid:" destination="yem-ik-H9l" eventType="valueChanged" id="0nE-7v-3Ka"/>
+                                                        <action selector="numUnitsSliderSlid:" destination="yem-ik-H9l" eventType="valueChanged" id="Glk-Iy-sjr"/>
+                                                    </connections>
+                                                </slider>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="du3-6Y-ZuY">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTF-gh-dGW">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="TTF-gh-dGW" firstAttribute="baseline" secondItem="du3-6Y-ZuY" secondAttribute="baseline" type="default" id="8Mj-Tp-5cx"/>
+                                            <constraint firstItem="chq-Fg-JIF" firstAttribute="leading" secondItem="SN0-i4-EEc" secondAttribute="leading" type="default" id="B9T-cz-cCi"/>
+                                            <constraint firstItem="chq-Fg-JIF" firstAttribute="top" secondItem="bmx-P1-YPm" secondAttribute="top" constant="20" type="default" id="FEs-Nl-dXZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="TTF-gh-dGW" secondAttribute="bottom" constant="6" id="GGn-rC-poD"/>
+                                            <constraint firstItem="du3-6Y-ZuY" firstAttribute="leading" secondItem="SN0-i4-EEc" secondAttribute="leading" type="default" id="OIJ-jZ-diQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="PgU-ln-n4C" secondAttribute="trailing" constant="20" type="default" id="cLT-TB-GiK"/>
+                                            <constraint firstAttribute="trailing" secondItem="TTF-gh-dGW" secondAttribute="trailing" constant="20" type="default" id="kRQ-U9-RWF"/>
+                                            <constraint firstAttribute="trailing" secondItem="SN0-i4-EEc" secondAttribute="trailing" constant="20" type="default" id="nQv-lK-adU"/>
+                                            <constraint firstItem="PgU-ln-n4C" firstAttribute="baseline" secondItem="chq-Fg-JIF" secondAttribute="baseline" type="default" id="sHu-Wj-63Y"/>
+                                            <constraint firstAttribute="bottom" secondItem="SN0-i4-EEc" secondAttribute="bottom" constant="21" id="z8i-7Z-i8u"/>
+                                        </constraints>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -757,7 +812,10 @@
                         <outlet property="descriptionCell" destination="EMg-ZP-SLo" id="WYX-xu-EaV"/>
                         <outlet property="numServingsSlider" destination="akd-XI-ve4" id="A3t-Gk-cN7"/>
                         <outlet property="numServingsTextField" destination="dW4-xa-a3t" id="qhf-6w-DxC"/>
+                        <outlet property="numUnitsSlider" destination="SN0-i4-EEc" id="Mq1-Lr-7Uv"/>
+                        <outlet property="numUnitsTextField" destination="PgU-ln-n4C" id="EVv-0N-rld"/>
                         <outlet property="totalCaloriesTextField" destination="Rnf-95-yYL" id="SDb-jg-paa"/>
+                        <outlet property="unitsLabel" destination="chq-Fg-JIF" id="a4O-Vt-ikN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bfr-21-3mR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -879,11 +937,16 @@
             <relationships>
                 <relationship kind="action" name="numServingsEdited:" candidateClass="UITextField"/>
                 <relationship kind="action" name="numServingsSliderSlid:" candidateClass="UISlider"/>
+                <relationship kind="action" name="numUnitsEdited:" candidateClass="UITextField"/>
+                <relationship kind="action" name="numUnitsSliderSlid:" candidateClass="UISlider"/>
                 <relationship kind="action" name="totalCaloriesEdited:" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="descriptionCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="numServingsSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="numServingsTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="numUnitsSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="numUnitsTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="totalCaloriesTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="unitsLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="FridgeItemViewController" superclassName="UITableViewController">

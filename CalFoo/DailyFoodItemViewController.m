@@ -50,6 +50,15 @@
     }
     self.numServingsTextField.text = [NSString stringWithFormat:@"%0.3g", self.item.numServings];
     self.numServingsSlider.value = self.item.numServings;
+    NSString *units = ([self.item.servingUnits length] <= 0) ? @"units" : self.item.servingUnits;
+    const float numUnits = self.item.numServings * self.item.servingSize;
+    self.unitsLabel.text = units;
+    self.numUnitsTextField.text = [NSString stringWithFormat:@"%0.3g", numUnits];
+    self.numUnitsSlider.value = numUnits;
+    if (self.item.servingSize <= 0) {
+        self.numUnitsTextField.enabled = NO;
+        self.numUnitsSlider.enabled = NO;
+    }
     
 }
 
@@ -102,6 +111,9 @@
     const float servings = sender.value;
     self.numServingsTextField.text = [NSString stringWithFormat:@"%0.3g", servings];
     self.totalCaloriesTextField.text = [NSString stringWithFormat:@"%0.3g", servings * self.item.calories];
+    const float units = servings*self.item.servingSize;
+    self.numUnitsSlider.value = units;
+    self.numUnitsTextField.text = [NSString stringWithFormat:@"%0.3g", units];
 }
 
 
@@ -110,6 +122,9 @@
     // XXX NSLog(@"numServings = %f", servings);
     self.numServingsSlider.value = servings;
     self.totalCaloriesTextField.text = [NSString stringWithFormat:@"%0.3g", servings * self.item.calories];
+    const float units = servings*self.item.servingSize;
+    self.numUnitsSlider.value = units;
+    self.numUnitsTextField.text = [NSString stringWithFormat:@"%0.3g", units];
 }
 
 - (IBAction)totalCaloriesEdited:(UITextField *)sender {
@@ -118,6 +133,27 @@
     const float servings = calories / self.item.calories; // text field disabled if calories == 0
     self.numServingsSlider.value = servings;
     self.numServingsTextField.text = [NSString stringWithFormat:@"%0.3g", servings];
+    const float units = servings*self.item.servingSize;
+    self.numUnitsSlider.value = units;
+    self.numUnitsTextField.text = [NSString stringWithFormat:@"%0.3g", units];
+}
+
+- (IBAction)numUnitsSliderSlid:(UISlider *)sender { // slider disabled if servingSize == 0
+    const float units = sender.value;
+    const float servings = units / self.item.servingSize; // text field disable if servingSize == 0
+    self.numServingsSlider.value = servings;
+    self.numServingsTextField.text = [NSString stringWithFormat:@"%0.3g", servings];
+    self.totalCaloriesTextField.text = [NSString stringWithFormat:@"%0.3g", servings * self.item.calories];
+    self.numUnitsTextField.text = [NSString stringWithFormat:@"%0.3g", units];
+}
+
+- (IBAction)numUnitsEdited:(UITextField *)sender { // text field disabled if servingSize == 0
+    const float units = [sender.text floatValue];
+    const float servings = units / self.item.servingSize; // slider disabled if servingSize == 0
+    self.numServingsSlider.value = servings;
+    self.numServingsTextField.text = [NSString stringWithFormat:@"%0.3g", servings];
+    self.totalCaloriesTextField.text = [NSString stringWithFormat:@"%0.3g", servings * self.item.calories];
+    self.numUnitsSlider.value = units;
 }
 
 @end

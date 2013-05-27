@@ -28,9 +28,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *totalCaloriesTextField;
 @property (weak, nonatomic) IBOutlet UITextField *numServingsTextField;
 @property (weak, nonatomic) IBOutlet UISlider *numServingsSlider;
+@property (weak, nonatomic) IBOutlet UITextField *numUnitsTextField;
+@property (weak, nonatomic) IBOutlet UISlider *numUnitsSlider;
+@property (weak, nonatomic) IBOutlet UILabel *unitsLabel;
 
 - (IBAction)numServingsSliderSlid:(UISlider *)sender;
 - (IBAction)numServingsEdited:(UITextField *)sender;
 - (IBAction)totalCaloriesEdited:(UITextField *)sender;
+- (IBAction)numUnitsSliderSlid:(UISlider *)sender;
+- (IBAction)numUnitsEdited:(UITextField *)sender;
 
 @end
