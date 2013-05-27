@@ -126,7 +126,7 @@
 -(void)didAddFoodItem {
     // XXX add item
     // XXX inform everyone
-   [self dismissViewControllerAnimated:YES completion:^{}];
+   [self.presentingViewController dismissViewControllerAnimated:YES completion:^{}];
 }
 
 -(void)didCancelAddFoodItem {

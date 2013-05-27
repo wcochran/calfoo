@@ -10,7 +10,8 @@
 #import "FoodItem.h"
 #import "ExerciseItem.h"
 
-#define kFridgeChangedNotification @"kFridgeChangedNotification"
+#define kFridgeChangedNotification @"FridgeChangedNotification"
+#define kFoodChangedNotification @"FoodChangedNotification"
 
 @interface CalFooAppDelegate : UIResponder <UIApplicationDelegate>
 

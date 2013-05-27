@@ -614,7 +614,7 @@
             <objects>
                 <tableViewController id="yem-ik-H9l" customClass="DailyFoodItemViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sJe-vM-s0h">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -846,56 +846,6 @@
             <point key="canvasLocation" x="669" y="427"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CalSummaryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalSummaryViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="caloriesBurnedCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="carbsCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="fatCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="netCaloriesCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="proteinCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="totalCaloriesCell" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="CalsTodayViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalsTodayViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addCalItem:"/>
-            </relationships>
-        </class>
-        <class className="DailyAddFoodViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DailyAddFoodViewController.h"/>
-        </class>
-        <class className="DailyFoodItemViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DailyFoodItemViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="numServingsEdited:" candidateClass="UITextField"/>
-                <relationship kind="action" name="numServingsSliderSlid:" candidateClass="UISlider"/>
-                <relationship kind="action" name="totalCaloriesEdited:" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="descriptionCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="numServingsSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="numServingsTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="totalCaloriesTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="FridgeItemViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FridgeItemViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="textFieldEditingChanged:" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="caloriesTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="carbsTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="fatTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="proteinTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="servingSizeTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="servingUnitsTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="FridgeViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FridgeViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -903,6 +853,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hcW-ES-7wJ"/>
-        <segue reference="Zi7-0w-xWr"/>
+        <segue reference="AbT-QE-Mpo"/>
     </inferredMetricsTieBreakers>
 </document>

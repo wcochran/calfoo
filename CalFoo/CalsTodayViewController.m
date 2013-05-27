@@ -10,8 +10,11 @@
 #import "CalFooAppDelegate.h"
 #import "FoodItem.h"
 #import "ExerciseItem.h"
+#import "DailyFoodItemViewController.h"
 
-@interface CalsTodayViewController () <UIActionSheetDelegate>
+@interface CalsTodayViewController () <UIActionSheetDelegate, DailyFoodItemViewControllerDelegate>
+
+-(void)foodChanged:(id)sender;
 
 @end
 
@@ -29,11 +32,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foodChanged:) name:kFoodChangedNotification object:nil];
+
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)foodChanged:(id)sender {
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -160,5 +174,30 @@
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Add Calorie Item" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add Food", @"Add Workout", nil];
     [sheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"TodayFoodItemDetailSegue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        FoodItem *item = [appDelegate.todaysFood objectAtIndex:indexPath.row];
+        DailyFoodItemViewController *foodItemViewController = (DailyFoodItemViewController*)segue.destinationViewController;
+        foodItemViewController.item = item;
+        foodItemViewController.addingItem = NO;
+        foodItemViewController.itemDelegate = self;
+    }
+}
+
+-(void)didEditFoodItem {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)didAddFoodItem {
+    // should not happen (happens in "adding" item)
+}
+
+-(void)didCancelAddFoodItem {
+    // should not happen (happens in "adding" item)
+}
+
 
 @end

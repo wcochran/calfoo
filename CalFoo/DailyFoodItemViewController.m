@@ -8,6 +8,7 @@
 
 #import "DailyFoodItemViewController.h"
 #import "FoodItem.h"
+#import "CalFooAppDelegate.h"
 
 @interface DailyFoodItemViewController ()
 
@@ -34,10 +35,9 @@
 
     if (self.addingItem) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(addFoodItem:)];
-        //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButton target:self action:@selector(addFoodItem:)];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAddFoodItem:)];
     } else {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStyleDone target:self action:@selector(doneEditingFoodItem:)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditingFoodItem:)];
     }
     
     self.descriptionCell.textLabel.text = self.item.description;
@@ -54,15 +54,21 @@
 }
 
 -(void)addFoodItem:(id)sender {
-    [self.itemDelegate didAddFoodItem];   // let self.presentingViewController dismiss
+    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    self.item.numServings = self.numServingsSlider.value;
+    [appDelegate.todaysFood addObject:self.item];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFoodChangedNotification object:self];
+    [self.itemDelegate didAddFoodItem]; // let delegate dismiss
 }
 
 -(void)cancelAddFoodItem:(id)sender {
-    [self.itemDelegate didCancelAddFoodItem]; // let self.presentingViewController dismiss
+    [self.itemDelegate didCancelAddFoodItem];  // let delegate dismiss
 }
 
 -(void)doneEditingFoodItem:(id)sender {
-    [self.itemDelegate didEditFoodItem]; // let self.presentingViewController dismiss
+    self.item.numServings = self.numServingsSlider.value;
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFoodChangedNotification object:self];
+    [self.itemDelegate didEditFoodItem];  // let delegate dismiss
 }
 
 - (void)didReceiveMemoryWarning
