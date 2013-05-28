@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FridgeViewController : UITableViewController
+@interface FridgeViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
+
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSMutableArray *filteredFridgeItems;
 
 @end

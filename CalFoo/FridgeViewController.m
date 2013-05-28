@@ -6,6 +6,11 @@
 //  Copyright (c) 2013 Wayne Cochran. All rights reserved.
 //
 
+//
+// How to use search bar + search bar controller was taken from:
+// http://www.raywenderlich.com/16873/how-to-add-search-into-a-table-view
+//
+
 #import "FridgeViewController.h"
 #import "CalFooAppDelegate.h"
 #import "FoodItem.h"
@@ -17,18 +22,12 @@
 
 @implementation FridgeViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    self.filteredFridgeItems = [NSMutableArray arrayWithCapacity:[appDelegate.fridge count]];
     
     //
     // Register for notification involving changes of the fridge.
@@ -52,6 +51,9 @@
 -(void)fridgeChanged:(NSNotification*)notification {
     if (notification.object != self) {
         [self.tableView reloadData];
+        if (self.searchDisplayController.active) {
+            [self.searchDisplayController.searchResultsTableView reloadData];
+        }
     }
 }
 
@@ -70,17 +72,35 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.filteredFridgeItems count];
+    }
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     return [appDelegate.fridge count];
 }
 
+#define TABLE_VIEW_CELL_TAG 1
+#define SEARCH_RESULTS_TABLE_VIEW_CELL_TAG 2
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"FridgeFoodCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    FoodItem *item = [appDelegate.fridge objectAtIndex:indexPath.row];
+    // note: use 'self.tableview' here since that is what the cell is registered with in the storyboard
+    // See http://stackoverflow.com/questions/14207142/search-bar-in-tableviewcontroller-ios-6
+    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    FoodItem *item;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        item = [self.filteredFridgeItems objectAtIndex:indexPath.row];
+        cell.tag = SEARCH_RESULTS_TABLE_VIEW_CELL_TAG;
+    } else {
+        CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        item = [appDelegate.fridge objectAtIndex:indexPath.row];
+        cell.tag = TABLE_VIEW_CELL_TAG;
+    }
+    
     cell.textLabel.text = item.description;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"srv=%0.2g %@, %0.0f/%0.0f/%0.0f %0.0f Cals", item.servingSize, item.servingUnits, item.fatGrams, item.carbsGrams, item.proteinGrams, item.calories];
     
@@ -139,13 +159,39 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"FridgeItemDetailSegue"]) {
         FridgeItemViewController *viewController = (FridgeItemViewController*)segue.destinationViewController;
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        viewController.fridgeIndex = indexPath.row;
+        int tag = [sender tag];
+        if (tag == SEARCH_RESULTS_TABLE_VIEW_CELL_TAG) {
+            NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            FoodItem *item = [self.filteredFridgeItems objectAtIndex:indexPath.row];
+            CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+            NSUInteger index = [appDelegate.fridge indexOfObject:item];
+            viewController.fridgeIndex = index;
+        } else {
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+            viewController.fridgeIndex = indexPath.row;           
+        }
     } else if ([segue.identifier isEqualToString:@"FridgeAddItemSegue"]) {
         UINavigationController *navController = (UINavigationController*)segue.destinationViewController;
         FridgeItemViewController *viewController = (FridgeItemViewController*)navController.topViewController;
         viewController.fridgeIndex = -1;
     }
+}
+
+#pragma mark Content Filtering
+
+-(void)filterContentForSearchText:(NSString*)searchText {
+    [self.filteredFridgeItems removeAllObjects];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.description contains[c] %@",searchText];
+    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    self.filteredFridgeItems = [NSMutableArray arrayWithArray:[appDelegate.fridge filteredArrayUsingPredicate:predicate]];
+}
+
+#pragma mark - UISearchDisplayController Delegate Methods
+
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    [self filterContentForSearchText:searchString];
+    return YES;
 }
 
 @end

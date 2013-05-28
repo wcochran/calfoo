@@ -221,9 +221,17 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="search fridge for food" showsCancelButton="YES" id="Kdr-bz-ZWM">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="Kpb-dj-jZ9" id="VAg-bo-IMZ"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FridgeFoodCell" textLabel="lts-Ib-cPG" detailTextLabel="ri7-g3-obP" style="IBUITableViewCellStyleSubtitle" id="Axl-mO-p5r">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -255,8 +263,21 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="Kdr-bz-ZWM" id="CSa-az-Wsf"/>
+                        <outlet property="searchDisplayController" destination="PB9-Dv-QZG" id="fIN-aN-cnX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Fg-Zg-mAp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="PB9-Dv-QZG">
+                    <connections>
+                        <outlet property="delegate" destination="Kpb-dj-jZ9" id="ncu-tO-Xwh"/>
+                        <outlet property="searchBar" destination="Kdr-bz-ZWM" id="CkG-V7-ynW"/>
+                        <outlet property="searchContentsController" destination="Kpb-dj-jZ9" id="y0u-DF-HxZ"/>
+                        <outlet property="searchResultsDataSource" destination="Kpb-dj-jZ9" id="vhB-yj-rou"/>
+                        <outlet property="searchResultsDelegate" destination="Kpb-dj-jZ9" id="LHf-oJ-0sQ"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1087" y="1013"/>
         </scene>
@@ -963,6 +984,9 @@
         </class>
         <class className="FridgeViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FridgeViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
