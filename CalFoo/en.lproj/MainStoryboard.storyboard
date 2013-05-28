@@ -850,9 +850,17 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="4L1-rJ-A7G">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="d9I-HJ-CWZ" id="XVd-Ck-zUy"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DailyAddFoodCell" textLabel="BYU-ol-eWx" detailTextLabel="pH9-0Y-qbo" style="IBUITableViewCellStyleSubtitle" id="Tg4-1g-pGd">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -878,8 +886,21 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Food" id="VDU-Y1-dF0"/>
+                    <connections>
+                        <outlet property="searchBar" destination="4L1-rJ-A7G" id="Qi9-nz-IzV"/>
+                        <outlet property="searchDisplayController" destination="Ztp-8N-OcY" id="LBm-ci-QRX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VuJ-e5-GYr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Ztp-8N-OcY">
+                    <connections>
+                        <outlet property="delegate" destination="d9I-HJ-CWZ" id="se4-H3-fc3"/>
+                        <outlet property="searchBar" destination="4L1-rJ-A7G" id="dWP-CX-SfD"/>
+                        <outlet property="searchContentsController" destination="d9I-HJ-CWZ" id="vjB-SH-Ai3"/>
+                        <outlet property="searchResultsDataSource" destination="d9I-HJ-CWZ" id="K5e-bF-XHS"/>
+                        <outlet property="searchResultsDelegate" destination="d9I-HJ-CWZ" id="V0p-Hn-Ucr"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2470" y="405"/>
         </scene>
@@ -951,6 +972,9 @@
         </class>
         <class className="DailyAddFoodViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DailyAddFoodViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
         </class>
         <class className="DailyFoodItemViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DailyFoodItemViewController.h"/>
