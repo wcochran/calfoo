@@ -27,7 +27,7 @@
 		559467E8174AAE1700C029D9 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 559467E7174AAE1700C029D9 /* second@2x.png */; };
 		559467F0174AAEBF00C029D9 /* CalSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 559467EF174AAEBF00C029D9 /* CalSummaryViewController.m */; };
 		55BB32E2174ABB0A00139580 /* FoodItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BB32E1174ABB0A00139580 /* FoodItem.m */; };
-		55BB32E5174AC25F00139580 /* ExerciseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BB32E4174AC25F00139580 /* ExerciseItem.m */; };
+		55BB32E5174AC25F00139580 /* WorkoutItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BB32E4174AC25F00139580 /* WorkoutItem.m */; };
 		55D1CA7D174BC53C001F3D92 /* CalsTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D1CA7C174BC53C001F3D92 /* CalsTodayViewController.m */; };
 		55D2158A174DF94000E48BBB /* ToDo.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 55D21589174DF94000E48BBB /* ToDo.rtf */; };
 /* End PBXBuildFile section */
@@ -65,8 +65,8 @@
 		559467EF174AAEBF00C029D9 /* CalSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalSummaryViewController.m; sourceTree = "<group>"; };
 		55BB32E0174ABB0A00139580 /* FoodItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItem.h; sourceTree = "<group>"; };
 		55BB32E1174ABB0A00139580 /* FoodItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItem.m; sourceTree = "<group>"; };
-		55BB32E3174AC25F00139580 /* ExerciseItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseItem.h; sourceTree = "<group>"; };
-		55BB32E4174AC25F00139580 /* ExerciseItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseItem.m; sourceTree = "<group>"; };
+		55BB32E3174AC25F00139580 /* WorkoutItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutItem.h; sourceTree = "<group>"; };
+		55BB32E4174AC25F00139580 /* WorkoutItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutItem.m; sourceTree = "<group>"; };
 		55D1CA7B174BC53C001F3D92 /* CalsTodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalsTodayViewController.h; sourceTree = "<group>"; };
 		55D1CA7C174BC53C001F3D92 /* CalsTodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalsTodayViewController.m; sourceTree = "<group>"; };
 		55D21589174DF94000E48BBB /* ToDo.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = ToDo.rtf; sourceTree = "<group>"; };
@@ -163,8 +163,8 @@
 			children = (
 				55BB32E0174ABB0A00139580 /* FoodItem.h */,
 				55BB32E1174ABB0A00139580 /* FoodItem.m */,
-				55BB32E3174AC25F00139580 /* ExerciseItem.h */,
-				55BB32E4174AC25F00139580 /* ExerciseItem.m */,
+				55BB32E3174AC25F00139580 /* WorkoutItem.h */,
+				55BB32E4174AC25F00139580 /* WorkoutItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -243,7 +243,7 @@
 				559467D1174AAE1700C029D9 /* CalFooAppDelegate.m in Sources */,
 				559467F0174AAEBF00C029D9 /* CalSummaryViewController.m in Sources */,
 				55BB32E2174ABB0A00139580 /* FoodItem.m in Sources */,
-				55BB32E5174AC25F00139580 /* ExerciseItem.m in Sources */,
+				55BB32E5174AC25F00139580 /* WorkoutItem.m in Sources */,
 				55D1CA7D174BC53C001F3D92 /* CalsTodayViewController.m in Sources */,
 				5555F028174BDF7300DDEC7D /* FridgeViewController.m in Sources */,
 				5555F02B174BF7D300DDEC7D /* FridgeItemViewController.m in Sources */,

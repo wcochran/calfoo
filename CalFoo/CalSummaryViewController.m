@@ -9,7 +9,7 @@
 #import "CalSummaryViewController.h"
 #import "CalFooAppDelegate.h"
 #import "FoodItem.h"
-#import "ExerciseItem.h"
+#import "WorkoutItem.h"
 
 @interface CalSummaryViewController () <UIActionSheetDelegate>
 
@@ -71,7 +71,7 @@
     }
     
     float burnedCalories = 0;
-    for (ExerciseItem *item in appDelegate.todaysExercises) {
+    for (WorkoutItem *item in appDelegate.todaysExercises) {
         burnedCalories += item.calories;
     }
     

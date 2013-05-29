@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Wayne Cochran. All rights reserved.
 //
 
-#import "ExerciseItem.h"
+#import "WorkoutItem.h"
 
 #define kDescriptionKey @"description"
 #define kCaloriesKey @"calories"
 #define kNotesKey @"notes"
 
-@implementation ExerciseItem
+@implementation WorkoutItem
 
 -(id)init {
     if (self = [super init]) {
@@ -39,7 +39,7 @@
 }
 
 -(id)copyWithZone:(NSZone *)zone {
-    ExerciseItem *clone = [[[self class] alloc] init];
+    WorkoutItem *clone = [[[self class] alloc] init];
     clone.description = _description;
     clone.calories = _calories;
     clone.notes = _notes;

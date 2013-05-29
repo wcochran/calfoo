@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FoodItem.h"
-#import "ExerciseItem.h"
+#import "WorkoutItem.h"
 
 #define kFridgeChangedNotification @"FridgeChangedNotification"
 #define kFoodChangedNotification @"FoodChangedNotification"

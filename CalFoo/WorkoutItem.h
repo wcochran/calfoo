@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ExerciseItem : NSObject <NSCoding, NSCopying>
+@interface WorkoutItem : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, copy) NSString *description;
 @property (nonatomic, assign) float calories;

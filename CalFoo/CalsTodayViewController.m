@@ -9,7 +9,7 @@
 #import "CalsTodayViewController.h"
 #import "CalFooAppDelegate.h"
 #import "FoodItem.h"
-#import "ExerciseItem.h"
+#import "WorkoutItem.h"
 #import "FoodItemViewController.h"
 
 @interface CalsTodayViewController () <UIActionSheetDelegate, FoodItemViewControllerDelegate>
@@ -75,7 +75,7 @@
     } else {
         static NSString *CellIdentifier = @"CalsTodayExerciseCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        ExerciseItem *item = [appDelegate.todaysExercises objectAtIndex:indexPath.row];
+        WorkoutItem *item = [appDelegate.todaysExercises objectAtIndex:indexPath.row];
         cell.textLabel.text = item.description;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f", item.calories];
     }
@@ -112,7 +112,7 @@
         [appDelegate.todaysFood removeObjectAtIndex:fromIndexPath.row];
         [appDelegate.todaysFood insertObject:item atIndex:toIndexPath.row];
     } else {
-        ExerciseItem *item = [appDelegate.todaysExercises objectAtIndex:fromIndexPath.row];
+        WorkoutItem *item = [appDelegate.todaysExercises objectAtIndex:fromIndexPath.row];
         [appDelegate.todaysExercises removeObjectAtIndex:fromIndexPath.row];
         [appDelegate.todaysExercises insertObject:item atIndex:toIndexPath.row];
     }

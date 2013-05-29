@@ -8,7 +8,7 @@
 
 #import "ExerciseItemViewController.h"
 #import "CalFooAppDelegate.h"
-#import "ExerciseItem.h"
+#import "WorkoutItem.h"
 
 #define DESCRIPTION_TAG 1  // set in IB
 #define CALORIES_TAG 2
@@ -23,7 +23,7 @@
 @end
 
 @implementation ExerciseItemViewController {
-    ExerciseItem *_exerciseItem;
+    WorkoutItem *_exerciseItem;
     int _exerciseItemDirtyBits;
 }
 
@@ -71,7 +71,7 @@
     }
     
     if (_exerciseItem == nil)
-        _exerciseItem = [[ExerciseItem alloc] init];
+        _exerciseItem = [[WorkoutItem alloc] init];
     _exerciseItem.description = description;
     _exerciseItem.calories = [self.caloriesTextField.text floatValue];
     _exerciseItem.notes = self.notesTextView.text;

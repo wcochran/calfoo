@@ -8,7 +8,7 @@
 
 #import "WorkoutListViewController.h"
 #import "CalFooAppDelegate.h"
-#import "ExerciseItem.h"
+#import "WorkoutItem.h"
 #import "ExerciseItemViewController.h"
 
 @interface WorkoutListViewController ()
@@ -66,7 +66,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    ExerciseItem *item = [appDelegate.exercises objectAtIndex:indexPath.row];
+    WorkoutItem *item = [appDelegate.exercises objectAtIndex:indexPath.row];
     cell.textLabel.text = item.description;
     
     return cell;
@@ -93,7 +93,7 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    ExerciseItem *item  = [appDelegate.exercises objectAtIndex:fromIndexPath.row];
+    WorkoutItem *item  = [appDelegate.exercises objectAtIndex:fromIndexPath.row];
     [appDelegate.exercises removeObjectAtIndex:fromIndexPath.row];
     [appDelegate.exercises insertObject:item atIndex:toIndexPath.row];
     [[NSNotificationCenter defaultCenter] postNotificationName:kExercisesChangedNotification object:self];

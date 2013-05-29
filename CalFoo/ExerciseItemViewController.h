@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class ExerciseItem;
+@class WorkoutItem;
 
 
 @interface ExerciseItemViewController : UITableViewController <UITextViewDelegate>
