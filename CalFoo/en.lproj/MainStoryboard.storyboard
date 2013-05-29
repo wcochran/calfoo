@@ -221,7 +221,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="search fridge for food" showsCancelButton="YES" id="Kdr-bz-ZWM">
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="search fridge for food" id="Kdr-bz-ZWM">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -636,10 +636,10 @@
             </objects>
             <point key="canvasLocation" x="1087" y="427"/>
         </scene>
-        <!--Daily Food Item View Controller - Food-->
+        <!--Food Item View Controller - Food-->
         <scene sceneID="t2J-7b-5UI">
             <objects>
-                <tableViewController id="yem-ik-H9l" customClass="DailyFoodItemViewController" sceneMemberID="viewController">
+                <tableViewController id="yem-ik-H9l" customClass="FoodItemViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sJe-vM-s0h">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -842,10 +842,10 @@
             </objects>
             <point key="canvasLocation" x="2012" y="-160"/>
         </scene>
-        <!--Daily Add Food View Controller - Add Food-->
+        <!--Add Food View Controller - Add Food-->
         <scene sceneID="QWB-1s-SnO">
             <objects>
-                <tableViewController id="d9I-HJ-CWZ" customClass="DailyAddFoodViewController" sceneMemberID="viewController">
+                <tableViewController id="d9I-HJ-CWZ" customClass="AddFoodViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xg6-f0-hD1">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -952,6 +952,12 @@
         </scene>
     </scenes>
     <classes>
+        <class className="AddFoodViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddFoodViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
         <class className="CalSummaryViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CalSummaryViewController.h"/>
             <relationships>
@@ -970,14 +976,8 @@
                 <relationship kind="action" name="addCalItem:"/>
             </relationships>
         </class>
-        <class className="DailyAddFoodViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DailyAddFoodViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="DailyFoodItemViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DailyFoodItemViewController.h"/>
+        <class className="FoodItemViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FoodItemViewController.h"/>
             <relationships>
                 <relationship kind="action" name="numServingsEdited:" candidateClass="UITextField"/>
                 <relationship kind="action" name="numServingsSliderSlid:" candidateClass="UISlider"/>

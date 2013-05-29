@@ -10,24 +10,15 @@
 #import "CalFooAppDelegate.h"
 #import "FoodItem.h"
 #import "ExerciseItem.h"
-#import "DailyFoodItemViewController.h"
+#import "FoodItemViewController.h"
 
-@interface CalsTodayViewController () <UIActionSheetDelegate, DailyFoodItemViewControllerDelegate>
+@interface CalsTodayViewController () <UIActionSheetDelegate, FoodItemViewControllerDelegate>
 
 -(void)foodChanged:(NSNotification*)notification;
 
 @end
 
 @implementation CalsTodayViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -181,7 +172,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         FoodItem *item = [appDelegate.todaysFood objectAtIndex:indexPath.row];
-        DailyFoodItemViewController *foodItemViewController = (DailyFoodItemViewController*)segue.destinationViewController;
+        FoodItemViewController *foodItemViewController = (FoodItemViewController*)segue.destinationViewController;
         foodItemViewController.item = item;
         foodItemViewController.addingItem = NO;
         foodItemViewController.itemDelegate = self;

@@ -6,12 +6,12 @@
 //  Copyright (c) 2013 Wayne Cochran. All rights reserved.
 //
 
-#import "DailyAddFoodViewController.h"
+#import "AddFoodViewController.h"
 #import "CalFooAppDelegate.h"
 #import "FoodItem.h"
-#import "DailyFoodItemViewController.h"
+#import "FoodItemViewController.h"
 
-@interface DailyAddFoodViewController () <DailyFoodItemViewControllerDelegate>
+@interface AddFoodViewController () <FoodItemViewControllerDelegate>
 
 @property (strong, nonatomic) FoodItem *foodItem;
 
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation DailyAddFoodViewController
+@implementation AddFoodViewController
 
 - (void)viewDidLoad
 {
@@ -117,7 +117,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"TodayAddFoodDetailSegue"]) {
         UINavigationController *navController = (UINavigationController*) segue.destinationViewController;
-        DailyFoodItemViewController *foodItemViewController = (DailyFoodItemViewController*) navController.topViewController;
+        FoodItemViewController *foodItemViewController = (FoodItemViewController*) navController.topViewController;
         int tag = [sender tag];
         FoodItem *item;
         if (tag == SEARCH_RESULTS_TABLE_VIEW_CELL_TAG) {
@@ -134,21 +134,21 @@
     }
 }
 
+#pragma mark - Food Item Delegate Methid
+
 -(void)didEditFoodItem {
     // should not happen
 }
 
 -(void)didAddFoodItem {
-    // XXX add item
-    // XXX inform everyone
-   [self.presentingViewController dismissViewControllerAnimated:YES completion:^{}];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{}];
 }
 
 -(void)didCancelAddFoodItem {
     [self.presentedViewController dismissViewControllerAnimated:YES completion:^{}];
 }
 
-#pragma mark Content Filtering
+#pragma mark - Content Filtering
 
 -(void)filterContentForSearchText:(NSString*)searchText {
     [self.filteredFridgeItems removeAllObjects];

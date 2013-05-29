@@ -10,7 +10,7 @@
 
 @class FoodItem;
 
-@protocol DailyFoodItemViewControllerDelegate <NSObject>
+@protocol FoodItemViewControllerDelegate <NSObject>
 
 -(void)didEditFoodItem;
 -(void)didAddFoodItem;
@@ -18,11 +18,11 @@
 
 @end
 
-@interface DailyFoodItemViewController : UITableViewController <UITextFieldDelegate>
+@interface FoodItemViewController : UITableViewController <UITextFieldDelegate>
 
 @property (assign, nonatomic) BOOL addingItem;
 @property (strong, nonatomic) FoodItem *item;
-@property (weak, nonatomic) id<DailyFoodItemViewControllerDelegate> itemDelegate;
+@property (weak, nonatomic) id<FoodItemViewControllerDelegate> itemDelegate;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *descriptionCell;
 @property (weak, nonatomic) IBOutlet UITextField *totalCaloriesTextField;

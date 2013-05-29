@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Wayne Cochran. All rights reserved.
 //
 
-#import "DailyFoodItemViewController.h"
+#import "FoodItemViewController.h"
 #import "FoodItem.h"
 #import "CalFooAppDelegate.h"
 
-@interface DailyFoodItemViewController ()
+@interface FoodItemViewController ()
 
 -(void)addFoodItem:(id)sender;
 -(void)cancelAddFoodItem:(id)sender;
@@ -18,16 +18,7 @@
 
 @end
 
-@implementation DailyFoodItemViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@implementation FoodItemViewController
 
 - (void)viewDidLoad
 {
