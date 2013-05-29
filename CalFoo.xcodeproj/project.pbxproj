@@ -11,6 +11,8 @@
 		5555F028174BDF7300DDEC7D /* FridgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F027174BDF7300DDEC7D /* FridgeViewController.m */; };
 		5555F02B174BF7D300DDEC7D /* FridgeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F02A174BF7D300DDEC7D /* FridgeItemViewController.m */; };
 		5555F02E174D2F3100DDEC7D /* AddFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F02D174D2F3100DDEC7D /* AddFoodViewController.m */; };
+		5555F0311756810700DDEC7D /* WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F0301756810700DDEC7D /* WorkoutListViewController.m */; };
+		5555F0341756853800DDEC7D /* ExerciseItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F0331756853800DDEC7D /* ExerciseItemViewController.m */; };
 		559467C1174AAE1700C029D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C0174AAE1700C029D9 /* UIKit.framework */; };
 		559467C3174AAE1700C029D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C2174AAE1700C029D9 /* Foundation.framework */; };
 		559467C5174AAE1700C029D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C4174AAE1700C029D9 /* CoreGraphics.framework */; };
@@ -39,6 +41,10 @@
 		5555F02A174BF7D300DDEC7D /* FridgeItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FridgeItemViewController.m; sourceTree = "<group>"; };
 		5555F02C174D2F3100DDEC7D /* AddFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFoodViewController.h; sourceTree = "<group>"; };
 		5555F02D174D2F3100DDEC7D /* AddFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFoodViewController.m; sourceTree = "<group>"; };
+		5555F02F1756810700DDEC7D /* WorkoutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutListViewController.h; sourceTree = "<group>"; };
+		5555F0301756810700DDEC7D /* WorkoutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutListViewController.m; sourceTree = "<group>"; };
+		5555F0321756853800DDEC7D /* ExerciseItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseItemViewController.h; sourceTree = "<group>"; };
+		5555F0331756853800DDEC7D /* ExerciseItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseItemViewController.m; sourceTree = "<group>"; };
 		559467BD174AAE1700C029D9 /* CalFoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalFoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		559467C0174AAE1700C029D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		559467C2174AAE1700C029D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -126,6 +132,10 @@
 				5555F02D174D2F3100DDEC7D /* AddFoodViewController.m */,
 				55539935174D1D3A000D1E44 /* FoodItemViewController.h */,
 				55539936174D1D3A000D1E44 /* FoodItemViewController.m */,
+				5555F02F1756810700DDEC7D /* WorkoutListViewController.h */,
+				5555F0301756810700DDEC7D /* WorkoutListViewController.m */,
+				5555F0321756853800DDEC7D /* ExerciseItemViewController.h */,
+				5555F0331756853800DDEC7D /* ExerciseItemViewController.m */,
 				559467E5174AAE1700C029D9 /* second.png */,
 				559467E7174AAE1700C029D9 /* second@2x.png */,
 				559467C7174AAE1700C029D9 /* Supporting Files */,
@@ -239,6 +249,8 @@
 				5555F02B174BF7D300DDEC7D /* FridgeItemViewController.m in Sources */,
 				55539937174D1D3A000D1E44 /* FoodItemViewController.m in Sources */,
 				5555F02E174D2F3100DDEC7D /* AddFoodViewController.m in Sources */,
+				5555F0311756810700DDEC7D /* WorkoutListViewController.m in Sources */,
+				5555F0341756853800DDEC7D /* ExerciseItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

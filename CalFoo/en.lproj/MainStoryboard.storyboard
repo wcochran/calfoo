@@ -18,6 +18,7 @@
                         <segue destination="HBS-iy-YIO" kind="relationship" relationship="viewControllers" id="Ast-kd-rXN"/>
                         <segue destination="Aa2-B8-74X" kind="relationship" relationship="viewControllers" id="ova-JI-h2K"/>
                         <segue destination="CHd-8H-jcG" kind="relationship" relationship="viewControllers" id="xUW-mG-NYF"/>
+                        <segue destination="6Ed-fJ-BC2" kind="relationship" relationship="viewControllers" id="6MF-WW-MXB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
@@ -281,6 +282,64 @@
             </objects>
             <point key="canvasLocation" x="1087" y="1013"/>
         </scene>
+        <!--Workout List View Controller - Workouts-->
+        <scene sceneID="ry3-XK-Eub">
+            <objects>
+                <tableViewController id="hwV-Pd-8cf" customClass="WorkoutListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iCQ-JX-PyQ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WorkoutListCell" textLabel="JtR-rF-bZ2" style="IBUITableViewCellStyleDefault" id="84h-UA-54O">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Workout Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtR-rF-bZ2">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="mAQ-zb-jXb" kind="push" identifier="ExerciseItemDetailSegue" id="OkV-1J-S4A"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Workouts" id="f0W-7p-fml">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qhb-U2-1H5">
+                            <connections>
+                                <segue destination="I4V-pm-KvX" kind="modal" identifier="ExerciseAddItemSegue" id="T3f-Rc-IgH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TYj-Lt-wyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1087" y="1603"/>
+        </scene>
+        <!--Navigation Controller - Workouts-->
+        <scene sceneID="5Pv-CZ-OSU">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="6Ed-fJ-BC2" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Workouts" id="3P1-UX-uFa"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QQH-v9-yrC">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hwV-Pd-8cf" kind="relationship" relationship="rootViewController" id="uaa-Eh-rK6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yKK-76-jyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="669" y="1603"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="EMJ-Wy-Ey1">
             <objects>
@@ -295,6 +354,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIi-A1-BwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1584" y="723"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cbQ-IK-kQD">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="I4V-pm-KvX" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rJE-LF-9b8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mAQ-zb-jXb" kind="relationship" relationship="rootViewController" id="daa-RW-5aw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bm8-tb-UOb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1584" y="1415"/>
         </scene>
         <!--Fridge Item View Controller - Fridge Item-->
         <scene sceneID="eTF-ec-6OQ">
@@ -544,6 +618,125 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pD-lE-6bL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2028" y="1195"/>
+        </scene>
+        <!--Exercise Item View Controller - Workout-->
+        <scene sceneID="pgK-7M-lj9">
+            <objects>
+                <tableViewController id="mAQ-zb-jXb" customClass="ExerciseItemViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="LlP-wD-6Tb">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="PBA-p3-iPS">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6Ru-dm-xY0">
+                                        <rect key="frame" x="0.0" y="10" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ssw-Wo-5dy">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="editingChangedForTextField:" destination="mAQ-zb-jXb" eventType="editingChanged" id="fYj-Wg-yGj"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="ssw-Wo-5dy" secondAttribute="trailing" constant="20" type="default" id="FCt-NZ-Dg8"/>
+                                            <constraint firstItem="ssw-Wo-5dy" firstAttribute="leading" secondItem="6Ru-dm-xY0" secondAttribute="leading" constant="20" type="default" id="USM-iN-T2e"/>
+                                            <constraint firstItem="ssw-Wo-5dy" firstAttribute="top" secondItem="6Ru-dm-xY0" secondAttribute="top" constant="8" id="x2j-Q0-PdC"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Bp3-UY-eYe">
+                                        <rect key="frame" x="0.0" y="55" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Calories" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoO-Xe-X72">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="calories" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uRE-la-yFd">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="123" id="Aft-fM-Wla"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                    <connections>
+                                                        <action selector="editingChangedForTextField:" destination="mAQ-zb-jXb" eventType="editingChanged" id="OX3-uK-pEW"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="uRE-la-yFd" secondAttribute="trailing" constant="21" id="2Nb-HI-CKd"/>
+                                            <constraint firstItem="yoO-Xe-X72" firstAttribute="leading" secondItem="Bp3-UY-eYe" secondAttribute="leading" constant="30" id="2bj-MA-Mb0"/>
+                                            <constraint firstItem="uRE-la-yFd" firstAttribute="centerY" secondItem="Bp3-UY-eYe" secondAttribute="centerY" type="default" id="WLL-SB-gAO"/>
+                                            <constraint firstItem="uRE-la-yFd" firstAttribute="baseline" secondItem="yoO-Xe-X72" secondAttribute="baseline" type="default" id="iO4-8H-3jl"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="185" id="yTn-rx-S63">
+                                        <rect key="frame" x="0.0" y="99" width="320" height="186"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="184"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sl6-c6-30N">
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="260" id="i6W-MQ-qI7"/>
+                                                        <constraint firstAttribute="height" constant="127" id="pRd-fu-JH6"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="mAQ-zb-jXb" id="s1C-e2-2Rx"/>
+                                                    </connections>
+                                                </textView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Notes:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOl-Xj-7js">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="GOl-Xj-7js" firstAttribute="leading" secondItem="Sl6-c6-30N" secondAttribute="leading" type="default" id="JTv-s9-ThN"/>
+                                            <constraint firstItem="Sl6-c6-30N" firstAttribute="top" secondItem="GOl-Xj-7js" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="UFo-QZ-rhf"/>
+                                            <constraint firstItem="GOl-Xj-7js" firstAttribute="top" secondItem="yTn-rx-S63" secondAttribute="top" constant="8" id="jMV-eo-spU"/>
+                                            <constraint firstItem="Sl6-c6-30N" firstAttribute="centerX" secondItem="yTn-rx-S63" secondAttribute="centerX" type="default" id="sks-6U-h8u"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="mAQ-zb-jXb" id="DKd-UB-ePb"/>
+                            <outlet property="delegate" destination="mAQ-zb-jXb" id="oPr-G8-KFa"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Workout" id="vfH-eg-HWW"/>
+                    <connections>
+                        <outlet property="caloriesTextField" destination="uRE-la-yFd" id="u5X-gF-1Pc"/>
+                        <outlet property="descriptionTextField" destination="ssw-Wo-5dy" id="6s2-LV-1xQ"/>
+                        <outlet property="notesTextView" destination="Sl6-c6-30N" id="KvI-v8-Yoz"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tZz-Er-Vvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2028" y="1869"/>
         </scene>
         <!--Navigation Controller - Fridge-->
         <scene sceneID="yDZ-So-LRG">
@@ -976,6 +1169,15 @@
                 <relationship kind="action" name="addCalItem:"/>
             </relationships>
         </class>
+        <class className="ExerciseItemViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExerciseItemViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="editingChangedForTextField:" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="caloriesTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="notesTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
         <class className="FoodItemViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FoodItemViewController.h"/>
             <relationships>
@@ -1015,6 +1217,9 @@
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
+        <class className="WorkoutListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutListViewController.h"/>
+        </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1022,6 +1227,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="OkV-1J-S4A"/>
         <segue reference="hcW-ES-7wJ"/>
         <segue reference="AbT-QE-Mpo"/>
     </inferredMetricsTieBreakers>
