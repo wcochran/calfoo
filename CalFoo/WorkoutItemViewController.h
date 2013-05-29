@@ -11,7 +11,7 @@
 @class WorkoutItem;
 
 
-@interface ExerciseItemViewController : UITableViewController <UITextViewDelegate>
+@interface WorkoutItemViewController : UITableViewController <UITextViewDelegate>
 
 @property (assign, nonatomic) NSInteger exercisesIndex; // -1 => adding item
 

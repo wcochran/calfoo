@@ -9,7 +9,7 @@
 #import "WorkoutListViewController.h"
 #import "CalFooAppDelegate.h"
 #import "WorkoutItem.h"
-#import "ExerciseItemViewController.h"
+#import "WorkoutItemViewController.h"
 
 @interface WorkoutListViewController ()
 
@@ -119,11 +119,11 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ExerciseItemDetailSegue"]) {
-        ExerciseItemViewController *viewController = (ExerciseItemViewController *)segue.destinationViewController;
+        WorkoutItemViewController *viewController = (WorkoutItemViewController *)segue.destinationViewController;
         viewController.exercisesIndex = [self.tableView indexPathForCell:sender].row;
     } else if ([segue.identifier isEqualToString:@"ExerciseAddItemSegue"]) {
         UINavigationController *navController = (UINavigationController*)segue.destinationViewController;
-        ExerciseItemViewController *viewController = (ExerciseItemViewController *)navController.topViewController;
+        WorkoutItemViewController *viewController = (WorkoutItemViewController *)navController.topViewController;
         viewController.exercisesIndex = -1;
     }
 }

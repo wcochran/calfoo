@@ -619,10 +619,10 @@
             </objects>
             <point key="canvasLocation" x="2028" y="1195"/>
         </scene>
-        <!--Exercise Item View Controller - Workout-->
+        <!--Workout Item View Controller - Workout-->
         <scene sceneID="pgK-7M-lj9">
             <objects>
-                <tableViewController id="mAQ-zb-jXb" customClass="ExerciseItemViewController" sceneMemberID="viewController">
+                <tableViewController id="mAQ-zb-jXb" customClass="WorkoutItemViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="LlP-wD-6Tb">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1167,15 +1167,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CalsTodayViewController.h"/>
             <relationships>
                 <relationship kind="action" name="addCalItem:"/>
-            </relationships>
-        </class>
-        <class className="ExerciseItemViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExerciseItemViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="editingChangedForTextField:" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="caloriesTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="notesTextView" candidateClass="UITextView"/>
             </relationships>
         </class>
         <class className="FoodItemViewController" superclassName="UITableViewController">

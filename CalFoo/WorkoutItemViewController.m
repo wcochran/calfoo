@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Wayne Cochran. All rights reserved.
 //
 
-#import "ExerciseItemViewController.h"
+#import "WorkoutItemViewController.h"
 #import "CalFooAppDelegate.h"
 #import "WorkoutItem.h"
 
@@ -14,7 +14,7 @@
 #define CALORIES_TAG 2
 #define NOTES_TAG 3
 
-@interface ExerciseItemViewController ()
+@interface WorkoutItemViewController ()
 
 -(void)additem:(id)sender;
 -(void)cancelAddItem:(id)sender;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation ExerciseItemViewController {
+@implementation WorkoutItemViewController {
     WorkoutItem *_exerciseItem;
     int _exerciseItemDirtyBits;
 }
