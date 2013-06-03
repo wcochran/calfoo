@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55539937174D1D3A000D1E44 /* FoodItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55539936174D1D3A000D1E44 /* FoodItemViewController.m */; };
+		55187415175D27FC008686D8 /* TodayWorkoutItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55187414175D27FC008686D8 /* TodayWorkoutItemViewController.m */; };
+		55539937174D1D3A000D1E44 /* TodayFoodItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55539936174D1D3A000D1E44 /* TodayFoodItemViewController.m */; };
 		5555F028174BDF7300DDEC7D /* FridgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F027174BDF7300DDEC7D /* FridgeViewController.m */; };
 		5555F02B174BF7D300DDEC7D /* FridgeItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F02A174BF7D300DDEC7D /* FridgeItemViewController.m */; };
-		5555F02E174D2F3100DDEC7D /* AddFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F02D174D2F3100DDEC7D /* AddFoodViewController.m */; };
+		5555F02E174D2F3100DDEC7D /* TodayAddFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F02D174D2F3100DDEC7D /* TodayAddFoodViewController.m */; };
 		5555F0311756810700DDEC7D /* WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F0301756810700DDEC7D /* WorkoutListViewController.m */; };
 		5555F0341756853800DDEC7D /* WorkoutItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F0331756853800DDEC7D /* WorkoutItemViewController.m */; };
 		559467C1174AAE1700C029D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C0174AAE1700C029D9 /* UIKit.framework */; };
@@ -33,14 +34,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		55539935174D1D3A000D1E44 /* FoodItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemViewController.h; sourceTree = "<group>"; };
-		55539936174D1D3A000D1E44 /* FoodItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemViewController.m; sourceTree = "<group>"; };
+		55187413175D27FC008686D8 /* TodayWorkoutItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayWorkoutItemViewController.h; sourceTree = "<group>"; };
+		55187414175D27FC008686D8 /* TodayWorkoutItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayWorkoutItemViewController.m; sourceTree = "<group>"; };
+		55539935174D1D3A000D1E44 /* TodayFoodItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayFoodItemViewController.h; sourceTree = "<group>"; };
+		55539936174D1D3A000D1E44 /* TodayFoodItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayFoodItemViewController.m; sourceTree = "<group>"; };
 		5555F026174BDF7300DDEC7D /* FridgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FridgeViewController.h; sourceTree = "<group>"; };
 		5555F027174BDF7300DDEC7D /* FridgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FridgeViewController.m; sourceTree = "<group>"; };
 		5555F029174BF7D300DDEC7D /* FridgeItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FridgeItemViewController.h; sourceTree = "<group>"; };
 		5555F02A174BF7D300DDEC7D /* FridgeItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FridgeItemViewController.m; sourceTree = "<group>"; };
-		5555F02C174D2F3100DDEC7D /* AddFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFoodViewController.h; sourceTree = "<group>"; };
-		5555F02D174D2F3100DDEC7D /* AddFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFoodViewController.m; sourceTree = "<group>"; };
+		5555F02C174D2F3100DDEC7D /* TodayAddFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayAddFoodViewController.h; sourceTree = "<group>"; };
+		5555F02D174D2F3100DDEC7D /* TodayAddFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayAddFoodViewController.m; sourceTree = "<group>"; };
 		5555F02F1756810700DDEC7D /* WorkoutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutListViewController.h; sourceTree = "<group>"; };
 		5555F0301756810700DDEC7D /* WorkoutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutListViewController.m; sourceTree = "<group>"; };
 		5555F0321756853800DDEC7D /* WorkoutItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutItemViewController.h; sourceTree = "<group>"; };
@@ -128,14 +131,16 @@
 				5555F027174BDF7300DDEC7D /* FridgeViewController.m */,
 				5555F029174BF7D300DDEC7D /* FridgeItemViewController.h */,
 				5555F02A174BF7D300DDEC7D /* FridgeItemViewController.m */,
-				5555F02C174D2F3100DDEC7D /* AddFoodViewController.h */,
-				5555F02D174D2F3100DDEC7D /* AddFoodViewController.m */,
-				55539935174D1D3A000D1E44 /* FoodItemViewController.h */,
-				55539936174D1D3A000D1E44 /* FoodItemViewController.m */,
+				5555F02C174D2F3100DDEC7D /* TodayAddFoodViewController.h */,
+				5555F02D174D2F3100DDEC7D /* TodayAddFoodViewController.m */,
+				55539935174D1D3A000D1E44 /* TodayFoodItemViewController.h */,
+				55539936174D1D3A000D1E44 /* TodayFoodItemViewController.m */,
 				5555F02F1756810700DDEC7D /* WorkoutListViewController.h */,
 				5555F0301756810700DDEC7D /* WorkoutListViewController.m */,
 				5555F0321756853800DDEC7D /* WorkoutItemViewController.h */,
 				5555F0331756853800DDEC7D /* WorkoutItemViewController.m */,
+				55187413175D27FC008686D8 /* TodayWorkoutItemViewController.h */,
+				55187414175D27FC008686D8 /* TodayWorkoutItemViewController.m */,
 				559467E5174AAE1700C029D9 /* second.png */,
 				559467E7174AAE1700C029D9 /* second@2x.png */,
 				559467C7174AAE1700C029D9 /* Supporting Files */,
@@ -247,10 +252,11 @@
 				55D1CA7D174BC53C001F3D92 /* CalsTodayViewController.m in Sources */,
 				5555F028174BDF7300DDEC7D /* FridgeViewController.m in Sources */,
 				5555F02B174BF7D300DDEC7D /* FridgeItemViewController.m in Sources */,
-				55539937174D1D3A000D1E44 /* FoodItemViewController.m in Sources */,
-				5555F02E174D2F3100DDEC7D /* AddFoodViewController.m in Sources */,
+				55539937174D1D3A000D1E44 /* TodayFoodItemViewController.m in Sources */,
+				5555F02E174D2F3100DDEC7D /* TodayAddFoodViewController.m in Sources */,
 				5555F0311756810700DDEC7D /* WorkoutListViewController.m in Sources */,
 				5555F0341756853800DDEC7D /* WorkoutItemViewController.m in Sources */,
+				55187415175D27FC008686D8 /* TodayWorkoutItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

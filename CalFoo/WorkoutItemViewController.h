@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class WorkoutItem;
-
-
 @interface WorkoutItemViewController : UITableViewController <UITextViewDelegate>
 
 @property (assign, nonatomic) NSInteger exercisesIndex; // -1 => adding item

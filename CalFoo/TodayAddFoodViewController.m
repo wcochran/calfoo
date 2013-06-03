@@ -6,12 +6,12 @@
 //  Copyright (c) 2013 Wayne Cochran. All rights reserved.
 //
 
-#import "AddFoodViewController.h"
+#import "TodayAddFoodViewController.h"
 #import "CalFooAppDelegate.h"
 #import "FoodItem.h"
-#import "FoodItemViewController.h"
+#import "TodayFoodItemViewController.h"
 
-@interface AddFoodViewController () <FoodItemViewControllerDelegate>
+@interface TodayAddFoodViewController () <TodayFoodItemViewControllerDelegate>
 
 @property (strong, nonatomic) FoodItem *foodItem;
 
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation AddFoodViewController
+@implementation TodayAddFoodViewController
 
 - (void)viewDidLoad
 {
@@ -117,7 +117,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"TodayAddFoodDetailSegue"]) {
         UINavigationController *navController = (UINavigationController*) segue.destinationViewController;
-        FoodItemViewController *foodItemViewController = (FoodItemViewController*) navController.topViewController;
+        TodayFoodItemViewController *foodItemViewController = (TodayFoodItemViewController*) navController.topViewController;
         int tag = [sender tag];
         FoodItem *item;
         if (tag == SEARCH_RESULTS_TABLE_VIEW_CELL_TAG) {

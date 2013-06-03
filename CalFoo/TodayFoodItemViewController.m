@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Wayne Cochran. All rights reserved.
 //
 
-#import "FoodItemViewController.h"
+#import "TodayFoodItemViewController.h"
 #import "FoodItem.h"
 #import "CalFooAppDelegate.h"
 
@@ -20,7 +20,7 @@
  printf("%.*g\n", (i+2), f3);
  */
 
-@interface FoodItemViewController ()
+@interface TodayFoodItemViewController ()
 
 -(void)addFoodItem:(id)sender;
 -(void)cancelAddFoodItem:(id)sender;
@@ -28,7 +28,7 @@
 
 @end
 
-@implementation FoodItemViewController {
+@implementation TodayFoodItemViewController {
     //
     // Storing the number of servings in the slider control is a bad idea since
     // it clamps the value to its min and max value and we want to be able to store

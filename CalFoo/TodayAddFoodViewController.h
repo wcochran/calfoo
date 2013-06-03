@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddFoodViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
+@interface TodayAddFoodViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *filteredFridgeItems;
