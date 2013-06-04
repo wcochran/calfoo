@@ -1,0 +1,2 @@
+convert fridge.pdf -resize 30x30 -transparent white fridge.png
+convert fridge.pdf -resize 60x60 -transparent white fridge@2x.png
