@@ -11,10 +11,12 @@
 #import "FoodItem.h"
 #import "WorkoutItem.h"
 #import "TodayFoodItemViewController.h"
+#import "TodayWorkoutItemViewController.h"
 
-@interface CalsTodayViewController () <UIActionSheetDelegate, TodayFoodItemViewControllerDelegate>
+@interface CalsTodayViewController () <UIActionSheetDelegate, TodayFoodItemViewControllerDelegate, TodayWorkoutItemViewControllerDelegate>
 
 -(void)foodChanged:(NSNotification*)notification;
+-(void)workoutChanged:(NSNotification*)notification;
 
 @end
 
@@ -25,6 +27,7 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foodChanged:) name:kFoodChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workoutChanged:) name:kTodaysExercisesChangedNotification object:nil];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -40,6 +43,12 @@
     if (notification.object != self) {
         [self.tableView reloadData];
     }
+}
+
+-(void)workoutChanged:(NSNotification*)notification {
+    if (notification.object != self) {
+        [self.tableView reloadData];
+    }   
 }
 
 - (void)didReceiveMemoryWarning
@@ -155,7 +164,7 @@
             [self performSegueWithIdentifier:@"TodayAddFoodSegue" sender:self];
             break;
         case ADD_WORKOUT_BUTTON_INDEX:
-            NSLog(@"add workout..."); // XXXX
+            // XXX 
             break;
         case CANCEL_BUTTON_INDEX:
             NSLog(@"cancel...");
@@ -176,6 +185,14 @@
         foodItemViewController.item = item;
         foodItemViewController.addingItem = NO;
         foodItemViewController.itemDelegate = self;
+    } else if ([segue.identifier isEqualToString:@"TodayWorkoutItemDetailSegue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        WorkoutItem *item = [appDelegate.todaysExercises objectAtIndex:indexPath.row];
+        TodayWorkoutItemViewController *workoutItemViewController = (TodayWorkoutItemViewController*)segue.destinationViewController;
+        workoutItemViewController.item = item;
+        workoutItemViewController.addingItem = NO;
+        workoutItemViewController.itemDelegate = self;
     }
 }
 
@@ -191,5 +208,17 @@
     // should not happen (happens in "adding" item)
 }
 
+
+-(void)didAddWorkoutItem:(id)sender {
+    
+}
+
+-(void)didCancelAddWorkoutItem:(id)sender {
+    
+}
+
+-(void)didEditWorkoutItem:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end
