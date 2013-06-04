@@ -71,6 +71,10 @@
     return section == 0 ? [appDelegate.todaysFood count] : [appDelegate.todaysExercises count];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return (section == 0) ? @"Food" : @"Workouts";
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];

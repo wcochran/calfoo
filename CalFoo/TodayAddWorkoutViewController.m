@@ -98,7 +98,7 @@
         CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         WorkoutItem *item = [appDelegate.exercises objectAtIndex:indexPath.row];
         workoutItemViewController.addingItem = YES;
-        workoutItemViewController.item = item;
+        workoutItemViewController.item = [item copy]; // DEEP COPY
         workoutItemViewController.itemDelegate = self;
     }
 }
