@@ -202,7 +202,7 @@
         <scene sceneID="xwA-2G-uI4">
             <objects>
                 <navigationController definesPresentationContext="YES" id="HBS-iy-YIO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Summary" id="Iig-SV-VmO"/>
+                    <tabBarItem key="tabBarItem" title="Summary" image="summary.png" id="Iig-SV-VmO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tGT-2X-Wyi">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -328,7 +328,7 @@
         <scene sceneID="5Pv-CZ-OSU">
             <objects>
                 <navigationController definesPresentationContext="YES" id="6Ed-fJ-BC2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Workouts" id="3P1-UX-uFa"/>
+                    <tabBarItem key="tabBarItem" title="Workouts" image="workouts.png" id="3P1-UX-uFa"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QQH-v9-yrC">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -933,7 +933,7 @@
         <scene sceneID="yDZ-So-LRG">
             <objects>
                 <navigationController definesPresentationContext="YES" id="CHd-8H-jcG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Fridge" id="gWk-eR-85C"/>
+                    <tabBarItem key="tabBarItem" title="Fridge" image="fridge.png" id="gWk-eR-85C"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KfD-ri-WCi">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1322,11 +1322,11 @@
             </objects>
             <point key="canvasLocation" x="1977" y="-763"/>
         </scene>
-        <!--Navigation Controller - Cals Today-->
+        <!--Navigation Controller - Today-->
         <scene sceneID="B3T-wQ-EmG">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Aa2-B8-74X" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cals Today" id="9PE-Om-cif"/>
+                    <tabBarItem key="tabBarItem" title="Today" image="calories.png" id="9PE-Om-cif"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DNC-rD-wdr">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1339,6 +1339,101 @@
             <point key="canvasLocation" x="669" y="427"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="calories.png" width="30" height="30"/>
+        <image name="fridge.png" width="30" height="30"/>
+        <image name="summary.png" width="30" height="30"/>
+        <image name="workouts.png" width="30" height="30"/>
+    </resources>
+    <classes>
+        <class className="CalSummaryViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalSummaryViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resetForNewDay:"/>
+                <relationship kind="outlet" name="caloriesBurnedCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="carbsCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="fatCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="netCaloriesCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="proteinCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="totalCaloriesCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="CalsTodayViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalsTodayViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addCalItem:"/>
+            </relationships>
+        </class>
+        <class className="FridgeItemViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FridgeItemViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="textFieldEditingChanged:" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="caloriesTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="carbsTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="fatTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="proteinTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="servingSizeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="servingUnitsTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="FridgeViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FridgeViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="TodayAddFoodViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TodayAddFoodViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="TodayAddWorkoutViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TodayAddWorkoutViewController.h"/>
+        </class>
+        <class className="TodayFoodItemViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TodayFoodItemViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="numServingsEdited:" candidateClass="UITextField"/>
+                <relationship kind="action" name="numServingsSliderSlid:" candidateClass="UISlider"/>
+                <relationship kind="action" name="numUnitsEdited:" candidateClass="UITextField"/>
+                <relationship kind="action" name="numUnitsSliderSlid:" candidateClass="UISlider"/>
+                <relationship kind="action" name="totalCaloriesEdited:" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="descriptionCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="numServingsSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="numServingsTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="numUnitsSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="numUnitsTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="totalCaloriesTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="unitsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TodayWorkoutItemViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TodayWorkoutItemViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="textFieldEditingChanged:" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="caloriesTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="notesTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="WorkoutItemViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutItemViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="editingChangedForTextField:" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="caloriesTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="notesTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="WorkoutListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutListViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

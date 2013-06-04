@@ -15,6 +15,14 @@
 		5555F0311756810700DDEC7D /* WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F0301756810700DDEC7D /* WorkoutListViewController.m */; };
 		5555F0341756853800DDEC7D /* WorkoutItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F0331756853800DDEC7D /* WorkoutItemViewController.m */; };
 		5555F037175E715000DDEC7D /* TodayAddWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F036175E715000DDEC7D /* TodayAddWorkoutViewController.m */; };
+		5555F03B175E93C400DDEC7D /* fridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 5555F03A175E93C400DDEC7D /* fridge.png */; };
+		5555F03D175E93D600DDEC7D /* fridge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5555F03C175E93D600DDEC7D /* fridge@2x.png */; };
+		5555F040175E96EC00DDEC7D /* workouts.png in Resources */ = {isa = PBXBuildFile; fileRef = 5555F03E175E96EC00DDEC7D /* workouts.png */; };
+		5555F041175E96EC00DDEC7D /* workouts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5555F03F175E96EC00DDEC7D /* workouts@2x.png */; };
+		5555F044175E99B400DDEC7D /* calories.png in Resources */ = {isa = PBXBuildFile; fileRef = 5555F042175E99B400DDEC7D /* calories.png */; };
+		5555F045175E99B400DDEC7D /* calories@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5555F043175E99B400DDEC7D /* calories@2x.png */; };
+		5555F048175E9AAF00DDEC7D /* summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5555F046175E9AAF00DDEC7D /* summary.png */; };
+		5555F049175E9AAF00DDEC7D /* summary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5555F047175E9AAF00DDEC7D /* summary@2x.png */; };
 		559467C1174AAE1700C029D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C0174AAE1700C029D9 /* UIKit.framework */; };
 		559467C3174AAE1700C029D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C2174AAE1700C029D9 /* Foundation.framework */; };
 		559467C5174AAE1700C029D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C4174AAE1700C029D9 /* CoreGraphics.framework */; };
@@ -51,6 +59,14 @@
 		5555F0331756853800DDEC7D /* WorkoutItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutItemViewController.m; sourceTree = "<group>"; };
 		5555F035175E715000DDEC7D /* TodayAddWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayAddWorkoutViewController.h; sourceTree = "<group>"; };
 		5555F036175E715000DDEC7D /* TodayAddWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayAddWorkoutViewController.m; sourceTree = "<group>"; };
+		5555F03A175E93C400DDEC7D /* fridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fridge.png; path = etc/fridge.png; sourceTree = SOURCE_ROOT; };
+		5555F03C175E93D600DDEC7D /* fridge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fridge@2x.png"; path = "etc/fridge@2x.png"; sourceTree = SOURCE_ROOT; };
+		5555F03E175E96EC00DDEC7D /* workouts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = workouts.png; path = etc/workouts.png; sourceTree = SOURCE_ROOT; };
+		5555F03F175E96EC00DDEC7D /* workouts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "workouts@2x.png"; path = "etc/workouts@2x.png"; sourceTree = SOURCE_ROOT; };
+		5555F042175E99B400DDEC7D /* calories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calories.png; path = etc/calories.png; sourceTree = SOURCE_ROOT; };
+		5555F043175E99B400DDEC7D /* calories@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calories@2x.png"; path = "etc/calories@2x.png"; sourceTree = SOURCE_ROOT; };
+		5555F046175E9AAF00DDEC7D /* summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = summary.png; path = etc/summary.png; sourceTree = SOURCE_ROOT; };
+		5555F047175E9AAF00DDEC7D /* summary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "summary@2x.png"; path = "etc/summary@2x.png"; sourceTree = SOURCE_ROOT; };
 		559467BD174AAE1700C029D9 /* CalFoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalFoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		559467C0174AAE1700C029D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		559467C2174AAE1700C029D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -92,6 +108,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5555F039175E939600DDEC7D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				5555F03A175E93C400DDEC7D /* fridge.png */,
+				5555F03C175E93D600DDEC7D /* fridge@2x.png */,
+				5555F03E175E96EC00DDEC7D /* workouts.png */,
+				5555F03F175E96EC00DDEC7D /* workouts@2x.png */,
+				5555F042175E99B400DDEC7D /* calories.png */,
+				5555F043175E99B400DDEC7D /* calories@2x.png */,
+				5555F046175E9AAF00DDEC7D /* summary.png */,
+				5555F047175E9AAF00DDEC7D /* summary@2x.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		559467B4174AAE1700C029D9 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +177,7 @@
 				55187414175D27FC008686D8 /* TodayWorkoutItemViewController.m */,
 				5555F035175E715000DDEC7D /* TodayAddWorkoutViewController.h */,
 				5555F036175E715000DDEC7D /* TodayAddWorkoutViewController.m */,
+				5555F039175E939600DDEC7D /* images */,
 				559467E5174AAE1700C029D9 /* second.png */,
 				559467E7174AAE1700C029D9 /* second@2x.png */,
 				559467C7174AAE1700C029D9 /* Supporting Files */,
@@ -239,6 +271,14 @@
 				559467E6174AAE1700C029D9 /* second.png in Resources */,
 				559467E8174AAE1700C029D9 /* second@2x.png in Resources */,
 				55D2158A174DF94000E48BBB /* ToDo.rtf in Resources */,
+				5555F03B175E93C400DDEC7D /* fridge.png in Resources */,
+				5555F03D175E93D600DDEC7D /* fridge@2x.png in Resources */,
+				5555F040175E96EC00DDEC7D /* workouts.png in Resources */,
+				5555F041175E96EC00DDEC7D /* workouts@2x.png in Resources */,
+				5555F044175E99B400DDEC7D /* calories.png in Resources */,
+				5555F045175E99B400DDEC7D /* calories@2x.png in Resources */,
+				5555F048175E9AAF00DDEC7D /* summary.png in Resources */,
+				5555F049175E9AAF00DDEC7D /* summary@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
