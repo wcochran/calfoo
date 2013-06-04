@@ -13,6 +13,7 @@
 #define kFridgeChangedNotification @"FridgeChangedNotification"
 #define kFoodChangedNotification @"FoodChangedNotification"
 #define kExercisesChangedNotification @"kExercisesChangedNotification"
+#define kTodaysExercisesChangedNotification @"kTodaysExercisesChangedNotification"
 
 @interface CalFooAppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -7,10 +7,14 @@
 //
 
 #import "TodayWorkoutItemViewController.h"
+#import "WorkoutItem.h"
+#import "CalFooAppDelegate.h"
 
 @interface TodayWorkoutItemViewController ()
 
 -(void)cancelAddItem:(id)sender;
+-(void)addItem:(id)sender;
+-(void)doneEditingItem:(id)sender;
 
 @end
 
@@ -20,23 +24,40 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    if (self.addingItem) {
+     if (self.addingItem) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAddItem:)];
-        // XXX
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(addItem:)];
     } else {
-        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditingItem:)];
     }
+    
+    self.descriptionTextField.text = self.item.description;
+    self.caloriesTextField.text = [NSString stringWithFormat:@"%0.3g", self.item.calories];
+    self.notesTextView.text = self.item.notes;
 }
 
 -(void)cancelAddItem:(id)sender {
-    // XXX
+    [self.itemDelegate didCancelAddWorkoutItem:self]; // let delegate dismiss controller
 }
+
+-(void)addItem:(id)sender {
+    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate.todaysExercises addObject:self.item];
+    self.item.description = self.descriptionTextField.text;  // XXX check for empty description?
+    self.item.calories = [self.caloriesTextField.text floatValue];
+    self.item.notes = self.notesTextView.text;
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTodaysExercisesChangedNotification object:self];
+    [self.itemDelegate didAddWorkoutItem:self];  // let delegate dismiss controller
+}
+
+-(void)doneEditingItem:(id)sender {
+    self.item.description = self.descriptionTextField.text;  // XXX check for empty description?
+    self.item.calories = [self.caloriesTextField.text floatValue];
+    self.item.notes = self.notesTextView.text;
+    [[NSNotificationCenter defaultCenter] postNotificationName:kTodaysExercisesChangedNotification object:self];
+    [self.itemDelegate didEditWorkoutItem:self]; // let delegate dismiss controller
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -65,12 +86,12 @@
      */
 }
 
-- (IBAction)textFieldEditingChanged:(UITextField *)sender {
+- (IBAction)textFieldEditingChanged:(UITextField *)sender { // unused (for now)
 }
 
 #pragma mark Text View Delegate
 
-- (void)textViewDidChange:(UITextView *)textView {
+- (void)textViewDidChange:(UITextView *)textView {  // unused (for now)
 }
 
 @end
