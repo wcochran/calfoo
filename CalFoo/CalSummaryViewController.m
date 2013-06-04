@@ -14,6 +14,7 @@
 @interface CalSummaryViewController () <UIActionSheetDelegate>
 
 -(void)foodChanged:(NSNotification*)notification;
+-(void)workoutChanged:(NSNotification*)notification;
 
 @end
 
@@ -24,6 +25,7 @@
     [super viewDidLoad];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foodChanged:) name:kFoodChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workoutChanged:) name:kTodaysExercisesChangedNotification object:nil];
     
     [self updateSummary];
 }
@@ -33,6 +35,10 @@
 }
 
 -(void)foodChanged:(NSNotification*)notification {
+    [self updateSummary];
+}
+
+-(void)workoutChanged:(NSNotification*)notification {
     [self updateSummary];
 }
 

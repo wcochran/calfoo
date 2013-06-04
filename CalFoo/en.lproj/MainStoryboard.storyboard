@@ -493,7 +493,73 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdP-t6-QTJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1971" y="389"/>
+            <point key="canvasLocation" x="1977" y="-167"/>
+        </scene>
+        <!--Today Add Workout View Controller - Add Workout-->
+        <scene sceneID="hqY-iJ-GHR">
+            <objects>
+                <tableViewController id="410-tk-JdK" customClass="TodayAddWorkoutViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="IWP-3u-PpT">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DailyAddWorkoutCell" textLabel="WdQ-0y-gXK" style="IBUITableViewCellStyleDefault" id="BUQ-yO-MQI">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Workout Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WdQ-0y-gXK">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="OSX-ye-un6" kind="modal" identifier="TodayAddWorkoutDetailSegue" id="CkZ-1k-Mly"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add Workout" id="IsW-my-2dv"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f0U-bU-Fkd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2499" y="424"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6b1-uM-gMf">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="OSX-ye-un6" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vju-rF-q3e">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lZL-g3-cDZ" kind="relationship" relationship="rootViewController" id="aVj-7g-cDz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EaC-SJ-MZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3004" y="424"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="miy-dS-MHG">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="8C5-h6-tcu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CPj-nX-44V">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="410-tk-JdK" kind="relationship" relationship="rootViewController" id="Cer-IV-H9V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nSK-vd-HoV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1979" y="424"/>
         </scene>
         <!--Fridge Item View Controller - Fridge Item-->
         <scene sceneID="eTF-ec-6OQ">
@@ -951,18 +1017,19 @@
                     </navigationItem>
                     <connections>
                         <segue destination="8Of-v0-oyU" kind="modal" identifier="TodayAddFoodSegue" id="k65-VS-5hQ"/>
+                        <segue destination="8C5-h6-tcu" kind="modal" identifier="TodayAddWorkoutSegue" id="WMQ-sH-md5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bEm-va-RZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1087" y="427"/>
+            <point key="canvasLocation" x="1087" y="417"/>
         </scene>
         <!--Today Food Item View Controller - Food-->
         <scene sceneID="t2J-7b-5UI">
             <objects>
                 <tableViewController id="yem-ik-H9l" customClass="TodayFoodItemViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sJe-vM-s0h">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -1161,7 +1228,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bfr-21-3mR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1964" y="-772"/>
+            <point key="canvasLocation" x="1970" y="-1328"/>
         </scene>
         <!--Today Add Food View Controller - Add Food-->
         <scene sceneID="QWB-1s-SnO">
@@ -1223,7 +1290,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2422" y="-207"/>
+            <point key="canvasLocation" x="2428" y="-763"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vc5-KF-rQH">
@@ -1238,7 +1305,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mTi-hO-kfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2892" y="-425"/>
+            <point key="canvasLocation" x="2948" y="-763"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uh0-lS-xec">
@@ -1253,7 +1320,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZRl-3t-UrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1971" y="-207"/>
+            <point key="canvasLocation" x="1977" y="-763"/>
         </scene>
         <!--Navigation Controller - Cals Today-->
         <scene sceneID="B3T-wQ-EmG">
@@ -1278,8 +1345,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="daa-RW-5aw"/>
         <segue reference="uJb-kS-63r"/>
-        <segue reference="AbT-QE-Mpo"/>
+        <segue reference="qtS-pT-aRV"/>
+        <segue reference="Zi7-0w-xWr"/>
+        <segue reference="daa-RW-5aw"/>
     </inferredMetricsTieBreakers>
 </document>

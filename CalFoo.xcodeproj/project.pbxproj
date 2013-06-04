@@ -14,6 +14,7 @@
 		5555F02E174D2F3100DDEC7D /* TodayAddFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F02D174D2F3100DDEC7D /* TodayAddFoodViewController.m */; };
 		5555F0311756810700DDEC7D /* WorkoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F0301756810700DDEC7D /* WorkoutListViewController.m */; };
 		5555F0341756853800DDEC7D /* WorkoutItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F0331756853800DDEC7D /* WorkoutItemViewController.m */; };
+		5555F037175E715000DDEC7D /* TodayAddWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F036175E715000DDEC7D /* TodayAddWorkoutViewController.m */; };
 		559467C1174AAE1700C029D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C0174AAE1700C029D9 /* UIKit.framework */; };
 		559467C3174AAE1700C029D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C2174AAE1700C029D9 /* Foundation.framework */; };
 		559467C5174AAE1700C029D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C4174AAE1700C029D9 /* CoreGraphics.framework */; };
@@ -48,6 +49,8 @@
 		5555F0301756810700DDEC7D /* WorkoutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutListViewController.m; sourceTree = "<group>"; };
 		5555F0321756853800DDEC7D /* WorkoutItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutItemViewController.h; sourceTree = "<group>"; };
 		5555F0331756853800DDEC7D /* WorkoutItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutItemViewController.m; sourceTree = "<group>"; };
+		5555F035175E715000DDEC7D /* TodayAddWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayAddWorkoutViewController.h; sourceTree = "<group>"; };
+		5555F036175E715000DDEC7D /* TodayAddWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayAddWorkoutViewController.m; sourceTree = "<group>"; };
 		559467BD174AAE1700C029D9 /* CalFoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalFoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		559467C0174AAE1700C029D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		559467C2174AAE1700C029D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -141,6 +144,8 @@
 				5555F0331756853800DDEC7D /* WorkoutItemViewController.m */,
 				55187413175D27FC008686D8 /* TodayWorkoutItemViewController.h */,
 				55187414175D27FC008686D8 /* TodayWorkoutItemViewController.m */,
+				5555F035175E715000DDEC7D /* TodayAddWorkoutViewController.h */,
+				5555F036175E715000DDEC7D /* TodayAddWorkoutViewController.m */,
 				559467E5174AAE1700C029D9 /* second.png */,
 				559467E7174AAE1700C029D9 /* second@2x.png */,
 				559467C7174AAE1700C029D9 /* Supporting Files */,
@@ -257,6 +262,7 @@
 				5555F0311756810700DDEC7D /* WorkoutListViewController.m in Sources */,
 				5555F0341756853800DDEC7D /* WorkoutItemViewController.m in Sources */,
 				55187415175D27FC008686D8 /* TodayWorkoutItemViewController.m in Sources */,
+				5555F037175E715000DDEC7D /* TodayAddWorkoutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

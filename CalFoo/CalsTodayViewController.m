@@ -12,6 +12,7 @@
 #import "WorkoutItem.h"
 #import "TodayFoodItemViewController.h"
 #import "TodayWorkoutItemViewController.h"
+#import "TodayAddWorkoutViewController.h"
 
 @interface CalsTodayViewController () <UIActionSheetDelegate, TodayFoodItemViewControllerDelegate, TodayWorkoutItemViewControllerDelegate>
 
@@ -164,10 +165,10 @@
             [self performSegueWithIdentifier:@"TodayAddFoodSegue" sender:self];
             break;
         case ADD_WORKOUT_BUTTON_INDEX:
-            // XXX 
+            [self performSegueWithIdentifier:@"TodayAddWorkoutSegue" sender:self];
             break;
         case CANCEL_BUTTON_INDEX:
-            NSLog(@"cancel...");
+            break;
     }
 }
 
