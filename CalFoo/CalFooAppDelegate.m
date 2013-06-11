@@ -19,9 +19,7 @@
 #define kTodaysFoodKey @"todaysfood"
 #define kTodaysExerciseKey @"todaysexercise"
 
-//#define kUserInfoDB @"userinfo_db.sqlite"
-//#define kUserFoodTable @"tblFood"
-//#define kUserExercisesTable @"tblExercises"
+#define kUserDataArchive @"userdata.plist"
 
 @interface CalFooAppDelegate ()
 
@@ -159,41 +157,28 @@
 }
 
 -(void)archiveToday {
-//    NSString *path = [self pathForFileName:kUserInfoDB];
-//    sqlite3 *db;
-//    if (sqlite3_open([path UTF8String], &db) != SQLITE_OK) {
-//        NSLog(@"Opened sqlite database at %@", path);
-//        return;
-//    }
-//    
-//    NSString *sql = [NSString stringWithFormat:
-//                     @"CREATE TABLE IF NOT EXISTS %@"
-//                     "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
-//                     "timestamp TEXT"
-//                     "description TEXT,"
-//                     "servingSize REAL"
-//                     "servingUnits TEXT"
-//                     "numServings REAL"
-//                     "fatGrams REAL"
-//                     "carbsGrams REAL,"
-//                     "proteinGrams REAL,"
-//                     "calories REAL);", kUserFoodTable];
-//    char *err;
-//    if (sqlite3_exec(db, [sql UTF8String], NULL, NULL, &err) != SQLITE_OK) {
-//        NSLog(@"Failed to open database at %@ with error %s", path, err);
-//        sqlite3_close(db);
-//    }
-//    
-//    sql = [NSString stringWithFormat:@"INSERT INTO %@ (timestamp, description, servingSize, servingUnits, numServings, fatGrams, carbsGrams, proteinGrams, calories') VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);", kUserFoodTable];
-//    sqlite3_stmt *addStmt = nil;
-//    if (sqlite3_prepare_v2(db, [sql UTF8String], -1, &addStmt, NULL) != SQLITE_OK) {
-//        NSLog(@"Failed to create add statement: '%s'", sqlite3_errmsg(db));
-//        return;
-//    }
-//    FoodItem *foodItem = self.todaysFood
-//    sqlite3_bind_text(addStmt, 1, self.todaysFood
+    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
+    float fatGrams = 0;
+    float carbsGrams = 0;
+    float proteinGrams = 0;
+    float totalCalories = 0;
+    for (FoodItem *item in appDelegate.todaysFood) {
+        fatGrams += item.fatGrams*item.numServings;
+        carbsGrams += item.carbsGrams*item.numServings;
+        proteinGrams += item.proteinGrams*item.numServings;
+        totalCalories += item.calories*item.numServings;
+    }
+ 
+    float burnedCalories = 0;
+    for (WorkoutItem *item in appDelegate.todaysExercises) {
+        burnedCalories += item.calories;
+    }
     
+    NSMutableDictionary *entry = [[NSMutableDictionary alloc] init];
+    [entry setObject:self.today forKey:@"date"];
+    
+    XXXX;
 }
 
 

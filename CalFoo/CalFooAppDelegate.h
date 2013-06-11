@@ -32,6 +32,7 @@
 @property (nonatomic, strong) NSMutableArray *todaysFood;
 @property (nonatomic, strong) NSMutableArray *todaysExercises;
 
+@property (nonatomic, strong) NSMutableArray *dataArchive;
 -(void)archiveToday;
 
 @end
