@@ -58,7 +58,7 @@
 }
 
 - (IBAction)resetForNewDay:(id)sender {
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Start a new Day" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Clear and reset" otherButtonTitles:nil];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Start a new day" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Clear and reset" otherButtonTitles:nil];
     [sheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
 }
 
@@ -83,7 +83,8 @@
     
     self.totalCaloriesCell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f", totalCalories];
     self.caloriesBurnedCell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f", burnedCalories];
-    self.netCaloriesCell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f", totalCalories - burnedCalories];
+    const float netCalories = totalCalories - burnedCalories;
+    self.netCaloriesCell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f", netCalories];
     
     self.fatCell.textLabel.text = [NSString stringWithFormat:@"Fat (%0.0fg)", fatGrams];
     self.carbsCell.textLabel.text = [NSString stringWithFormat:@"Carbs (%0.0fg)", carbsGrams];
