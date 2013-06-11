@@ -22,14 +22,16 @@
 //
 // Local database of foods and excersize routines.
 //
-@property (nonatomic, retain) NSMutableArray *fridge;
-@property (nonatomic, retain) NSMutableArray *exercises;
+@property (nonatomic, strong) NSMutableArray *fridge;
+@property (nonatomic, strong) NSMutableArray *exercises;
 
 //
 // Today's food consumed and exercise performed.
 //
-@property (nonatomic, retain) NSDate *today;
-@property (nonatomic, retain) NSMutableArray *todaysFood;
-@property (nonatomic, retain) NSMutableArray *todaysExercises;
+@property (nonatomic, strong) NSDate *today;
+@property (nonatomic, strong) NSMutableArray *todaysFood;
+@property (nonatomic, strong) NSMutableArray *todaysExercises;
+
+-(void)archiveToday;
 
 @end

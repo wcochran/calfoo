@@ -11,10 +11,21 @@
 #import "FoodItem.h"
 #import "WorkoutItem.h"
 
+static NSString *getDateString(NSDate *date) {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    NSString *formattedDateString = [dateFormatter stringFromDate:date];
+    return formattedDateString;
+}
+
 @interface CalSummaryViewController () <UIActionSheetDelegate>
 
 -(void)foodChanged:(NSNotification*)notification;
 -(void)workoutChanged:(NSNotification*)notification;
+
+-(void)saveToday;
+-(void)clearToday;
 
 @end
 
@@ -42,23 +53,61 @@
     [self updateSummary];
 }
 
+-(BOOL)todayInfoIsEmpty {
+    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    return [appDelegate.todaysFood count] == 0 && [appDelegate.todaysExercises count] == 0;
+}
+
+-(void)saveToday {
+    NSLog(@"Save data here!");
+}
+
+-(void)clearToday {
+    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate.todaysFood removeAllObjects];
+    [appDelegate.todaysExercises removeAllObjects];
+    appDelegate.today = [NSDate date];
+    
+    [self.tableView reloadData];  // get date changed in section header
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFoodChangedNotification object:self];    
+}
+
+#define RESET_SHEET_TAG 1
+#define SAVE_SHEET_TAG 2
+
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    const int tag = actionSheet.tag;
+    if (tag == RESET_SHEET_TAG) {
+    
+        if (buttonIndex == 0) { // reset
+            if (![self todayInfoIsEmpty]) { // ask to save first
+                CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+                NSString *formattedDateString = getDateString(appDelegate.today);
+                NSString *title = [NSString stringWithFormat:@"Save %@ info?", formattedDateString];
+                UIActionSheet *saveSheet = [[UIActionSheet alloc] initWithTitle:title delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Save" otherButtonTitles:@"Discard", nil];
+                saveSheet.tag = SAVE_SHEET_TAG;
+                [saveSheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+            } else {
+                [self clearToday];
+            }
+        } // else cancel
         
-        // XXX Save current day here
+    } else if (tag == SAVE_SHEET_TAG) {
         
-        [appDelegate.todaysFood removeAllObjects];
-        [appDelegate.todaysExercises removeAllObjects];
-        appDelegate.today = [NSDate date];
-        
-        [self.tableView reloadData];  // get date changed in section header
-        [[NSNotificationCenter defaultCenter] postNotificationName:kFoodChangedNotification object:self];
+        if (buttonIndex == 0) { // save and reset
+            
+                        
+            [self clearToday];
+        } else if (buttonIndex == 1) { // discard and reset
+            
+            [self clearToday];
+        } // else cancel
     }
 }
 
 - (IBAction)resetForNewDay:(id)sender {
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Start a new day" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Clear and reset" otherButtonTitles:nil];
+    sheet.tag = RESET_SHEET_TAG;
     [sheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
 }
 
@@ -114,10 +163,11 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-    NSString *formattedDateString = [dateFormatter stringFromDate:appDelegate.today];
+    NSString *formattedDateString = getDateString(appDelegate.today);
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+//    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+//    NSString *formattedDateString = [dateFormatter stringFromDate:appDelegate.today];
     return formattedDateString;
 }
 
