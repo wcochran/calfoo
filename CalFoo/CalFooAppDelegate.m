@@ -177,8 +177,9 @@
     
     NSMutableDictionary *entry = [[NSMutableDictionary alloc] init];
     [entry setObject:self.today forKey:@"date"];
+    [entry setObject:[NSNumber numberWithFloat:fatGrams] forKey:@"fatgrams"];
     
-    XXXX;
+    // XXXX;
 }
 
 
