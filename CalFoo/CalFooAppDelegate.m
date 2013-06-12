@@ -13,13 +13,14 @@
 #define kExercisesFileName @"exercises.archive"
 #define kTodayFileName @"today.archive"
 
+#define kSummaryArchive @"summaryarchive.plist"
+
 #define kFoodArrayKey @"foodarray"
 #define kExerciseArrayKey @"exercisearray"
 #define kTodaysDateKey @"todaysdate"
 #define kTodaysFoodKey @"todaysfood"
 #define kTodaysExerciseKey @"todaysexercise"
-
-#define kUserDataArchive @"userdata.plist"
+#define kBodyStatsKey @"bodyStatsKey"
 
 @interface CalFooAppDelegate ()
 
@@ -77,12 +78,14 @@
         self.todaysFood = [a mutableCopy];
         a = [aDecoder decodeObjectForKey:kTodaysExerciseKey];
         self.todaysExercises = [a mutableCopy];
+        self.todaysBodyStats = [aDecoder decodeObjectForKey:kBodyStatsKey];
     } else {
         self.today = [NSDate date];
         self.todaysFood = [[NSMutableArray alloc] init];
         self.todaysExercises = [[NSMutableArray alloc] init];
+        self.todaysBodyStats = nil;
     }
-    
+        
     return YES;
 }
 							
@@ -118,16 +121,23 @@
     [data writeToFile:exercisesFileName atomically:YES];
     
     //
-    // Save today's calories data in sandbox.
+    // Save today's calories, exorcises, and body stat data in sandbox.
     //
     data = [[NSMutableData alloc] init];
     aCoder = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
     [aCoder encodeObject:self.today forKey:kTodaysDateKey];
     [aCoder encodeObject:self.todaysFood forKey:kTodaysFoodKey];
     [aCoder encodeObject:self.todaysExercises forKey:kTodaysExerciseKey];
+    [aCoder encodeObject:self.todaysBodyStats forKey:kBodyStatsKey];
     [aCoder finishEncoding];
     NSString *todayFileName = [self pathForFileName:kTodayFileName];
     [data writeToFile:todayFileName atomically:YES];
+    
+    //
+    // Save summary archive as plist in sandbox (read lazily).
+    //
+    NSString *summaryArchivePath = [self pathForFileName:kSummaryArchive];
+    [self.summaryArchive writeToFile:summaryArchivePath atomically:YES];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -156,6 +166,19 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kFridgeChangedNotification object:self];
 }
 
+-(NSMutableArray*)summaryArchive {
+    if (_summaryArchive == nil) {
+        NSString *path = [self pathForFileName:kSummaryArchive];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+            NSArray *array = [NSArray arrayWithContentsOfFile:path];
+            _summaryArchive = [[NSMutableArray alloc] initWithArray:array];
+        } else {
+            _summaryArchive = [[NSMutableArray alloc] init];
+        }
+    }
+    return _summaryArchive;
+}
+
 -(void)archiveToday {
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
@@ -178,8 +201,20 @@
     NSMutableDictionary *entry = [[NSMutableDictionary alloc] init];
     [entry setObject:self.today forKey:@"date"];
     [entry setObject:[NSNumber numberWithFloat:fatGrams] forKey:@"fatgrams"];
+    [entry setObject:[NSNumber numberWithFloat:carbsGrams] forKey:@"carbsgrams"];
+    [entry setObject:[NSNumber numberWithFloat:proteinGrams] forKey:@"proteingrams"];
+    [entry setObject:[NSNumber numberWithFloat:totalCalories] forKey:@"totalcalories"];
+    [entry setObject:[NSNumber numberWithFloat:burnedCalories] forKey:@"burnedcalories"];
+    float weight = 0.0;
+    float bodyFat = 0.0;
+    if (self.todaysBodyStats) {
+        weight = self.todaysBodyStats.weight;
+        bodyFat = self.todaysBodyStats.bodyFatPercentage;
+    }
+    [entry setObject:[NSNumber numberWithFloat:weight] forKey:@"weight"];
+    [entry setObject:[NSNumber numberWithFloat:bodyFat] forKey:@"bodyfatpercentage"];
     
-    // XXXX;
+    [self.summaryArchive addObject:entry];
 }
 
 

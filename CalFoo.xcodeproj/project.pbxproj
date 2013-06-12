@@ -23,6 +23,8 @@
 		5555F045175E99B400DDEC7D /* calories@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5555F043175E99B400DDEC7D /* calories@2x.png */; };
 		5555F048175E9AAF00DDEC7D /* summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 5555F046175E9AAF00DDEC7D /* summary.png */; };
 		5555F049175E9AAF00DDEC7D /* summary@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5555F047175E9AAF00DDEC7D /* summary@2x.png */; };
+		5555F04C17690CB300DDEC7D /* BodyStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F04B17690CB200DDEC7D /* BodyStatsViewController.m */; };
+		5555F04F176910C500DDEC7D /* BodyStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F04E176910C500DDEC7D /* BodyStats.m */; };
 		559467C1174AAE1700C029D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C0174AAE1700C029D9 /* UIKit.framework */; };
 		559467C3174AAE1700C029D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C2174AAE1700C029D9 /* Foundation.framework */; };
 		559467C5174AAE1700C029D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C4174AAE1700C029D9 /* CoreGraphics.framework */; };
@@ -67,6 +69,10 @@
 		5555F043175E99B400DDEC7D /* calories@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calories@2x.png"; path = "etc/calories@2x.png"; sourceTree = SOURCE_ROOT; };
 		5555F046175E9AAF00DDEC7D /* summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = summary.png; path = etc/summary.png; sourceTree = SOURCE_ROOT; };
 		5555F047175E9AAF00DDEC7D /* summary@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "summary@2x.png"; path = "etc/summary@2x.png"; sourceTree = SOURCE_ROOT; };
+		5555F04A17690CB200DDEC7D /* BodyStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyStatsViewController.h; sourceTree = "<group>"; };
+		5555F04B17690CB200DDEC7D /* BodyStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyStatsViewController.m; sourceTree = "<group>"; };
+		5555F04D176910C500DDEC7D /* BodyStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyStats.h; sourceTree = "<group>"; };
+		5555F04E176910C500DDEC7D /* BodyStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyStats.m; sourceTree = "<group>"; };
 		559467BD174AAE1700C029D9 /* CalFoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalFoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		559467C0174AAE1700C029D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		559467C2174AAE1700C029D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -159,6 +165,8 @@
 				559467D8174AAE1700C029D9 /* MainStoryboard.storyboard */,
 				559467EE174AAEBF00C029D9 /* CalSummaryViewController.h */,
 				559467EF174AAEBF00C029D9 /* CalSummaryViewController.m */,
+				5555F04A17690CB200DDEC7D /* BodyStatsViewController.h */,
+				5555F04B17690CB200DDEC7D /* BodyStatsViewController.m */,
 				55D1CA7B174BC53C001F3D92 /* CalsTodayViewController.h */,
 				55D1CA7C174BC53C001F3D92 /* CalsTodayViewController.m */,
 				5555F026174BDF7300DDEC7D /* FridgeViewController.h */,
@@ -207,6 +215,8 @@
 				55BB32E1174ABB0A00139580 /* FoodItem.m */,
 				55BB32E3174AC25F00139580 /* WorkoutItem.h */,
 				55BB32E4174AC25F00139580 /* WorkoutItem.m */,
+				5555F04D176910C500DDEC7D /* BodyStats.h */,
+				5555F04E176910C500DDEC7D /* BodyStats.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -303,6 +313,8 @@
 				5555F0341756853800DDEC7D /* WorkoutItemViewController.m in Sources */,
 				55187415175D27FC008686D8 /* TodayWorkoutItemViewController.m in Sources */,
 				5555F037175E715000DDEC7D /* TodayAddWorkoutViewController.m in Sources */,
+				5555F04C17690CB300DDEC7D /* BodyStatsViewController.m in Sources */,
+				5555F04F176910C500DDEC7D /* BodyStats.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

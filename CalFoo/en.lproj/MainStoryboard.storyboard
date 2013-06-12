@@ -29,7 +29,7 @@
         <scene sceneID="Oxa-My-Rj7">
             <objects>
                 <tableViewController id="lbN-8f-DOR" customClass="CalSummaryViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="iAV-E5-El1">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="singleLineEtched" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="iAV-E5-El1">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -150,7 +150,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="SPn-j5-mpx" detailTextLabel="g5j-er-XGf" style="IBUITableViewCellStyleValue1" id="50j-Cu-TLz">
-                                        <rect key="frame" x="0.0" y="267" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="267" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -174,6 +174,32 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="pTO-ff-e2u" detailTextLabel="8k6-JY-low" style="IBUITableViewCellStyleValue1" id="x13-c7-FIj">
+                                        <rect key="frame" x="0.0" y="311" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Body Stats" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pTO-ff-e2u">
+                                                    <rect key="frame" x="10" y="11" width="89" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="999.9 lbs, 99.9% fat" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8k6-JY-low">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <segue destination="HWQ-kC-ivi" kind="modal" id="028-az-Ha2"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -186,6 +212,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bodyStatsCell" destination="x13-c7-FIj" id="eYW-h5-pXZ"/>
                         <outlet property="caloriesBurnedCell" destination="cRg-i8-rhX" id="Zrl-DI-cRz"/>
                         <outlet property="carbsCell" destination="IBa-dH-T1C" id="E9g-v2-9NC"/>
                         <outlet property="fatCell" destination="QrR-kK-gZK" id="8WK-26-zkp"/>
@@ -197,6 +224,120 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZ2-EL-Ao9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1087" y="-151"/>
+        </scene>
+        <!--Body Stats View Controller - Bady Stats-->
+        <scene sceneID="vf0-UN-jEk">
+            <objects>
+                <tableViewController id="7M0-YC-h8E" customClass="BodyStatsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="9Ru-rB-6oS">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="December 31, 1999" id="9ig-v4-lCk">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GIA-Nn-5VN">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Weight (lbs)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qh-7v-SCC">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="119" id="Ou6-o2-1vl"/>
+                                                        <constraint firstAttribute="height" constant="21" id="V2e-jD-8bF"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="999.9" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NF2-uf-9Gz">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="97" id="AX7-MD-CyP"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                    <connections>
+                                                        <action selector="editingChangedTextField:" destination="7M0-YC-h8E" eventType="editingChanged" id="y0a-s0-IW6"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="NF2-uf-9Gz" firstAttribute="baseline" secondItem="7qh-7v-SCC" secondAttribute="baseline" type="default" id="3ZL-7N-fI7"/>
+                                            <constraint firstItem="7qh-7v-SCC" firstAttribute="leading" secondItem="GIA-Nn-5VN" secondAttribute="leading" constant="30" id="CBr-X3-zHs"/>
+                                            <constraint firstAttribute="centerY" secondItem="NF2-uf-9Gz" secondAttribute="centerY" type="user" id="TYY-U7-uRO"/>
+                                            <constraint firstAttribute="trailing" secondItem="NF2-uf-9Gz" secondAttribute="trailing" constant="30" id="Z0o-u0-du6"/>
+                                            <constraint firstAttribute="centerY" secondItem="7qh-7v-SCC" secondAttribute="centerY" type="user" id="c9H-1J-cPh"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="vij-P8-ayl">
+                                        <rect key="frame" x="0.0" y="91" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Body Fat %" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1QP-ZC-9aC">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="Wd7-Fe-MXs"/>
+                                                        <constraint firstAttribute="width" constant="119" id="co2-ki-o8G"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="999.9" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F2R-57-tZV">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="97" id="cmm-od-piu"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                    <connections>
+                                                        <action selector="editingChangedTextField:" destination="7M0-YC-h8E" eventType="editingChanged" id="Y2A-4r-5Kf"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="1QP-ZC-9aC" firstAttribute="leading" secondItem="vij-P8-ayl" secondAttribute="leading" constant="30" id="R8V-fs-u9s"/>
+                                            <constraint firstAttribute="centerY" secondItem="F2R-57-tZV" secondAttribute="centerY" type="user" id="WXp-tC-2du"/>
+                                            <constraint firstAttribute="trailing" secondItem="F2R-57-tZV" secondAttribute="trailing" constant="30" id="fal-7e-OM5"/>
+                                            <constraint firstItem="1QP-ZC-9aC" firstAttribute="centerY" secondItem="F2R-57-tZV" secondAttribute="centerY" type="default" id="tpG-K1-xz0"/>
+                                            <constraint firstItem="F2R-57-tZV" firstAttribute="baseline" secondItem="1QP-ZC-9aC" secondAttribute="baseline" type="default" id="zSE-EX-Yyl"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Bady Stats" id="cJq-Lp-oZJ"/>
+                    <connections>
+                        <outlet property="bodyFatTextField" destination="F2R-57-tZV" id="Bz4-v9-XPA"/>
+                        <outlet property="weightTextField" destination="NF2-uf-9Gz" id="gf5-Zs-uRX"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dKT-vE-N0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1401" y="-1173"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="er9-nH-MAq">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="HWQ-kC-ivi" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="h5a-nu-K9H">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7M0-YC-h8E" kind="relationship" relationship="rootViewController" id="aGk-24-n9B"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5A2-sb-xHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944" y="-1173"/>
         </scene>
         <!--Navigation Controller - Summary-->
         <scene sceneID="xwA-2G-uI4">
@@ -1029,7 +1170,7 @@
             <objects>
                 <tableViewController id="yem-ik-H9l" customClass="TodayFoodItemViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sJe-vM-s0h">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -1346,10 +1487,19 @@
         <image name="workouts.png" width="30" height="30"/>
     </resources>
     <classes>
+        <class className="BodyStatsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BodyStatsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="editingChangedTextField:" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="bodyFatTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="weightTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
         <class className="CalSummaryViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CalSummaryViewController.h"/>
             <relationships>
                 <relationship kind="action" name="resetForNewDay:"/>
+                <relationship kind="outlet" name="bodyStatsCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="caloriesBurnedCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="carbsCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="fatCell" candidateClass="UITableViewCell"/>
@@ -1441,8 +1591,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="uJb-kS-63r"/>
+        <segue reference="AbT-QE-Mpo"/>
         <segue reference="qtS-pT-aRV"/>
-        <segue reference="Zi7-0w-xWr"/>
         <segue reference="daa-RW-5aw"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,6 +10,8 @@
 #import "CalFooAppDelegate.h"
 #import "FoodItem.h"
 #import "WorkoutItem.h"
+#import "BodyStats.h"
+#import "BodyStatsViewController.h"
 
 static NSString *getDateString(NSDate *date) {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -23,6 +25,7 @@ static NSString *getDateString(NSDate *date) {
 
 -(void)foodChanged:(NSNotification*)notification;
 -(void)workoutChanged:(NSNotification*)notification;
+-(void)bodyStatsChanged:(NSNotification*)notification;
 
 -(void)saveToday;
 -(void)clearToday;
@@ -37,6 +40,7 @@ static NSString *getDateString(NSDate *date) {
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foodChanged:) name:kFoodChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(workoutChanged:) name:kTodaysExercisesChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bodyStatsChanged:) name:kBodyStatsChangedNotification object:nil];
     
     [self updateSummary];
 }
@@ -52,6 +56,11 @@ static NSString *getDateString(NSDate *date) {
 -(void)workoutChanged:(NSNotification*)notification {
     [self updateSummary];
 }
+
+-(void)bodyStatsChanged:(NSNotification*)notification {
+    [self updateSummary];
+}
+
 
 -(BOOL)todayInfoIsEmpty {
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -95,11 +104,10 @@ static NSString *getDateString(NSDate *date) {
     } else if (tag == SAVE_SHEET_TAG) {
         
         if (buttonIndex == 0) { // save and reset
-            
-                        
+            CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+            [appDelegate archiveToday];
             [self clearToday];
         } else if (buttonIndex == 1) { // discard and reset
-            
             [self clearToday];
         } // else cancel
     }
@@ -151,6 +159,16 @@ static NSString *getDateString(NSDate *date) {
     self.fatCell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f%%", fatPercent];
     self.carbsCell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f%%", carbsPercent];
     self.proteinCell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f%%", proteinPercent];
+    
+    NSString *weightStr = @"";
+    NSString *bodyFatStr = @"";
+    if (appDelegate.todaysBodyStats != nil) {
+        if (appDelegate.todaysBodyStats.weight > 0.0)
+            weightStr = [NSString stringWithFormat:@"%0.3g lbs", appDelegate.todaysBodyStats.weight];
+        if (appDelegate.todaysBodyStats.bodyFatPercentage > 0.0)
+            bodyFatStr = [NSString stringWithFormat:@"%0.3g%% fat", appDelegate.todaysBodyStats.bodyFatPercentage];
+    }
+    self.bodyStatsCell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", weightStr, bodyFatStr];
 }
 
 - (void)didReceiveMemoryWarning
@@ -183,5 +201,12 @@ static NSString *getDateString(NSDate *date) {
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([segue.identifier isEqualToString:@"EditBodyStatsSegue"]) {
+//        UINavigationController *navController = segue.destinationViewController;
+//        BodyStatsViewController *bodyStatsViewController = (BodyStatsViewController*) navController.topViewController;
+//    }
+//}
 
 @end
