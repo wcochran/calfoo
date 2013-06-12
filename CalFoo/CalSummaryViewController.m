@@ -164,7 +164,7 @@ static NSString *getDateString(NSDate *date) {
     NSString *bodyFatStr = @"";
     if (appDelegate.todaysBodyStats != nil) {
         if (appDelegate.todaysBodyStats.weight > 0.0)
-            weightStr = [NSString stringWithFormat:@"%0.3g lbs", appDelegate.todaysBodyStats.weight];
+            weightStr = [NSString stringWithFormat:@"%0.4g lbs", appDelegate.todaysBodyStats.weight];
         if (appDelegate.todaysBodyStats.bodyFatPercentage > 0.0)
             bodyFatStr = [NSString stringWithFormat:@"%0.3g%% fat", appDelegate.todaysBodyStats.bodyFatPercentage];
     }

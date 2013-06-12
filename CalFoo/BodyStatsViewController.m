@@ -38,7 +38,7 @@
         weight = appDelegate.todaysBodyStats.weight;
         bodyfat = appDelegate.todaysBodyStats.bodyFatPercentage;
     }
-    self.weightTextField.text = [NSString stringWithFormat:@"%0.3g", weight];
+    self.weightTextField.text = [NSString stringWithFormat:@"%0.4g", weight];
     self.bodyFatTextField.text = [NSString stringWithFormat:@"%0.3g", bodyfat];
     
     _edited = NO;
@@ -54,12 +54,12 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kBodyStatsChangedNotification object:self];    
 }
 
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        [self saveBodyStats];
-        [self dismissViewControllerAnimated:YES completion:^{}];
-    }
-}
+//-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+//    if (buttonIndex == 1) {
+//        [self saveBodyStats];
+//        [self dismissViewControllerAnimated:YES completion:^{}];
+//    }
+//}
 
 -(void)doneEditing:(id)sender {
     if (_edited) {
@@ -69,9 +69,9 @@
             (_bodyfat != 0.0 && (_bodyfat < 1.0 || _bodyfat > 80.0))) {
             UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle:@"Bogus Body Stats!"
-                                  message:@"Proceed with strange values (use 0 to ignore value)!?"
-                                  delegate:self
-                                  cancelButtonTitle:@"Cancel"
+                                  message:@"Leave empty or use 0 to ignore field"
+                                  delegate:nil // self
+                                  cancelButtonTitle:nil // @"Cancel"
                                   otherButtonTitles:@"OK", nil];
             [alert show];
             return;
