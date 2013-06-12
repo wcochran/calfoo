@@ -61,14 +61,14 @@ static NSString *getDateString(NSDate *date) {
     [self updateSummary];
 }
 
-
 -(BOOL)todayInfoIsEmpty {
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     return [appDelegate.todaysFood count] == 0 && [appDelegate.todaysExercises count] == 0;
 }
 
 -(void)saveToday {
-    NSLog(@"Save data here!");
+    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate archiveToday];
 }
 
 -(void)clearToday {
@@ -76,9 +76,11 @@ static NSString *getDateString(NSDate *date) {
     [appDelegate.todaysFood removeAllObjects];
     [appDelegate.todaysExercises removeAllObjects];
     appDelegate.today = [NSDate date];
+    appDelegate.todaysBodyStats = nil;
     
     [self.tableView reloadData];  // get date changed in section header
-    [[NSNotificationCenter defaultCenter] postNotificationName:kFoodChangedNotification object:self];    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFoodChangedNotification object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kBodyStatsChangedNotification object:self];
 }
 
 #define RESET_SHEET_TAG 1
@@ -87,7 +89,6 @@ static NSString *getDateString(NSDate *date) {
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     const int tag = actionSheet.tag;
     if (tag == RESET_SHEET_TAG) {
-    
         if (buttonIndex == 0) { // reset
             if (![self todayInfoIsEmpty]) { // ask to save first
                 CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -100,12 +101,9 @@ static NSString *getDateString(NSDate *date) {
                 [self clearToday];
             }
         } // else cancel
-        
     } else if (tag == SAVE_SHEET_TAG) {
-        
         if (buttonIndex == 0) { // save and reset
-            CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-            [appDelegate archiveToday];
+            [self saveToday];
             [self clearToday];
         } else if (buttonIndex == 1) { // discard and reset
             [self clearToday];

@@ -38,8 +38,10 @@
         weight = appDelegate.todaysBodyStats.weight;
         bodyfat = appDelegate.todaysBodyStats.bodyFatPercentage;
     }
-    self.weightTextField.text = [NSString stringWithFormat:@"%0.4g", weight];
-    self.bodyFatTextField.text = [NSString stringWithFormat:@"%0.3g", bodyfat];
+    if (weight > 0.0)
+        self.weightTextField.text = [NSString stringWithFormat:@"%0.4g", weight];
+    if (bodyfat > 0.0)
+        self.bodyFatTextField.text = [NSString stringWithFormat:@"%0.3g", bodyfat];
     
     _edited = NO;
 }
@@ -54,6 +56,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kBodyStatsChangedNotification object:self];    
 }
 
+// XXX 
 //-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
 //    if (buttonIndex == 1) {
 //        [self saveBodyStats];
@@ -70,8 +73,8 @@
             UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle:@"Bogus Body Stats!"
                                   message:@"Leave empty or use 0 to ignore field"
-                                  delegate:nil // self
-                                  cancelButtonTitle:nil // @"Cancel"
+                                  delegate:nil // XXX  self
+                                  cancelButtonTitle:nil // XXX @"Cancel"
                                   otherButtonTitles:@"OK", nil];
             [alert show];
             return;
