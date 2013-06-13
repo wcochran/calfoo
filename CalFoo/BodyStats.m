@@ -35,7 +35,7 @@
 -(void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:_timeStamp forKey:kTimeStamp];
     [aCoder encodeFloat:_weight forKey:kWeightKey];
-    [aCoder encodeFloat:_bodyFatPercentage forKey:kWeightKey];
+    [aCoder encodeFloat:_bodyFatPercentage forKey:kBodyFatPercentageKey];
 }
 
 -(id)copyWithZone:(NSZone *)zone {
