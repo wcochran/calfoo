@@ -180,13 +180,11 @@
 }
 
 -(void)archiveToday {
-    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    
     float fatGrams = 0;
     float carbsGrams = 0;
     float proteinGrams = 0;
     float totalCalories = 0;
-    for (FoodItem *item in appDelegate.todaysFood) {
+    for (FoodItem *item in self.todaysFood) {
         fatGrams += item.fatGrams*item.numServings;
         carbsGrams += item.carbsGrams*item.numServings;
         proteinGrams += item.proteinGrams*item.numServings;
@@ -194,7 +192,7 @@
     }
  
     float burnedCalories = 0;
-    for (WorkoutItem *item in appDelegate.todaysExercises) {
+    for (WorkoutItem *item in self.todaysExercises) {
         burnedCalories += item.calories;
     }
     
