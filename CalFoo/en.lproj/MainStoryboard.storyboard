@@ -519,11 +519,11 @@
             </objects>
             <point key="canvasLocation" x="1087" y="2215"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - More-->
         <scene sceneID="PJZ-lf-Ou1">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Zi3-Ce-Lbr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="5xW-iB-apz"/>
+                    <tabBarItem key="tabBarItem" title="More" image="more.png" id="5xW-iB-apz"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="edi-vq-aqm">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1537,6 +1537,7 @@
     <resources>
         <image name="calories.png" width="30" height="30"/>
         <image name="fridge.png" width="30" height="30"/>
+        <image name="more.png" width="30" height="30"/>
         <image name="summary.png" width="30" height="30"/>
         <image name="workouts.png" width="30" height="30"/>
     </resources>
