@@ -79,17 +79,19 @@
     const float carbsPercent = (macroCalories > 0) ? carbsGrams*carbsCalsPerGram/macroCalories * 100 : 0;
     const float proteinPercent = (macroCalories > 0) ? proteinGrams*proteinCalsPerGram/macroCalories * 100 : 0;
     
+#define RINT(f) ((int)((f) + 0.5))
+    
     cell.dateLabel.text = [dateFormatter stringFromDate:date];
-    cell.macrosLabel.text = [NSString stringWithFormat:@"%0.3g/%0.3g/%0.3g", fatPercent, carbsPercent, proteinPercent];
-    cell.totalCalsLabel.text = [NSString stringWithFormat:@"%4.0g", totalCalories];
-    cell.burnedCalsLabel.text = [NSString stringWithFormat:@"%4.0g", burnedCalories];
-    cell.netCalsLabel.text = [NSString stringWithFormat:@"%4.0g", totalCalories - burnedCalories];
+    cell.macrosLabel.text = [NSString stringWithFormat:@"%d/%d/%d", RINT(fatPercent), RINT(carbsPercent), RINT(proteinPercent)];
+    cell.totalCalsLabel.text = [NSString stringWithFormat:@"%4.0f", totalCalories];
+    cell.burnedCalsLabel.text = [NSString stringWithFormat:@"%4.0f", burnedCalories];
+    cell.netCalsLabel.text = [NSString stringWithFormat:@"%4.0f", totalCalories - burnedCalories];
     NSString *weightStr = @"";
     NSString *bodyFatStr = @"";
     if (weight > 0.0)
-        weightStr = [NSString stringWithFormat:@"%4.1g%%", weight];
+        weightStr = [NSString stringWithFormat:@"%5.1f", weight];
     if (bodyFat > 0.0)
-        bodyFatStr = [NSString stringWithFormat:@"%3.1g%%", bodyFat];
+        bodyFatStr = [NSString stringWithFormat:@"%4.1f%%", bodyFat];
     cell.bodyStatsLabel.text = [NSString stringWithFormat:@"%@ %@", weightStr, bodyFatStr];
     
     return cell;
