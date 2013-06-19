@@ -26,6 +26,7 @@
 		5555F04C17690CB300DDEC7D /* BodyStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F04B17690CB200DDEC7D /* BodyStatsViewController.m */; };
 		5555F04F176910C500DDEC7D /* BodyStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F04E176910C500DDEC7D /* BodyStats.m */; };
 		5555F052176F850300DDEC7D /* SummaryHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5555F051176F850300DDEC7D /* SummaryHistoryViewController.m */; };
+		556CAB76177227E3003A986C /* SummaryHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 556CAB75177227E3003A986C /* SummaryHistoryCell.m */; };
 		557A7976176948BD005BD848 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 557A7975176948BD005BD848 /* MoreViewController.m */; };
 		557A79791769579D005BD848 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 557A79771769579D005BD848 /* more.png */; };
 		557A797A1769579D005BD848 /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 557A79781769579D005BD848 /* more@2x.png */; };
@@ -77,6 +78,8 @@
 		5555F04E176910C500DDEC7D /* BodyStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BodyStats.m; sourceTree = "<group>"; };
 		5555F050176F850300DDEC7D /* SummaryHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryHistoryViewController.h; sourceTree = "<group>"; };
 		5555F051176F850300DDEC7D /* SummaryHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryHistoryViewController.m; sourceTree = "<group>"; };
+		556CAB74177227E3003A986C /* SummaryHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryHistoryCell.h; sourceTree = "<group>"; };
+		556CAB75177227E3003A986C /* SummaryHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryHistoryCell.m; sourceTree = "<group>"; };
 		557A7974176948BD005BD848 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		557A7975176948BD005BD848 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		557A79771769579D005BD848 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = more.png; path = etc/more.png; sourceTree = SOURCE_ROOT; };
@@ -197,6 +200,8 @@
 				557A7975176948BD005BD848 /* MoreViewController.m */,
 				5555F050176F850300DDEC7D /* SummaryHistoryViewController.h */,
 				5555F051176F850300DDEC7D /* SummaryHistoryViewController.m */,
+				556CAB74177227E3003A986C /* SummaryHistoryCell.h */,
+				556CAB75177227E3003A986C /* SummaryHistoryCell.m */,
 				5555F039175E939600DDEC7D /* images */,
 				559467C7174AAE1700C029D9 /* Supporting Files */,
 				55D21589174DF94000E48BBB /* ToDo.rtf */,
@@ -327,6 +332,7 @@
 				5555F04F176910C500DDEC7D /* BodyStats.m in Sources */,
 				557A7976176948BD005BD848 /* MoreViewController.m in Sources */,
 				5555F052176F850300DDEC7D /* SummaryHistoryViewController.m in Sources */,
+				556CAB76177227E3003A986C /* SummaryHistoryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

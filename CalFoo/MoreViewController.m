@@ -7,6 +7,7 @@
 //
 
 #import "MoreViewController.h"
+#import "SummaryHistoryViewController.h"
 
 @interface MoreViewController ()
 
@@ -52,5 +53,12 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([segue.identifier isEqualToString:@"SummaryHistorySegue"]) {
+//        SummaryHistoryViewController *viewController = (SummaryHistoryViewController*)segue.destinationViewController;
+//    }
+//}
+
 
 @end

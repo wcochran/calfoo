@@ -8,71 +8,24 @@
 
 #import "SummaryHistoryViewController.h"
 #import "CalFooAppDelegate.h"
-
-@interface CellData : NSObject
-@property (nonatomic, assign) NSInteger num;
-@property (nonatomic, retain) NSDate *date;
-@property (nonatomic, assign) float fatPercent;
-@property (nonatomic, assign) float carbsPercent;
-@property (nonatomic, assign) float proteinPercent;
-@property (nonatomic, assign) float calories;
-@property (nonatomic, assign) float weight;
-@property (nonatomic, assign) float bodyFat;
-@end
-
-@implementation CellData
-@end
+#import "SummaryHistoryCell.h"
 
 @interface SummaryHistoryViewController ()
 
 @end
 
 @implementation SummaryHistoryViewController {
-    NSMutableArray *cellInfo;
+    NSDateFormatter *dateFormatter;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSMutableDictionary *firstSummaryEntry = [appDelegate.summaryArchive objectAtIndex:0];
-    NSDate *firstDay = [firstSummaryEntry objectForKey:@"date"];
-    NSMutableDictionary *lastSummaryEntry = [appDelegate.summaryArchive lastObject];
-    NSDate *lastDay = [lastSummaryEntry objectForKey:@"date"];
-    
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    
-    //
-    // From Listing 10  Getting the Sunday in the current week:
-    // http://developer.apple.com/library/ios/#documentation/cocoa/Conceptual/DatesAndTimes/Articles/dtCalendricalCalculations.html
-    //
-    NSDateComponents *firstWeekdayComponents = [gregorian components:NSWeekdayCalendarUnit fromDate:firstDay];
-    NSDateComponents *componentsToSubstract = [[NSDateComponents alloc] init];
-    [componentsToSubstract setDay:0 - [firstWeekdayComponents weekday] + 1]; // sunday = 1
-    NSDate *firstSunday = [gregorian dateByAddingComponents:componentsToSubstract toDate:firstDay options:0];
-    
-    //
-    // Listing 13 Days between two dates, as the number of midnights between
-    // http://developer.apple.com/library/ios/#documentation/cocoa/Conceptual/DatesAndTimes/Articles/dtCalendricalCalculations.html
-    //
-    NSInteger startSunday = [gregorian ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:firstSunday];
-    NSInteger startDay = [gregorian ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:firstDay];
-    NSInteger endDay = [gregorian ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:lastDay];
-    
-    const int numDays = endDay - startSunday + 1;
-    cellInfo = [[NSMutableArray alloc] initWithCapacity:numDays];
-    
-    // XXX
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -91,13 +44,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-//    NSMutableDictionary *lastSummaryEntry = [appDelegate.summaryArchive lastObject];
-//    NSDate *lastDate = [lastSummaryEntry objectForKey:@"date"];
-//    const NSInteger lastDay = [gregorian ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:lastDate];
-//    const NSInteger numweeks = (lastDay - startSunday + 1)/7;
-//    return numweeks;
-    return 1; // XXX
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -108,36 +55,63 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"SummaryHistoryCell";
+    SummaryHistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSMutableDictionary *summaryEntry = [appDelegate.summaryArchive objectAtIndex:indexPath.row];
+    
+    NSDate *date = [summaryEntry objectForKey:@"date"];
+    const float fatGrams = [[summaryEntry objectForKey:@"fatgrams"] floatValue];
+    const float carbsGrams = [[summaryEntry objectForKey:@"carbsgrams"] floatValue];
+    const float proteinGrams = [[summaryEntry objectForKey:@"proteingrams"] floatValue];
+    const float totalCalories = [[summaryEntry objectForKey:@"totalcalories"] floatValue];
+    const float burnedCalories = [[summaryEntry objectForKey:@"burnedcalories"] floatValue];
+    const float weight = [[summaryEntry objectForKey:@"weight"] floatValue];
+    const float bodyFat = [[summaryEntry objectForKey:@"bodyfatpercentage"] floatValue];
+    
+    const float fatCalsPerGram = 9;
+    const float carbsCalsPerGram = 4;
+    const float proteinCalsPerGram = 4;
+    const float macroCalories = fatCalsPerGram*fatGrams + carbsCalsPerGram*carbsGrams + proteinCalsPerGram*proteinGrams;
+    
+    const float fatPercent = (macroCalories > 0) ? fatGrams*fatCalsPerGram/macroCalories * 100 : 0;
+    const float carbsPercent = (macroCalories > 0) ? carbsGrams*carbsCalsPerGram/macroCalories * 100 : 0;
+    const float proteinPercent = (macroCalories > 0) ? proteinGrams*proteinCalsPerGram/macroCalories * 100 : 0;
+    
+    cell.dateLabel.text = [dateFormatter stringFromDate:date];
+    cell.macrosLabel.text = [NSString stringWithFormat:@"%0.3g/%0.3g/%0.3g", fatPercent, carbsPercent, proteinPercent];
+    cell.totalCalsLabel.text = [NSString stringWithFormat:@"%4.0g", totalCalories];
+    cell.burnedCalsLabel.text = [NSString stringWithFormat:@"%4.0g", burnedCalories];
+    cell.netCalsLabel.text = [NSString stringWithFormat:@"%4.0g", totalCalories - burnedCalories];
+    NSString *weightStr = @"";
+    NSString *bodyFatStr = @"";
+    if (weight > 0.0)
+        weightStr = [NSString stringWithFormat:@"%4.1g%%", weight];
+    if (bodyFat > 0.0)
+        bodyFatStr = [NSString stringWithFormat:@"%3.1g%%", bodyFat];
+    cell.bodyStatsLabel.text = [NSString stringWithFormat:@"%@ %@", weightStr, bodyFatStr];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        [appDelegate.summaryArchive removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+//    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//    }   
 }
-*/
 
 /*
 // Override to support rearranging the table view.
