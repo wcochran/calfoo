@@ -10,6 +10,7 @@
 
 @interface SummaryHistoryCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *proteinGramsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *macrosLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalCalsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *burnedCalsLabel;

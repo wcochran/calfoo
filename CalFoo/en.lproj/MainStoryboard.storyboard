@@ -526,16 +526,16 @@
         <scene sceneID="afT-Ch-QHI">
             <objects>
                 <tableViewController id="yEW-dI-L15" customClass="SummaryHistoryViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="123" sectionHeaderHeight="22" sectionFooterHeight="22" id="FbT-al-MFP">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="142" sectionHeaderHeight="22" sectionFooterHeight="22" id="FbT-al-MFP">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SummaryHistoryCell" rowHeight="123" id="pqK-dS-lhy" customClass="SummaryHistoryCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="123"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SummaryHistoryCell" rowHeight="142" id="pqK-dS-lhy" customClass="SummaryHistoryCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="142"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="122"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tues, Jun 18, 2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xS8-0z-g1R">
@@ -593,42 +593,60 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="protein" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFn-Ii-x6X">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="106" id="ohf-OU-j8T"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="222g" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyi-3A-PCC">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="A3v-j0-XE4"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="ye1-Iv-nbp" firstAttribute="top" secondItem="pqK-dS-lhy" secondAttribute="top" constant="60" id="0kb-Hd-zJ8"/>
-                                    <constraint firstItem="cFZ-rT-0Oc" firstAttribute="top" secondItem="pqK-dS-lhy" secondAttribute="top" constant="98" type="user" id="38W-fF-b4K"/>
                                     <constraint firstItem="IMR-y1-4ee" firstAttribute="leading" secondItem="5Rz-Xk-A9f" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="4U5-l9-j0D"/>
                                     <constraint firstAttribute="trailing" secondItem="xS8-0z-g1R" secondAttribute="trailing" constant="20" type="default" id="5GI-cL-Qul"/>
                                     <constraint firstItem="ye1-Iv-nbp" firstAttribute="leading" secondItem="pqK-dS-lhy" secondAttribute="leading" constant="20" type="default" id="5Oo-TO-NJy"/>
+                                    <constraint firstItem="ELe-Fr-WDp" firstAttribute="top" secondItem="pqK-dS-lhy" secondAttribute="top" constant="59" id="6VG-hF-lit"/>
+                                    <constraint firstItem="bFn-Ii-x6X" firstAttribute="baseline" secondItem="Dyi-3A-PCC" secondAttribute="baseline" type="default" id="6sV-1c-NHr"/>
                                     <constraint firstItem="EyN-VN-f5z" firstAttribute="baseline" secondItem="WKV-VB-bCi" secondAttribute="baseline" type="user" id="8Rc-PG-ecC"/>
+                                    <constraint firstAttribute="bottom" secondItem="ye1-Iv-nbp" secondAttribute="bottom" constant="40" id="9Vd-eq-27A"/>
+                                    <constraint firstAttribute="bottom" secondItem="QXW-Ze-xe2" secondAttribute="bottom" constant="2" id="A9R-tq-8YX"/>
                                     <constraint firstItem="WGF-ov-MpG" firstAttribute="baseline" secondItem="ye1-Iv-nbp" secondAttribute="baseline" type="default" id="GtP-E3-Nto"/>
-                                    <constraint firstItem="EyN-VN-f5z" firstAttribute="leading" secondItem="ye1-Iv-nbp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="JkH-HU-YUb"/>
-                                    <constraint firstItem="QXW-Ze-xe2" firstAttribute="top" secondItem="pqK-dS-lhy" secondAttribute="top" constant="98" type="user" id="LQh-2N-bDq"/>
                                     <constraint firstItem="WGF-ov-MpG" firstAttribute="leading" secondItem="WKV-VB-bCi" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="LdR-zb-OUh"/>
-                                    <constraint firstItem="IMR-y1-4ee" firstAttribute="top" secondItem="pqK-dS-lhy" secondAttribute="top" constant="20" type="default" id="MJ9-X8-NK6"/>
+                                    <constraint firstAttribute="bottom" secondItem="WKV-VB-bCi" secondAttribute="bottom" constant="21" id="PoI-BH-ltU"/>
                                     <constraint firstAttribute="trailing" secondItem="EyN-VN-f5z" secondAttribute="trailing" constant="20" type="default" id="QoU-dU-gQp"/>
-                                    <constraint firstItem="EyN-VN-f5z" firstAttribute="top" secondItem="pqK-dS-lhy" secondAttribute="top" constant="79" type="user" id="USC-TO-6Pf"/>
+                                    <constraint firstItem="bFn-Ii-x6X" firstAttribute="top" secondItem="pqK-dS-lhy" secondAttribute="top" constant="19" id="VIr-MG-TCS"/>
                                     <constraint firstItem="k1C-2t-qbj" firstAttribute="leading" secondItem="ye1-Iv-nbp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="WDO-0H-jcR"/>
-                                    <constraint firstItem="WKV-VB-bCi" firstAttribute="top" secondItem="pqK-dS-lhy" secondAttribute="top" constant="79" type="user" id="Wbp-Kd-Bud"/>
                                     <constraint firstItem="EyN-VN-f5z" firstAttribute="leading" secondItem="QXW-Ze-xe2" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="XN2-Nz-jyW"/>
                                     <constraint firstItem="ELe-Fr-WDp" firstAttribute="leading" secondItem="pqK-dS-lhy" secondAttribute="leading" constant="20" type="default" id="Y6i-d3-E6V"/>
                                     <constraint firstItem="QXW-Ze-xe2" firstAttribute="leading" secondItem="pqK-dS-lhy" secondAttribute="leading" constant="20" type="default" id="Z3Q-M0-MQO"/>
+                                    <constraint firstItem="IMR-y1-4ee" firstAttribute="baseline" secondItem="5Rz-Xk-A9f" secondAttribute="baseline" type="default" id="cjN-TW-VAg"/>
                                     <constraint firstItem="xS8-0z-g1R" firstAttribute="top" secondItem="pqK-dS-lhy" secondAttribute="top" type="default" id="dAw-qL-soU"/>
                                     <constraint firstItem="IMR-y1-4ee" firstAttribute="leading" secondItem="ELe-Fr-WDp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="diF-OZ-9DR"/>
                                     <constraint firstAttribute="trailing" secondItem="IMR-y1-4ee" secondAttribute="trailing" constant="20" type="default" id="dnr-u1-CLM"/>
                                     <constraint firstItem="xS8-0z-g1R" firstAttribute="leading" secondItem="pqK-dS-lhy" secondAttribute="leading" constant="20" type="default" id="eL0-yZ-Ycz"/>
+                                    <constraint firstItem="5Rz-Xk-A9f" firstAttribute="top" secondItem="pqK-dS-lhy" secondAttribute="top" constant="39" id="eYp-P5-zHc"/>
                                     <constraint firstItem="cFZ-rT-0Oc" firstAttribute="baseline" secondItem="QXW-Ze-xe2" secondAttribute="baseline" type="user" id="g6Y-Pn-jZH"/>
                                     <constraint firstAttribute="trailing" secondItem="WGF-ov-MpG" secondAttribute="trailing" constant="20" type="default" id="h0j-6z-aQO"/>
-                                    <constraint firstItem="WGF-ov-MpG" firstAttribute="leading" secondItem="ye1-Iv-nbp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="hSB-WS-MBE"/>
-                                    <constraint firstItem="5Rz-Xk-A9f" firstAttribute="top" secondItem="pqK-dS-lhy" secondAttribute="top" constant="20" type="default" id="iDu-CV-Jvu"/>
-                                    <constraint firstItem="ELe-Fr-WDp" firstAttribute="top" secondItem="pqK-dS-lhy" secondAttribute="top" constant="40" id="jUd-of-WKk"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dyi-3A-PCC" secondAttribute="trailing" constant="20" type="default" id="kGV-gg-579"/>
                                     <constraint firstItem="WKV-VB-bCi" firstAttribute="leading" secondItem="pqK-dS-lhy" secondAttribute="leading" constant="20" type="default" id="kKC-B5-a8R"/>
+                                    <constraint firstItem="bFn-Ii-x6X" firstAttribute="leading" secondItem="pqK-dS-lhy" secondAttribute="leading" constant="20" type="default" id="mWq-Ht-eKL"/>
                                     <constraint firstItem="k1C-2t-qbj" firstAttribute="baseline" secondItem="ELe-Fr-WDp" secondAttribute="baseline" type="default" id="nub-Za-ujL"/>
                                     <constraint firstAttribute="trailing" secondItem="cFZ-rT-0Oc" secondAttribute="trailing" constant="20" type="default" id="oJk-Ys-eqb"/>
-                                    <constraint firstItem="k1C-2t-qbj" firstAttribute="leading" secondItem="ELe-Fr-WDp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="qdx-Uu-cVL"/>
+                                    <constraint firstItem="k1C-2t-qbj" firstAttribute="leading" secondItem="ELe-Fr-WDp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="qeD-2X-Fdw"/>
+                                    <constraint firstItem="WGF-ov-MpG" firstAttribute="leading" secondItem="ELe-Fr-WDp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="s35-cY-5Z7"/>
                                     <constraint firstAttribute="trailing" secondItem="k1C-2t-qbj" secondAttribute="trailing" constant="20" type="default" id="vr5-uO-bqS"/>
+                                    <constraint firstItem="EyN-VN-f5z" firstAttribute="leading" secondItem="WKV-VB-bCi" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="wCs-q5-EAX"/>
                                     <constraint firstItem="5Rz-Xk-A9f" firstAttribute="leading" secondItem="pqK-dS-lhy" secondAttribute="leading" constant="20" type="default" id="y79-la-8n1"/>
                                 </constraints>
                                 <connections>
@@ -637,6 +655,7 @@
                                     <outlet property="dateLabel" destination="xS8-0z-g1R" id="MGC-DM-K3j"/>
                                     <outlet property="macrosLabel" destination="IMR-y1-4ee" id="N9I-Nl-9qe"/>
                                     <outlet property="netCalsLabel" destination="EyN-VN-f5z" id="0Tc-3F-zFe"/>
+                                    <outlet property="proteinGramsLabel" destination="Dyi-3A-PCC" id="0Qu-gY-004"/>
                                     <outlet property="totalCalsLabel" destination="k1C-2t-qbj" id="mY9-sd-fDF"/>
                                 </connections>
                             </tableViewCell>
@@ -1674,121 +1693,6 @@
         <image name="summary.png" width="30" height="30"/>
         <image name="workouts.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="BodyStatsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BodyStatsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="editingChangedTextField:" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="bodyFatTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="weightTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="CalSummaryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalSummaryViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="resetForNewDay:"/>
-                <relationship kind="outlet" name="bodyStatsCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="caloriesBurnedCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="carbsCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="fatCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="netCaloriesCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="proteinCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="totalCaloriesCell" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="CalsTodayViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalsTodayViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addCalItem:"/>
-            </relationships>
-        </class>
-        <class className="FridgeItemViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FridgeItemViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="textFieldEditingChanged:" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="caloriesTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="carbsTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="fatTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="proteinTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="servingSizeTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="servingUnitsTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="FridgeViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FridgeViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="MoreViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MoreViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SummaryHistoryCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SummaryHistoryCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="bodyStatsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="burnedCalsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="macrosLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="netCalsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="totalCalsLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SummaryHistoryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SummaryHistoryViewController.h"/>
-        </class>
-        <class className="TodayAddFoodViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TodayAddFoodViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="TodayAddWorkoutViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TodayAddWorkoutViewController.h"/>
-        </class>
-        <class className="TodayFoodItemViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TodayFoodItemViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="numServingsEdited:" candidateClass="UITextField"/>
-                <relationship kind="action" name="numServingsSliderSlid:" candidateClass="UISlider"/>
-                <relationship kind="action" name="numUnitsEdited:" candidateClass="UITextField"/>
-                <relationship kind="action" name="numUnitsSliderSlid:" candidateClass="UISlider"/>
-                <relationship kind="action" name="totalCaloriesEdited:" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="descriptionCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="numServingsSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="numServingsTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="numUnitsSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="numUnitsTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="totalCaloriesTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="unitsLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TodayWorkoutItemViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TodayWorkoutItemViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="textFieldEditingChanged:" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="caloriesTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="notesTextView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="WorkoutItemViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutItemViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="editingChangedForTextField:" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="caloriesTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="notesTextView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="WorkoutListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutListViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

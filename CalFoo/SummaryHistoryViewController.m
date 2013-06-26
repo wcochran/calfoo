@@ -82,6 +82,7 @@
 #define RINT(f) ((int)((f) + 0.5))
     
     cell.dateLabel.text = [dateFormatter stringFromDate:date];
+    cell.proteinGramsLabel.text = [NSString stringWithFormat:@"%d g", RINT(proteinGrams)];
     cell.macrosLabel.text = [NSString stringWithFormat:@"%d/%d/%d", RINT(fatPercent), RINT(carbsPercent), RINT(proteinPercent)];
     cell.totalCalsLabel.text = [NSString stringWithFormat:@"%4.0f", totalCalories];
     cell.burnedCalsLabel.text = [NSString stringWithFormat:@"%4.0f", burnedCalories];
