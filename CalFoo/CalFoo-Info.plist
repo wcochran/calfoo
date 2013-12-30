@@ -14,13 +14,16 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>calfoo-58x58</string>
+				<string>calfoo-80x80</string>
+				<string>calfoo-120x120</string>
 				<string>calfoo.png</string>
 				<string>calfoo@2x.png</string>
 			</array>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>edu.wsu.vancouver.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>edu.wsu.vancouver.ezekiel.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

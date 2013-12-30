@@ -32,6 +32,9 @@
 		557A7976176948BD005BD848 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 557A7975176948BD005BD848 /* MoreViewController.m */; };
 		557A79791769579D005BD848 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 557A79771769579D005BD848 /* more.png */; };
 		557A797A1769579D005BD848 /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 557A79781769579D005BD848 /* more@2x.png */; };
+		558545C61871F71A00232635 /* calfoo-58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 558545C31871F71A00232635 /* calfoo-58x58.png */; };
+		558545C71871F71A00232635 /* calfoo-80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 558545C41871F71A00232635 /* calfoo-80x80.png */; };
+		558545C81871F71A00232635 /* calfoo-120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 558545C51871F71A00232635 /* calfoo-120x120.png */; };
 		559467C1174AAE1700C029D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C0174AAE1700C029D9 /* UIKit.framework */; };
 		559467C3174AAE1700C029D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C2174AAE1700C029D9 /* Foundation.framework */; };
 		559467C5174AAE1700C029D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 559467C4174AAE1700C029D9 /* CoreGraphics.framework */; };
@@ -88,6 +91,9 @@
 		557A7975176948BD005BD848 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		557A79771769579D005BD848 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = more.png; path = etc/more.png; sourceTree = SOURCE_ROOT; };
 		557A79781769579D005BD848 /* more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "more@2x.png"; path = "etc/more@2x.png"; sourceTree = SOURCE_ROOT; };
+		558545C31871F71A00232635 /* calfoo-58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calfoo-58x58.png"; path = "etc/calfoo-58x58.png"; sourceTree = SOURCE_ROOT; };
+		558545C41871F71A00232635 /* calfoo-80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calfoo-80x80.png"; path = "etc/calfoo-80x80.png"; sourceTree = SOURCE_ROOT; };
+		558545C51871F71A00232635 /* calfoo-120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calfoo-120x120.png"; path = "etc/calfoo-120x120.png"; sourceTree = SOURCE_ROOT; };
 		559467BD174AAE1700C029D9 /* CalFoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalFoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		559467C0174AAE1700C029D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		559467C2174AAE1700C029D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -130,6 +136,9 @@
 		5555F039175E939600DDEC7D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				558545C31871F71A00232635 /* calfoo-58x58.png */,
+				558545C41871F71A00232635 /* calfoo-80x80.png */,
+				558545C51871F71A00232635 /* calfoo-120x120.png */,
 				5555F03A175E93C400DDEC7D /* fridge.png */,
 				5555F03C175E93D600DDEC7D /* fridge@2x.png */,
 				5555F03E175E96EC00DDEC7D /* workouts.png */,
@@ -271,6 +280,11 @@
 				CLASSPREFIX = CalFoo;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Wayne Cochran";
+				TargetAttributes = {
+					559467BC174AAE1700C029D9 = {
+						DevelopmentTeam = RH22UATZY7;
+					};
+				};
 			};
 			buildConfigurationList = 559467B8174AAE1700C029D9 /* Build configuration list for PBXProject "CalFoo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -300,7 +314,10 @@
 				559467D7174AAE1700C029D9 /* Default-568h@2x.png in Resources */,
 				559467DA174AAE1700C029D9 /* MainStoryboard.storyboard in Resources */,
 				55D2158A174DF94000E48BBB /* ToDo.rtf in Resources */,
+				558545C61871F71A00232635 /* calfoo-58x58.png in Resources */,
 				5555F03B175E93C400DDEC7D /* fridge.png in Resources */,
+				558545C81871F71A00232635 /* calfoo-120x120.png in Resources */,
+				558545C71871F71A00232635 /* calfoo-80x80.png in Resources */,
 				5555F03D175E93D600DDEC7D /* fridge@2x.png in Resources */,
 				5555F040175E96EC00DDEC7D /* workouts.png in Resources */,
 				5555F041175E96EC00DDEC7D /* workouts@2x.png in Resources */,
@@ -425,10 +442,14 @@
 		559467EC174AAE1700C029D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CalFoo/CalFoo-Prefix.pch";
 				INFOPLIST_FILE = "CalFoo/CalFoo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -436,10 +457,14 @@
 		559467ED174AAE1700C029D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CalFoo/CalFoo-Prefix.pch";
 				INFOPLIST_FILE = "CalFoo/CalFoo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
