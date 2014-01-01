@@ -85,8 +85,8 @@
 		5555F051176F850300DDEC7D /* SummaryHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryHistoryViewController.m; sourceTree = "<group>"; };
 		556CAB74177227E3003A986C /* SummaryHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryHistoryCell.h; sourceTree = "<group>"; };
 		556CAB75177227E3003A986C /* SummaryHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryHistoryCell.m; sourceTree = "<group>"; };
-		556CAB7B17729180003A986C /* calfoo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calfoo.png; sourceTree = "<group>"; };
-		556CAB7D17729184003A986C /* calfoo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calfoo@2x.png"; sourceTree = "<group>"; };
+		556CAB7B17729180003A986C /* calfoo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calfoo.png; path = ../calfoo.png; sourceTree = "<group>"; };
+		556CAB7D17729184003A986C /* calfoo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calfoo@2x.png"; path = "../calfoo@2x.png"; sourceTree = "<group>"; };
 		557A7974176948BD005BD848 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		557A7975176948BD005BD848 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		557A79771769579D005BD848 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = more.png; path = etc/more.png; sourceTree = SOURCE_ROOT; };
@@ -136,6 +136,8 @@
 		5555F039175E939600DDEC7D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				556CAB7D17729184003A986C /* calfoo@2x.png */,
+				556CAB7B17729180003A986C /* calfoo.png */,
 				558545C31871F71A00232635 /* calfoo-58x58.png */,
 				558545C41871F71A00232635 /* calfoo-80x80.png */,
 				558545C51871F71A00232635 /* calfoo-120x120.png */,
@@ -156,8 +158,6 @@
 		559467B4174AAE1700C029D9 = {
 			isa = PBXGroup;
 			children = (
-				556CAB7D17729184003A986C /* calfoo@2x.png */,
-				556CAB7B17729180003A986C /* calfoo.png */,
 				559467C6174AAE1700C029D9 /* CalFoo */,
 				559467BF174AAE1700C029D9 /* Frameworks */,
 				559467BE174AAE1700C029D9 /* Products */,
