@@ -10,8 +10,42 @@
 #import "CalFooAppDelegate.h"
 #import "SummaryHistoryCell.h"
 
-@interface SummaryHistoryViewController ()
+@interface HistoryItemProvider : UIActivityItemProvider
+@end
 
+@implementation HistoryItemProvider
+
+-(id)item {
+    NSMutableString *result = [[NSMutableString alloc] init];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    
+    CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSArray *archive = appDelegate.summaryArchive;
+    for (NSUInteger i = 0; i < archive.count; i++) {
+        NSMutableDictionary *summaryEntry = [archive objectAtIndex:i];
+        NSDate *date = [summaryEntry objectForKey:@"date"];
+        const float fatGrams = [[summaryEntry objectForKey:@"fatgrams"] floatValue];
+        const float carbsGrams = [[summaryEntry objectForKey:@"carbsgrams"] floatValue];
+        const float proteinGrams = [[summaryEntry objectForKey:@"proteingrams"] floatValue];
+        const float totalCalories = [[summaryEntry objectForKey:@"totalcalories"] floatValue];
+        const float burnedCalories = [[summaryEntry objectForKey:@"burnedcalories"] floatValue];
+        const float weight = [[summaryEntry objectForKey:@"weight"] floatValue];
+        const float bodyFat = [[summaryEntry objectForKey:@"bodyfatpercentage"] floatValue];
+        [result appendString:[NSString stringWithFormat:@"%@, %0.5f, %0.5f, %0.5f, %0.2f, %0.2f, %0.2f, %0.5f\n",
+                              [dateFormatter stringFromDate:date],
+                              fatGrams, carbsGrams, proteinGrams, totalCalories, burnedCalories, weight, bodyFat]];
+    }
+    
+    return result;
+}
+
+@end
+
+@interface SummaryHistoryViewController ()
+-(void)shareHistory:(id)sender;
 @end
 
 @implementation SummaryHistoryViewController {
@@ -32,12 +66,23 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareHistory:)];
+    self.navigationItem.rightBarButtonItems = @[self.editButtonItem, shareButton];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)shareHistory:(id)sender {
+    // XXX NSLog(@"shareHistory");
+    HistoryItemProvider *historyItemProvider = [[HistoryItemProvider alloc] initWithPlaceholderItem:@"history"];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[historyItemProvider] applicationActivities:nil];
+    activityViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
