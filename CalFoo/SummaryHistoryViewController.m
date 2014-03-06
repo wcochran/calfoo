@@ -17,9 +17,10 @@
 
 -(id)item {
     NSMutableString *result = [[NSMutableString alloc] init];
+    [result appendString:@"\"Date\", \"fat(g)\", \"carbs(g)\", \"protein(g)\", \"total cals\", \"burned cals\", \"weight (lbs)\", \"bodyFat\"\n"];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
     [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -34,7 +35,7 @@
         const float burnedCalories = [[summaryEntry objectForKey:@"burnedcalories"] floatValue];
         const float weight = [[summaryEntry objectForKey:@"weight"] floatValue];
         const float bodyFat = [[summaryEntry objectForKey:@"bodyfatpercentage"] floatValue];
-        [result appendString:[NSString stringWithFormat:@"%@, %0.5f, %0.5f, %0.5f, %0.2f, %0.2f, %0.2f, %0.5f\n",
+        [result appendString:[NSString stringWithFormat:@"%@, %0.5f, %0.5f, %0.5f, %0.2f, %0.2f, %0.2f, %0.2f\n",
                               [dateFormatter stringFromDate:date],
                               fatGrams, carbsGrams, proteinGrams, totalCalories, burnedCalories, weight, bodyFat]];
     }
@@ -78,9 +79,9 @@
 }
 
 -(void)shareHistory:(id)sender {
-    // XXX NSLog(@"shareHistory");
     HistoryItemProvider *historyItemProvider = [[HistoryItemProvider alloc] initWithPlaceholderItem:@"history"];
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[historyItemProvider] applicationActivities:nil];
+    activityViewController.excludedActivityTypes = @[UIActivityTypePostToFacebook, UIActivityTypePostToFlickr, UIActivityTypeMessage, UIActivityTypePostToTencentWeibo, UIActivityTypePostToVimeo, UIActivityTypePostToTwitter, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll];
     activityViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentViewController:activityViewController animated:YES completion:nil];
 }
