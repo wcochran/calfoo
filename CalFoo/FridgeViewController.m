@@ -159,7 +159,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"FridgeItemDetailSegue"]) {
         FridgeItemViewController *viewController = (FridgeItemViewController*)segue.destinationViewController;
-        int tag = [sender tag];
+        int tag = (int) [sender tag];
         if (tag == SEARCH_RESULTS_TABLE_VIEW_CELL_TAG) {
             NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
             FoodItem *item = [self.filteredFridgeItems objectAtIndex:indexPath.row];

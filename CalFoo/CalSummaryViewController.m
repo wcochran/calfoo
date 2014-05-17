@@ -87,7 +87,7 @@ static NSString *getDateString(NSDate *date) {
 #define SAVE_SHEET_TAG 2
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    const int tag = actionSheet.tag;
+    const int tag = (int) actionSheet.tag;
     if (tag == RESET_SHEET_TAG) {
         if (buttonIndex == 0) { // reset
             if (![self todayInfoIsEmpty]) { // ask to save first

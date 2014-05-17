@@ -118,7 +118,7 @@
     if ([segue.identifier isEqualToString:@"TodayAddFoodDetailSegue"]) {
         UINavigationController *navController = (UINavigationController*) segue.destinationViewController;
         TodayFoodItemViewController *foodItemViewController = (TodayFoodItemViewController*) navController.topViewController;
-        int tag = [sender tag];
+        int tag = (int) [sender tag];
         FoodItem *item;
         if (tag == SEARCH_RESULTS_TABLE_VIEW_CELL_TAG) {
             NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
