@@ -94,6 +94,7 @@
 		558545C31871F71A00232635 /* calfoo-58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calfoo-58x58.png"; path = "etc/calfoo-58x58.png"; sourceTree = SOURCE_ROOT; };
 		558545C41871F71A00232635 /* calfoo-80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calfoo-80x80.png"; path = "etc/calfoo-80x80.png"; sourceTree = SOURCE_ROOT; };
 		558545C51871F71A00232635 /* calfoo-120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calfoo-120x120.png"; path = "etc/calfoo-120x120.png"; sourceTree = SOURCE_ROOT; };
+		558F991219285E18008AD839 /* CalFoo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CalFoo.entitlements; sourceTree = "<group>"; };
 		559467BD174AAE1700C029D9 /* CalFoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalFoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		559467C0174AAE1700C029D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		559467C2174AAE1700C029D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -185,6 +186,7 @@
 		559467C6174AAE1700C029D9 /* CalFoo */ = {
 			isa = PBXGroup;
 			children = (
+				558F991219285E18008AD839 /* CalFoo.entitlements */,
 				55BB32DC174AB8F300139580 /* Model */,
 				559467CF174AAE1700C029D9 /* CalFooAppDelegate.h */,
 				559467D0174AAE1700C029D9 /* CalFooAppDelegate.m */,
@@ -283,6 +285,11 @@
 				TargetAttributes = {
 					559467BC174AAE1700C029D9 = {
 						DevelopmentTeam = RH22UATZY7;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -442,6 +449,7 @@
 		559467EC174AAE1700C029D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CalFoo/CalFoo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -457,6 +465,7 @@
 		559467ED174AAE1700C029D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CalFoo/CalFoo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
