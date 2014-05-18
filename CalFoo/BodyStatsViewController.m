@@ -28,8 +28,9 @@
 {
     [super viewDidLoad];
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditing:)];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelEditing:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+       initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditing:)];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelEditing:)];
     
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     float weight = 0.0;
@@ -81,7 +82,8 @@
         }
         [self saveBodyStats];
     }
-    [self dismissViewControllerAnimated:YES completion:^{}]; 
+//    [self dismissViewControllerAnimated:YES completion:^{}];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)cancelEditing:(id)sender {

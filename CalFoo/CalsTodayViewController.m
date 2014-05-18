@@ -85,6 +85,7 @@
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         FoodItem *item = [appDelegate.todaysFood objectAtIndex:indexPath.row];
         cell.textLabel.text = item.description;
+//        cell.textLabel.lineBreakMode = NSLineBreakByTruncatingTail; // does not work
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f", item.calories * item.numServings];
     } else {
         static NSString *CellIdentifier = @"CalsTodayExerciseCell";

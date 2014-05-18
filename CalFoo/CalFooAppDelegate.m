@@ -38,13 +38,13 @@
     // XXX
     // http://www.raywenderlich.com/6015/beginning-icloud-in-ios-5-tutorial-part-1
     //
-    NSURL *ubiq = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
-    if (ubiq) {
-        NSLog(@"iCloud access at %@", ubiq);
-        // TODO: Load data from iCloud
-    } else {
-        NSLog(@"No iCloud access");
-    }
+//    NSURL *ubiq = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
+//    if (ubiq) {
+//        NSLog(@"iCloud access at %@", ubiq);
+//        // TODO: Load data from iCloud
+//    } else {
+//        NSLog(@"No iCloud access");
+//    }
     
     //
     // Initialize food data.
