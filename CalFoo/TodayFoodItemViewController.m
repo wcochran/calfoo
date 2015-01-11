@@ -50,7 +50,7 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditingFoodItem:)];
     }
     
-    self.descriptionCell.textLabel.text = self.item.description;
+    self.descriptionCell.textLabel.text = self.item.descriptor;
     self.descriptionCell.detailTextLabel.text = [NSString stringWithFormat:@"srv=%0.2g %@, %0.0f/%0.0f/%0.0f %0.0f Cals",
                                                  self.item.servingSize, self.item.servingUnits,
                                                  self.item.fatGrams, self.item.carbsGrams, self.item.proteinGrams, self.item.calories];

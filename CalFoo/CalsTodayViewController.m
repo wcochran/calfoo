@@ -84,7 +84,7 @@
         static NSString *CellIdentifier = @"CalsTodayFoodCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         FoodItem *item = [appDelegate.todaysFood objectAtIndex:indexPath.row];
-        cell.textLabel.text = item.description;
+        cell.textLabel.text = item.descriptor;
 //        cell.textLabel.lineBreakMode = NSLineBreakByTruncatingTail; // does not work
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f", item.calories * item.numServings];
@@ -92,7 +92,7 @@
         static NSString *CellIdentifier = @"CalsTodayExerciseCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         WorkoutItem *item = [appDelegate.todaysExercises objectAtIndex:indexPath.row];
-        cell.textLabel.text = item.description;
+        cell.textLabel.text = item.descriptor;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f", item.calories];
     }
     

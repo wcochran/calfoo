@@ -67,7 +67,7 @@
     
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     WorkoutItem *item = [appDelegate.exercises objectAtIndex:indexPath.row];
-    cell.textLabel.text = item.description;
+    cell.textLabel.text = item.descriptor;
     
     return cell;
 }
