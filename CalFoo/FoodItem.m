@@ -12,7 +12,7 @@
 
 -(id)init {
     if (self = [super init]) {
-        _description = @"";
+        _descriptor = @"";
         _servingSize = 0.0;
         _numServings = 1.0;
         _servingUnits = @"";
@@ -23,7 +23,7 @@
 
 -(id)initWithDictionary:(NSDictionary*)dict {
     if (self = [super init]) {
-        _description = [dict objectForKey:kDescriptionKey];
+        _descriptor = [dict objectForKey:kDescriptorKey];
         _servingSize = [[dict objectForKey:kServingSizeKey] floatValue];
         _servingUnits = [dict objectForKey:kServingUnitsKey];
         _numServings = [[dict objectForKey:kNumServingsKey] floatValue];
@@ -37,7 +37,7 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super init]) {
-        _description = [aDecoder decodeObjectForKey:kDescriptionKey];
+        _descriptor = [aDecoder decodeObjectForKey:kDescriptorKey];
         _servingSize = [aDecoder decodeFloatForKey:kServingSizeKey];
         _servingUnits = [aDecoder decodeObjectForKey:kServingUnitsKey];
         _numServings = [aDecoder decodeFloatForKey:kNumServingsKey];
@@ -50,7 +50,7 @@
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:_description forKey:kDescriptionKey];
+    [aCoder encodeObject:_descriptor forKey:kDescriptorKey];
     [aCoder encodeFloat:_servingSize forKey:kServingSizeKey];
     [aCoder encodeObject:_servingUnits forKey:kServingUnitsKey];
     [aCoder encodeFloat:_numServings forKey:kNumServingsKey];
@@ -62,7 +62,7 @@
 
 -(id)copyWithZone:(NSZone *)zone {
     FoodItem *clone = [[[self class] alloc] init];
-    clone.description = _description;
+    clone.descriptor = _descriptor;
     clone.servingSize = _servingSize;
     clone.servingUnits = _servingUnits;
     clone.numServings = _numServings;

@@ -10,7 +10,7 @@
 
 @interface WorkoutItem : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSString *descriptor;
 @property (nonatomic, assign) float calories;
 @property (nonatomic, copy) NSString *notes;
 

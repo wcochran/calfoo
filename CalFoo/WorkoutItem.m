@@ -8,7 +8,7 @@
 
 #import "WorkoutItem.h"
 
-#define kDescriptionKey @"description"
+#define kDescriptorKey @"descriptor"
 #define kCaloriesKey @"calories"
 #define kNotesKey @"notes"
 
@@ -16,7 +16,7 @@
 
 -(id)init {
     if (self = [super init]) {
-        _description = @"";
+        _descriptor = @"";
         _calories = 0.0;
         _notes = @"";
     }
@@ -25,7 +25,7 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super init]) {
-        _description = [aDecoder decodeObjectForKey:kDescriptionKey];
+        _descriptor = [aDecoder decodeObjectForKey:kDescriptorKey];
         _calories = [aDecoder decodeFloatForKey:kCaloriesKey];
         _notes = [aDecoder decodeObjectForKey:kNotesKey];
     }
@@ -33,14 +33,14 @@
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:_description forKey:kDescriptionKey];
+    [aCoder encodeObject:_descriptor forKey:kDescriptorKey];
     [aCoder encodeFloat:_calories forKey:kCaloriesKey];
     [aCoder encodeObject:_notes forKey:kNotesKey];
 }
 
 -(id)copyWithZone:(NSZone *)zone {
     WorkoutItem *clone = [[[self class] alloc] init];
-    clone.description = _description;
+    clone.descriptor = _descriptor;
     clone.calories = _calories;
     clone.notes = _notes;
     return clone;

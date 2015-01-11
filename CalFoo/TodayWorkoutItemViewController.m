@@ -43,7 +43,7 @@
 -(void)addItem:(id)sender {
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate.todaysExercises addObject:self.item];
-    self.item.description = self.descriptionTextField.text;  // XXX check for empty description?
+    self.item.descriptor = self.descriptionTextField.text;  // XXX check for empty description?
     self.item.calories = [self.caloriesTextField.text floatValue];
     self.item.notes = self.notesTextView.text;
     [[NSNotificationCenter defaultCenter] postNotificationName:kTodaysExercisesChangedNotification object:self];
@@ -51,7 +51,7 @@
 }
 
 -(void)doneEditingItem:(id)sender {
-    self.item.description = self.descriptionTextField.text;  // XXX check for empty description?
+    self.item.descriptor = self.descriptionTextField.text;  // XXX check for empty description?
     self.item.calories = [self.caloriesTextField.text floatValue];
     self.item.notes = self.notesTextView.text;
     [[NSNotificationCenter defaultCenter] postNotificationName:kTodaysExercisesChangedNotification object:self];

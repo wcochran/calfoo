@@ -57,7 +57,7 @@
         self.fridge = [a mutableCopy];
         [aDecoder finishDecoding];
     } else {
-        NSDictionary *oatmeal = @{kDescriptionKey : @"Oatmeal (Old Fashioned)",
+        NSDictionary *oatmeal = @{kDescriptorKey : @"Oatmeal (Old Fashioned)",
                                   kServingSizeKey : @(0.5), kServingUnitsKey : @"cups", kNumServingsKey : @(1.0),
                                   kFatGramsKey : @(3.0), kCarbsGramsKey : @(27.0), kProteinGramsKey : @(5), kCaloriesKey: @(150)};
         FoodItem *oatmealItem = [[FoodItem alloc] initWithDictionary:oatmeal];

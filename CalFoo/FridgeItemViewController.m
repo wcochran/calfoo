@@ -47,7 +47,7 @@
         [self setTextFieldsEnabled:NO];
         CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         _foodItem = [appDelegate.fridge objectAtIndex:self.fridgeIndex];
-        self.descriptionTextField.text = _foodItem.description;
+        self.descriptionTextField.text = _foodItem.descriptor;
         self.servingSizeTextField.text = [NSString stringWithFormat:@"%g", _foodItem.servingSize];
         self.servingUnitsTextField.text = _foodItem.servingUnits;
         self.fatTextField.text = [NSString stringWithFormat:@"%0g",_foodItem.fatGrams];
@@ -152,7 +152,7 @@
     //
     if (_foodItem == nil)
         _foodItem = [[FoodItem alloc] init];
-    _foodItem.description = description;
+    _foodItem.descriptor = description;
     _foodItem.servingSize = [servingSize floatValue];
     _foodItem.servingUnits = ([servingSize length] > 0) ? servingUnits : @"units";
     _foodItem.numServings = 1.0;
@@ -188,7 +188,7 @@
         // Reset edited food item fields
         //
         if ((_foodItemDirtyBits & (1 << DESCRIPTION_TAG)) != 0)
-            _foodItem.description = self.descriptionTextField.text;
+            _foodItem.descriptor = self.descriptionTextField.text;
         if ((_foodItemDirtyBits & (1 << SERVING_SIZE_TAG)) != 0)
             _foodItem.servingSize = [self.servingSizeTextField.text floatValue];
         if ((_foodItemDirtyBits & (1 << SERVING_UNITS_TAG)) != 0)

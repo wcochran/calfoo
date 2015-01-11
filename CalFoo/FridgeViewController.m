@@ -101,7 +101,7 @@
         cell.tag = TABLE_VIEW_CELL_TAG;
     }
     
-    cell.textLabel.text = item.description;
+    cell.textLabel.text = item.descriptor;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"srv=%0.2g %@, %0.0f/%0.0f/%0.0f %0.0f Cals", item.servingSize, item.servingUnits, item.fatGrams, item.carbsGrams, item.proteinGrams, item.calories];
     
     return cell;
@@ -181,7 +181,7 @@
 
 -(void)filterContentForSearchText:(NSString*)searchText {
     [self.filteredFridgeItems removeAllObjects];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.description contains[c] %@",searchText];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.descriptor contains[c] %@",searchText];
     CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     self.filteredFridgeItems = [NSMutableArray arrayWithArray:[appDelegate.fridge filteredArrayUsingPredicate:predicate]];
 }

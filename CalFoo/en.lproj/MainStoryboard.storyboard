@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="132" y="180"/>
         </scene>
-        <!--Cal Summary View Controller - Summary-->
+        <!--Summary-->
         <scene sceneID="Oxa-My-Rj7">
             <objects>
                 <tableViewController id="lbN-8f-DOR" customClass="CalSummaryViewController" sceneMemberID="viewController">
@@ -226,7 +226,7 @@
             </objects>
             <point key="canvasLocation" x="1087" y="-151"/>
         </scene>
-        <!--Body Stats View Controller - Body Stats-->
+        <!--Body Stats-->
         <scene sceneID="vf0-UN-jEk">
             <objects>
                 <tableViewController id="7M0-YC-h8E" customClass="BodyStatsViewController" sceneMemberID="viewController">
@@ -327,7 +327,7 @@
             </objects>
             <point key="canvasLocation" x="1305" y="-953"/>
         </scene>
-        <!--Navigation Controller - Summary-->
+        <!--Summary-->
         <scene sceneID="xwA-2G-uI4">
             <objects>
                 <navigationController definesPresentationContext="YES" id="HBS-iy-YIO" sceneMemberID="viewController">
@@ -343,7 +343,7 @@
             </objects>
             <point key="canvasLocation" x="669" y="-151"/>
         </scene>
-        <!--Fridge View Controller - Fridge-->
+        <!--Fridge-->
         <scene sceneID="aIB-UW-KMf">
             <objects>
                 <tableViewController id="Kpb-dj-jZ9" customClass="FridgeViewController" sceneMemberID="viewController">
@@ -412,7 +412,7 @@
             </objects>
             <point key="canvasLocation" x="1087" y="1013"/>
         </scene>
-        <!--Workout List View Controller - Workouts-->
+        <!--Workouts-->
         <scene sceneID="ry3-XK-Eub">
             <objects>
                 <tableViewController id="hwV-Pd-8cf" customClass="WorkoutListViewController" sceneMemberID="viewController">
@@ -454,7 +454,7 @@
             </objects>
             <point key="canvasLocation" x="1087" y="1603"/>
         </scene>
-        <!--Navigation Controller - Workouts-->
+        <!--Workouts-->
         <scene sceneID="5Pv-CZ-OSU">
             <objects>
                 <navigationController definesPresentationContext="YES" id="6Ed-fJ-BC2" sceneMemberID="viewController">
@@ -470,7 +470,7 @@
             </objects>
             <point key="canvasLocation" x="669" y="1603"/>
         </scene>
-        <!--More View Controller - More Goodies-->
+        <!--More Goodies-->
         <scene sceneID="0bR-on-WCF">
             <objects>
                 <tableViewController id="40t-rk-M3X" customClass="MoreViewController" sceneMemberID="viewController">
@@ -510,7 +510,7 @@
             </objects>
             <point key="canvasLocation" x="1087" y="2215"/>
         </scene>
-        <!--Summary History View Controller - History-->
+        <!--History-->
         <scene sceneID="afT-Ch-QHI">
             <objects>
                 <tableViewController id="yEW-dI-L15" customClass="SummaryHistoryViewController" sceneMemberID="viewController">
@@ -709,7 +709,7 @@
             </objects>
             <point key="canvasLocation" x="1638" y="2371"/>
         </scene>
-        <!--Navigation Controller - More-->
+        <!--More-->
         <scene sceneID="PJZ-lf-Ou1">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Zi3-Ce-Lbr" sceneMemberID="viewController">
@@ -755,7 +755,7 @@
             </objects>
             <point key="canvasLocation" x="1638" y="1705"/>
         </scene>
-        <!--Today Workout Item View Controller - Workout-->
+        <!--Workout-->
         <scene sceneID="RXP-SP-QSq">
             <objects>
                 <tableViewController id="lZL-g3-cDZ" customClass="TodayWorkoutItemViewController" sceneMemberID="viewController">
@@ -882,7 +882,7 @@
             </objects>
             <point key="canvasLocation" x="1977" y="-167"/>
         </scene>
-        <!--Today Add Workout View Controller - Add Workout-->
+        <!--Add Workout-->
         <scene sceneID="hqY-iJ-GHR">
             <objects>
                 <tableViewController id="410-tk-JdK" customClass="TodayAddWorkoutViewController" sceneMemberID="viewController">
@@ -948,7 +948,7 @@
             </objects>
             <point key="canvasLocation" x="1979" y="424"/>
         </scene>
-        <!--Fridge Item View Controller - Fridge Item-->
+        <!--Fridge Item-->
         <scene sceneID="eTF-ec-6OQ">
             <objects>
                 <tableViewController id="aZV-Cv-glo" customClass="FridgeItemViewController" sceneMemberID="viewController">
@@ -1203,7 +1203,7 @@
             </objects>
             <point key="canvasLocation" x="2082" y="1485"/>
         </scene>
-        <!--Workout Item View Controller - Workout-->
+        <!--Workout-->
         <scene sceneID="pgK-7M-lj9">
             <objects>
                 <tableViewController id="mAQ-zb-jXb" customClass="WorkoutItemViewController" sceneMemberID="viewController">
@@ -1324,7 +1324,7 @@
             </objects>
             <point key="canvasLocation" x="2082" y="2159"/>
         </scene>
-        <!--Navigation Controller - Fridge-->
+        <!--Fridge-->
         <scene sceneID="yDZ-So-LRG">
             <objects>
                 <navigationController definesPresentationContext="YES" id="CHd-8H-jcG" sceneMemberID="viewController">
@@ -1340,7 +1340,7 @@
             </objects>
             <point key="canvasLocation" x="674" y="1013"/>
         </scene>
-        <!--Cals Today View Controller - Today-->
+        <!--Today-->
         <scene sceneID="2Z2-W9-qeC">
             <objects>
                 <tableViewController id="deR-yZ-a6q" customClass="CalsTodayViewController" sceneMemberID="viewController">
@@ -1419,7 +1419,7 @@
             </objects>
             <point key="canvasLocation" x="1087" y="417"/>
         </scene>
-        <!--Today Food Item View Controller - Food-->
+        <!--Food-->
         <scene sceneID="t2J-7b-5UI">
             <objects>
                 <tableViewController id="yem-ik-H9l" customClass="TodayFoodItemViewController" sceneMemberID="viewController">
@@ -1637,7 +1637,7 @@
             </objects>
             <point key="canvasLocation" x="1970" y="-1328"/>
         </scene>
-        <!--Today Add Food View Controller - Add Food-->
+        <!--Add Food-->
         <scene sceneID="QWB-1s-SnO">
             <objects>
                 <tableViewController id="d9I-HJ-CWZ" customClass="TodayAddFoodViewController" sceneMemberID="viewController">
@@ -1730,7 +1730,7 @@
             </objects>
             <point key="canvasLocation" x="1977" y="-763"/>
         </scene>
-        <!--Navigation Controller - Today-->
+        <!--Today-->
         <scene sceneID="B3T-wQ-EmG">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Aa2-B8-74X" sceneMemberID="viewController">

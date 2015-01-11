@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kDescriptionKey @"description"
+#define kDescriptorKey @"descriptor"
 #define kServingSizeKey @"servingsize"
 #define kServingUnitsKey @"servingunits"
 #define kNumServingsKey @"numservings"
@@ -19,7 +19,7 @@
 
 @interface FoodItem : NSObject <NSCopying, NSCoding>
 
-@property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSString *descriptor;
 @property (nonatomic, assign) float servingSize;
 @property (nonatomic, copy) NSString *servingUnits;
 @property (nonatomic, assign) float numServings;

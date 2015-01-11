@@ -35,7 +35,7 @@
         self.navigationItem.rightBarButtonItem = self.editButtonItem;
         CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         _exerciseItem = [appDelegate.exercises objectAtIndex:self.exercisesIndex];
-        self.descriptionTextField.text = _exerciseItem.description;
+        self.descriptionTextField.text = _exerciseItem.descriptor;
         self.caloriesTextField.text = [NSString stringWithFormat:@"%g", _exerciseItem.calories];
         self.notesTextView.text = _exerciseItem.notes;
         [self setTextEditingEnabled:NO];
@@ -72,7 +72,7 @@
     
     if (_exerciseItem == nil)
         _exerciseItem = [[WorkoutItem alloc] init];
-    _exerciseItem.description = description;
+    _exerciseItem.descriptor = description;
     _exerciseItem.calories = [self.caloriesTextField.text floatValue];
     _exerciseItem.notes = self.notesTextView.text;
     
@@ -91,7 +91,7 @@
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated {
     if (self.isEditing && !editing && _exerciseItemDirtyBits != 0) { // user touched "done" (finished editing)
         if ((_exerciseItemDirtyBits & (1 << DESCRIPTION_TAG)) != 0)
-            _exerciseItem.description = self.descriptionTextField.text;
+            _exerciseItem.descriptor = self.descriptionTextField.text;
         if ((_exerciseItemDirtyBits & (1 << CALORIES_TAG)) != 0)
             _exerciseItem.calories = [self.caloriesTextField.text floatValue];
         if ((_exerciseItemDirtyBits & (1 << NOTES_TAG)) != 0)
