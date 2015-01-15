@@ -31,7 +31,7 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditingItem:)];
     }
     
-    self.descriptionTextField.text = self.item.description;
+    self.descriptionTextField.text = self.item.descriptor;
     self.caloriesTextField.text = [NSString stringWithFormat:@"%0.3g", self.item.calories];
     self.notesTextView.text = self.item.notes;
 }
