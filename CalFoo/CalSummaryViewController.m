@@ -12,6 +12,7 @@
 #import "WorkoutItem.h"
 #import "BodyStats.h"
 #import "BodyStatsViewController.h"
+#import <MessageUI/MessageUI.h>
 
 static NSString *getDateString(NSDate *date) {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -21,7 +22,7 @@ static NSString *getDateString(NSDate *date) {
     return formattedDateString;
 }
 
-@interface CalSummaryViewController () <UIActionSheetDelegate>
+@interface CalSummaryViewController () <UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
 -(void)foodChanged:(NSNotification*)notification;
 -(void)workoutChanged:(NSNotification*)notification;
@@ -29,6 +30,8 @@ static NSString *getDateString(NSDate *date) {
 
 -(void)saveToday;
 -(void)clearToday;
+
+- (IBAction)emailData:(id)sender;
 
 @end
 
@@ -81,6 +84,90 @@ static NSString *getDateString(NSDate *date) {
     [self.tableView reloadData];  // get date changed in section header
     [[NSNotificationCenter defaultCenter] postNotificationName:kFoodChangedNotification object:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:kBodyStatsChangedNotification object:self];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error {
+    NSString *title = @"Mail did What!?";
+    switch (result) {
+        case MFMailComposeResultSent:
+            title = @"Mail Sent";
+            break;
+        case MFMailComposeResultSaved:
+            title = @"Mail Saved";
+            break;
+        case MFMailComposeResultCancelled:
+            title = @"Mail Canceled";
+            break;
+        case MFMailComposeResultFailed:
+            title = @"Mail Failed!";
+            break;
+    }
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSString *msg = @"Success";
+        if (error != nil)
+            msg = error.localizedDescription;
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
+                                                                                 message:msg
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }];
+}
+
+- (IBAction)emailData:(id)sender {
+    if ([MFMailComposeViewController canSendMail])    {
+        CalFooAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        NSDate *date = appDelegate.today;
+        NSArray *food = appDelegate.todaysFood;
+        NSArray *exercizes = appDelegate.todaysExercises;
+        BodyStats *bodyStats = appDelegate.todaysBodyStats;
+        
+        NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+        dateFormater.timeStyle = NSDateFormatterNoStyle;
+        dateFormater.dateStyle = NSDateFormatterShortStyle;
+        NSString *dateString = [dateFormater stringFromDate:date];
+        
+        NSMutableArray *dataToSend = [[NSMutableArray alloc] init];
+        [dataToSend addObject:dateString];
+        
+        [dataToSend addObject:@"FOOD"];
+        for (FoodItem *item in food) {
+            [dataToSend addObject:[NSString stringWithFormat:@"%@ : %f : %@ : %f : %f : %f : %f : %f",
+                                   item.descriptor, item.servingSize, item.servingUnits, item.numServings,
+                                   item.fatGrams, item.carbsGrams, item.proteinGrams, item.calories]];
+        }
+        
+        [dataToSend addObject:@"EXCERCISES"];
+        for (WorkoutItem *item in exercizes) {
+            [dataToSend addObject:[NSString stringWithFormat:@"%@ : %f : %@",
+                                   item.descriptor, item.calories, item.notes]];
+        }
+        
+        [dataToSend addObject:@"BODY STATS"];
+        [dataToSend addObject:[NSString stringWithFormat:@"%@ : %f : %f",
+                               [dateFormater stringFromDate:bodyStats.timeStamp],
+                               bodyStats.weight, bodyStats.bodyFatPercentage]];
+        
+        MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+        mail.mailComposeDelegate = self;
+        [mail setSubject:[NSString stringWithFormat:@"CalFoo food: %@", dateString]];
+        [mail setMessageBody:[dataToSend componentsJoinedByString:@"\n"] isHTML:NO];
+        [mail setToRecipients:@[@"wayne.cochran@gmail.com"]];
+        
+        [self presentViewController:mail animated:YES completion:NULL];
+    } else {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Can't Send"
+                                                                                 message:@"This device cannot send email!"
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 #define RESET_SHEET_TAG 1

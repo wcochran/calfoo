@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -206,6 +206,11 @@
                         </sections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Summary" id="E2b-fC-ne3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="AFg-Kp-H8A">
+                            <connections>
+                                <action selector="emailData:" destination="lbN-8f-DOR" id="DYU-hf-1oT"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New Day" id="oRq-HU-q1Q">
                             <connections>
                                 <action selector="resetForNewDay:" destination="lbN-8f-DOR" id="ybz-ik-20K"/>
